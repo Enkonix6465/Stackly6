@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header.jsx';
+import { useDarkMode } from '../context/DarkModeContext';
 import Footer from '../components/Footer.jsx';
 import AOS from 'aos';
 import {
@@ -12,8 +14,15 @@ import {
   Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
 import realEstate from '../assets/realEstateHero.mp4';
+import realEstatePhoto from '../assets/realestateSection.jpg';
 
-const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
+const COLOR_1 = '#002346'; // deep blue
+const COLOR_2 = '#F8F4E3'; // off-white
+const COLOR_3 = '#333333';
+
+const RealEstate = ({ user, onLogout }) => {
+  const { darkMode, setDarkMode } = useDarkMode();
+  const navigate = useNavigate();
   // Prevent horizontal scroll on the whole page
   useEffect(() => {
     const style = document.createElement('style');
@@ -96,8 +105,8 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
       ],
       buttonText: "Book Consult",
       buttonClass: "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
-      boxStyle: { background: "#AABF91", color: "#002346" },
-      className: "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
+  boxStyle: { background: "#F8F4E3", color: "#002346" },
+  className: "rounded-2xl p-6 border-2 border-[#002346] hover:border-[#333333] transition-all duration-300",
     },
     {
       title: "Transaction Pack",
@@ -111,8 +120,8 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
       buttonText: "Contact Us",
       buttonClass: "w-full bg-[#AABF91] text-[#002346] font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] hover:text-white transition-colors duration-300 transform hover:scale-105",
       badge: "MOST POPULAR",
-      boxStyle: { background: "#002346", color: "#AABF91" },
-      className: "rounded-2xl p-6 border-2 border-[#AABF91] scale-105",
+  boxStyle: { background: "#002346", color: "#F8F4E3" },
+  className: "rounded-2xl p-6 border-2 border-[#002346] scale-105",
     },
     {
       title: "Full Litigation",
@@ -125,21 +134,21 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
       ],
       buttonText: "Start Now",
       buttonClass: "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
-      boxStyle: { background: "#AABF91", color: "#002346" },
-      className: "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
+  boxStyle: { background: "#F8F4E3", color: "#002346" },
+  className: "rounded-2xl p-6 border-2 border-[#002346] hover:border-[#333333] transition-all duration-300",
     }
   ];
 
   return (
-    <div className={`min-h-screen w-full transition-colors duration-300 ${darkMode ? 'bg-[#002346]' : 'bg-white'}`}>
+  <div className={`min-h-screen w-full transition-colors duration-300 ${darkMode ? 'bg-[#002346]' : 'bg-[#F8F4E3]'}`}>
       <div className="sticky top-0 z-50">
-        <div className="fixed top-0 left-0 w-full z-[100] bg-white dark:bg-[#002346] shadow-lg">
-          <Header darkMode={darkMode} setDarkMode={setDarkMode} user={user} onLogout={onLogout} />
+  <div className="fixed top-0 left-0 w-full z-[100] bg-[#F8F4E3] dark:bg-[#002346] shadow-lg">
+          <Header user={user} onLogout={onLogout} />
         </div>
       </div>
 
       {/* Hero Section */}
-      <section className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0" style={{ minHeight: '100vh', maxWidth: '100vw' }}>
+  <section className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0" style={{ minHeight: '100vh', maxWidth: '100vw', background: darkMode ? '#002346' : '#F8F4E3' }}>
         <video
           autoPlay
           loop
@@ -152,10 +161,10 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
           Your browser does not support the video tag.
         </video>
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
-          <h1 className="font-bold text-5xl mb-6 text-white drop-shadow-lg" data-aos="fade-down">
+          <h1 className="font-bold text-5xl mb-6" style={{ color: '#002346', textShadow: '0 2px 8px #F8F4E3' }} data-aos="fade-down">
             Real Estate Law
           </h1>
-          <p className="max-w-2xl mx-auto text-lg text-white drop-shadow-lg" data-aos="fade-up">
+          <p className="max-w-2xl mx-auto text-lg" style={{ color: '#333333', textShadow: '0 2px 8px #F8F4E3' }} data-aos="fade-up">
             Comprehensive legal support for property buyers, sellers, and investors.
           </p>
         </div>
@@ -163,14 +172,14 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
 
       {/* Benefits Section */}
       <section id="key-benefits" className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ backgroundColor: darkMode ? '#002346' : '#fff' }}
+  style={{ backgroundColor: darkMode ? '#002346' : '#F8F4E3' }}
         data-aos="fade-up" data-aos-duration="1000" data-aos-once="false">
         <div className="max-w-7xl mx-auto w-full">
           <div className="text-center mb-16" data-aos="fade-up" data-aos-delay="200">
-            <h2 className="text-5xl font-bold mb-4" style={{ color: '#002346' }}>
-              Key <span style={{ color: '#AABF91' }}>Advantages</span>
+            <h2 className="text-5xl font-bold mb-4" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
+              Key Advantages
             </h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: '#B57560' }}>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
               The clarity and protection you need for all property and real estate matters.
             </p>
           </div>
@@ -178,24 +187,30 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
             <div className="space-y-8" data-aos="fade-right" data-aos-delay="300">
               {benefits.slice(0, 3).map((b, idx) => (
                 <div key={idx} className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: '#AABF91' }}>
-                  <h3 className="text-2xl font-bold mb-2" style={{ color: '#002346' }}>{b.split(':')[0]}</h3>
-                  <p className="text-base" style={{ color: '#002346' }}>{b}</p>
+                  style={{ backgroundColor: darkMode ? '#333333' : '#002346' }}>
+                  <h3 className="text-2xl font-bold mb-2" style={{ color: '#F8F4E3' }}>{b.split(':')[0]}</h3>
+                  <p className="text-base" style={{ color: '#F8F4E3' }}>{b}</p>
                 </div>
               ))}
             </div>
-            <div className="flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="600">
-              <h3 className="text-2xl font-bold mb-4" style={{ color: '#B57560' }}>Your Property. Our Priority.</h3>
-              <p className="text-lg max-w-md" style={{ color: '#002346' }}>
+            <div className="flex flex-col items-center lg:items-start justify-start h-full" data-aos="zoom-in" data-aos-delay="600">
+              <img
+                src={realEstatePhoto}
+                alt="Real Estate Law"
+                className="rounded-2xl shadow-xl mb-6 w-[420px] h-[420px] object-fill border-4 border-[#F8F4E3] dark:border-[#002346]"
+                style={{ maxWidth: '100%', background: darkMode ? '#333333' : '#fff', marginTop: 0, alignSelf: 'flex-start' }}
+              />
+              <h3 className="text-2xl font-bold mb-4 self-center lg:self-start" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>Your Property. Our Priority.</h3>
+              <p className="text-lg max-w-md self-center lg:self-start" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                 From buying and selling to disputes, our team secures every step of your real estate journey.
               </p>
             </div>
             <div className="space-y-8" data-aos="fade-left" data-aos-delay="300">
               {benefits.slice(3, 6).map((b, idx) => (
                 <div key={idx} className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: '#AABF91' }}>
-                  <h3 className="text-2xl font-bold mb-2" style={{ color: '#002346' }}>{b.split(':')[0]}</h3>
-                  <p className="text-base" style={{ color: '#002346' }}>{b}</p>
+                  style={{ backgroundColor: darkMode ? '#333333' : '#002346' }}>
+                  <h3 className="text-2xl font-bold mb-2" style={{ color: '#F8F4E3' }}>{b.split(':')[0]}</h3>
+                  <p className="text-base" style={{ color: '#F8F4E3' }}>{b}</p>
                 </div>
               ))}
             </div>
@@ -205,29 +220,29 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
 
       {/* Services Section */}
       <section className="w-full py-16 px-4 relative transition-colors duration-300"
-        style={{ background: 'linear-gradient(120deg, #002346 90%, #B57560 120%)' }}>
+  style={{ background: '#002346' }}>
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="mb-12" data-aos="fade-up">
-            <h2 className="text-5xl font-bold text-white">
-              Real Estate <span style={{ color: '#AABF91' }}>Services</span>
+            <h2 className="text-5xl text-center font-bold text-white">
+              Real Estate Services
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
-                style={{ backgroundColor: '#fff', color: '#002346' }}
+                style={{ backgroundColor: '#F8F4E3', color: '#333333' }}
                 className="rounded-2xl p-6 shadow-lg transform transition-all duration-300 hover:scale-105"
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
                 data-aos-once="false"
               >
                 <div className="mb-4">
-                  <span className="text-2xl font-bold" style={{ color: '#AABF91' }}>
+                  <span className="text-2xl font-bold" style={{ color: '#002346' }}>
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                <h3 className="text-xl text-[#002346] font-bold mb-4">{service.title}</h3>
                 <p className="text-base">{service.description}</p>
               </div>
             ))}
@@ -236,19 +251,19 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
       </section>
 
       {/* How It Works Section */}
-      <section className="w-full py-16 px-2 bg-[#f9f5f0]">
+  <section className="w-full py-16 px-2" style={{ background: darkMode ? '#002346' : '#F8F4E3' }}>
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-semibold text-[#002346] text-center mb-4">
-            How We Work
+            <span style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>How We Work</span>
           </h2>
-          <p className="text-center text-[#a4704a] mb-12 max-w-2xl mx-auto">
-            Our 7-step process to guide you through your real estate journey.
+          <p className="text-center text-[#333333] mb-12 max-w-2xl mx-auto">
+            <span style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>Our 7-step process to guide you through your real estate journey.</span>
           </p>
           <div className="flex flex-wrap justify-center items-start gap-y-12 gap-x-2">
             {/* STEP 1 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
-              <div
-                className="relative bg-[#002346] text-white"
+                <div
+                  className="relative bg-[#002346] text-[#F8F4E3]"
                 style={{
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
@@ -264,10 +279,10 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Consultation
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Schedule an initial consultation to discuss your property goals and legal needs.
                 </p>
               </div>
@@ -276,7 +291,7 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 2 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#AABF91]"
+                className="relative bg-[#F8F4E3]"
                 style={{
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
@@ -292,11 +307,11 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Document Review
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
-                  Review property documents, titles, and legal compliance requirements.
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
+                  Review property documents, titles, and legal requirements.
                 </p>
               </div>
             </div>
@@ -304,7 +319,7 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 3 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#B57560] text-white"
+                className="relative bg-[#333333] text-[#F8F4E3]"
                 style={{
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
@@ -320,10 +335,10 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Due Diligence
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Conduct thorough title search and property investigation.
                 </p>
               </div>
@@ -332,7 +347,7 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 4 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#002346] text-white"
+                className="relative bg-[#002346] text-[#F8F4E3]"
                 style={{
                   clipPath:
                     "polygon(26% 1%, 74% 1%, 100% 50%, 74% 99%, 26% 99%, 0% 50%)",
@@ -348,10 +363,10 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Transaction
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Handle purchase agreements, contracts, and closing documents.
                 </p>
               </div>
@@ -360,7 +375,7 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 5 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#AABF91]"
+                className="relative bg-[#F8F4E3]"
                 style={{
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
@@ -376,10 +391,10 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Negotiation
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Negotiate terms, resolve disputes, and protect your interests.
                 </p>
               </div>
@@ -388,7 +403,7 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 6 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#B57560] text-white"
+                className="relative bg-[#333333] text-[#F8F4E3]"
                 style={{
                   clipPath:
                     "polygon(26% 1%, 74% 1%, 100% 50%, 74% 99%, 26% 99%, 0% 50%)",
@@ -404,10 +419,10 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Closing
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Facilitate smooth closing and property transfer process.
                 </p>
               </div>
@@ -416,7 +431,7 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 7 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#002346] text-white"
+                className="relative bg-[#002346] text-[#F8F4E3]"
                 style={{
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
@@ -432,10 +447,10 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#367588] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Protection
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Ongoing legal support and protection for your property investment.
                 </p>
               </div>
@@ -446,29 +461,29 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
 
       {/* Features Section */}
       <section className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ background: 'linear-gradient(120deg, #B57560, #AABF91)' }}>
+        style={{ background: '#002346'}}>
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="flex flex-col space-y-8" data-aos="fade-right">
               <div>
-                <h2 className="text-5xl font-bold mb-6" style={{ color: '#002346' }}>
-                  Our <span style={{ color: '#AABF91' }}>Client Features</span>
+                <h2 className="text-5xl font-bold mb-6" style={{ color: '#F8F4E3' }}>
+                  Our Client Features
                 </h2>
-                <p className="text-xl mb-8" style={{ color: '#fff' }}>
+                <p className="text-xl mb-8" style={{ color: '#F8F4E3' }}>
                   Real estate law, streamlined for you.
                 </p>
               </div>
               <div className="space-y-6">
-                <p className="text-base leading-relaxed" style={{ color: '#fff' }}>
+                <p className="text-base leading-relaxed" style={{ color: '#F8F4E3' }}>
                   We deliver fast, detail-oriented legal help for real estate buyers, sellers, and landlords.
                 </p>
-                <p className="text-base leading-relaxed" style={{ color: '#fff' }}>
+                <p className="text-base leading-relaxed" style={{ color: '#F8F4E3' }}>
                   Enjoy secure uploads and downloads of contracts and reports through our client portal.
                 </p>
-                <p className="text-base leading-relaxed" style={{ color: '#fff' }}>
+                <p className="text-base leading-relaxed" style={{ color: '#F8F4E3' }}>
                   Get alerts for deadlines, closings, and regulatory requirements on your phone or email.
                 </p>
-                <p className="text-base leading-relaxed" style={{ color: '#fff' }}>
+                <p className="text-base leading-relaxed" style={{ color: '#F8F4E3' }}>
                   Always have a property law expert on your side for emergencies or urgent opinions.
                 </p>
               </div>
@@ -477,7 +492,7 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
               {features.map((feature, index) => (
                 <div key={index}
                   className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ background: '#fff', color: '#002346' }}>
+                  style={{ background: '#F8F4E3', color: '#333333' }}>
                   <h3 className="text-xl font-bold mb-2">{feature}</h3>
                   <p className="text-base">
                     {`Benefit from ${feature.toLowerCase()} as our real estate client.`}
@@ -491,36 +506,61 @@ const RealEstate = ({ darkMode, setDarkMode, user, onLogout }) => {
 
       {/* Final CTA/Pricing Section */}
       <section id="pricing-section" className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ backgroundColor: darkMode ? '#002346' : '#fff' }}>
+       style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}>
         <div className="max-w-6xl mx-auto text-center w-full">
-          <h2 className="text-5xl font-bold mb-4" style={{ color: '#002346' }} data-aos="fade-down" data-aos-delay="50">
+          <h2 className="text-5xl font-bold mb-4" style={{ color: darkMode ? "#F8F4E3" : "#002346" }} data-aos="fade-down" data-aos-delay="50">
             Secure Your Next Move in Real Estate
           </h2>
-          <p className="text-xl mb-12 max-w-2xl mx-auto" style={{ color: '#B57560' }} data-aos="fade-up" data-aos-delay="100">
+          <p className="text-xl mb-12 max-w-2xl mx-auto" style={{ color: darkMode ? "#F8F4E3" : "#333333" }} data-aos="fade-up" data-aos-delay="100">
             Trusted guidance for every transaction, dispute, and development.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {pricingTiers.map((tier, i) => (
-              <div key={i} style={tier.boxStyle}
-                className={tier.className}>
+              <div key={i} style={{background: COLOR_2, color: COLOR_3, border: `2px solid ${COLOR_1}`}} className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300">
                 {tier.badge &&
-                  <div className="bg-white text-[#B57560] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
+                  <div className="bg-white text-[#002346] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
                     {tier.badge}
                   </div>}
-                <h3 className="text-2xl font-bold mb-2">{tier.title}</h3>
-                <div className="text-4xl font-bold mb-4">{tier.price}<span className="text-lg">{tier.priceNote}</span></div>
+                <h3 className="text-2xl font-bold mb-2" style={{color: COLOR_1}}>{tier.title}</h3>
+                <div className="text-4xl font-bold mb-4" style={{color: COLOR_3}}>{tier.price}<span className="text-lg">{tier.priceNote}</span></div>
                 <ul className="text-left space-y-3 mb-6">
                   {tier.features.map((feat, j) => (
                     <li key={j}>{feat}</li>
                   ))}
                 </ul>
-                <button className={tier.buttonClass}>{tier.buttonText}</button>
+                {tier.buttonText === 'Book Consult' && (
+                  <button
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
+                    onClick={() => navigate('/home2#consultation-form')}
+                  >
+                    {tier.buttonText}
+                  </button>
+                )}
+                {tier.buttonText === 'Contact Us' && (
+                  <button
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
+                    onClick={() => navigate('/contact')}
+                  >
+                    {tier.buttonText}
+                  </button>
+                )}
+                {tier.buttonText === 'Start Now' && (
+                  <button
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
+                    onClick={() => navigate('/home')}
+                  >
+                    {tier.buttonText}
+                  </button>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
-      <Footer />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode}/>
     </div>
   );
 };

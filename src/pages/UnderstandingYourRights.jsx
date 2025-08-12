@@ -1,18 +1,23 @@
 import React from 'react';
+import { useDarkMode } from '../context/DarkModeContext';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
+import rights from '../assets/rights.png';
 
-const UnderstandingYourRights = ({ darkMode, setDarkMode, user, onLogout }) => {
+const UnderstandingYourRights = ({ user, onLogout }) => {
+  const { darkMode, setDarkMode } = useDarkMode();
   const navigate = useNavigate();
 
   return (
-    <div className={`min-h-screen bg-white dark:bg-[#002346] text-[#002346] dark:text-white flex flex-col transition-colors duration-300`}>
+    <div className={`min-h-screen ${darkMode ? 'bg-[#002346] text-white' : 'bg-white text-[#002346]'} flex flex-col transition-colors duration-300`}>
       <div className="fixed top-0 left-0 w-full z-[100] bg-white dark:bg-[#002346] shadow-lg">
         <Header darkMode={darkMode} setDarkMode={setDarkMode} user={user} onLogout={onLogout} />
+        
       </div>
-      <main className="flex-grow max-w-4xl mx-auto p-8 pt-32 md:pt-40">
+      <main className="flex-grow max-w-4xl mx-auto p-8 pt-0">
         <article>
+          <img src={rights} alt="Understanding Your Rights" className="w-full max-h-96 object-cover rounded-xl mb-8 mt-20" />
           <h1 className="text-4xl font-bold mb-4">Understanding Your Rights When Arrested</h1>
           <p className="mb-1 font-semibold">Adv. Priya Sinha</p>
           <p className="mb-6 text-sm">August 1, 2025</p>

@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
-import Header from '../components/Header.jsx';
-import Footer from '../components/Footer.jsx';
-import AOS from 'aos';
+import React, { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import Header from "../components/Header.jsx";
+import { useDarkMode } from "../context/DarkModeContext";
+import Footer from "../components/Footer.jsx";
+import AOS from "aos";
 import {
   UserIcon,
   DocumentDuplicateIcon,
@@ -11,17 +13,26 @@ import {
   SparklesIcon,
   Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
-import corporate from '../assets/corporateHero.mp4';
-
-const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
+import corporate from "../assets/corporateHero.mp4";
+import corporatePhoto from "../assets/corporateSection.jpg";
+const COLOR_1 = '#002346'; // deep blue
+const COLOR_2 = '#F8F4E3'; // off-white
+const COLOR_3 = '#333333'; // dark gray
+const Corporate = ({ user, onLogout }) => {
+  const { darkMode, setDarkMode } = useDarkMode();
   // Prevent horizontal scroll on the whole page
+  const navigate = useNavigate();
   useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = 'html, body { overflow-x: hidden !important; }';
+    const style = document.createElement("style");
+    style.innerHTML = "html, body { overflow-x: hidden !important; }";
     document.head.appendChild(style);
-    return () => { document.head.removeChild(style); };
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
-  useEffect(() => { AOS.init({ duration: 1000, once: true }); }, []);
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
 
   const benefits = [
     "End-to-end legal support for all stages of corporate growth",
@@ -35,28 +46,34 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
   const services = [
     {
       title: "Business Formation & Structuring",
-      description: "Strategic guidance for incorporating companies, startups, partnerships, and joint ventures"
+      description:
+        "Strategic guidance for incorporating companies, startups, partnerships, and joint ventures",
     },
     {
       title: "Contracts & Agreements",
-      description: "Drafting, negotiation, and review of commercial contracts, NDAs, employment agreements, and more"
+      description:
+        "Drafting, negotiation, and review of commercial contracts, NDAs, employment agreements, and more",
     },
     {
       title: "Mergers & Acquisitions",
-      description: "Legal due diligence, transaction structuring, and regulatory filings for M&A deals"
+      description:
+        "Legal due diligence, transaction structuring, and regulatory filings for M&A deals",
     },
     {
       title: "Regulatory Compliance",
-      description: "Advice on company law, sectoral regulations, and ongoing compliance audits"
+      description:
+        "Advice on company law, sectoral regulations, and ongoing compliance audits",
     },
     {
       title: "Shareholder Disputes",
-      description: "Expert representation and mediation in internal company or partnership disputes"
+      description:
+        "Expert representation and mediation in internal company or partnership disputes",
     },
     {
       title: "Corporate Governance",
-      description: "Board advisory, risk management, policy development, and compliance with listing rules"
-    }
+      description:
+        "Board advisory, risk management, policy development, and compliance with listing rules",
+    },
   ];
 
   const howItWorks = [
@@ -64,14 +81,14 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
     "We analyze your needs, documents, and objectives",
     "Expert lawyers prepare and review all relevant documentation",
     "Proactive support in negotiations and regulatory meetings",
-    "Ongoing assistance with compliance and future business decisions"
+    "Ongoing assistance with compliance and future business decisions",
   ];
 
   const features = [
     "Direct access to corporate law specialists",
     "Timely document review and turnaround",
     "Custom compliance checklists",
-    "On-demand updates via our client portal"
+    "On-demand updates via our client portal",
   ];
 
   const pricingTiers = [
@@ -82,14 +99,14 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
       features: [
         "Consultation with a corporate law expert",
         "Document review (up to 20 pages)",
-        "Initial business appraisal & options"
+        "Initial business appraisal & options",
       ],
       buttonText: "Book Consult",
       buttonClass:
         "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
       boxStyle: { background: "#AABF91", color: "#002346" },
       className:
-        "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300"
+        "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
     },
     {
       title: "Annual Retainer",
@@ -99,14 +116,14 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
         "All Consult services",
         "Unlimited contract drafting & review",
         "Compliance audits & filings",
-        "Board advisory & risk management"
+        "Board advisory & risk management",
       ],
       buttonText: "Contact Us",
       buttonClass:
         "w-full bg-[#AABF91] text-[#002346] font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] hover:text-white transition-colors duration-300 transform hover:scale-105",
       badge: "MOST POPULAR",
       boxStyle: { background: "#002346", color: "#AABF91" },
-      className: "rounded-2xl p-6 border-2 border-[#AABF91] scale-105"
+      className: "rounded-2xl p-6 border-2 border-[#AABF91] scale-105",
     },
     {
       title: "Full Corporate Support",
@@ -116,61 +133,139 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
         "End-to-end representation for all corporate matters",
         "M&A, restructuring, and dispute resolution",
         "Dedicated legal team & priority support",
-        "Monthly strategy calls & reports"
+        "Monthly strategy calls & reports",
       ],
       buttonText: "Start Now",
       buttonClass:
         "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
       boxStyle: { background: "#AABF91", color: "#002346" },
       className:
-        "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300"
-    }
+        "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
+    },
   ];
 
   return (
-    <div className={`min-h-screen w-full transition-colors duration-300 ${darkMode ? 'bg-[#002346]' : 'bg-white'}`} style={{overflowX: 'hidden'}}>
+    <div
+      className={`min-h-screen w-full transition-colors duration-300 ${
+        darkMode ? "bg-[#002346]" : "bg-white"
+      }`}
+      style={{ overflowX: "hidden" }}
+    >
       <div className="fixed top-0 left-0 w-full z-[100] bg-white dark:bg-[#002346] shadow-lg">
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} user={user} onLogout={onLogout} sticky={true} />
+        <Header
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          user={user}
+          onLogout={onLogout}
+          sticky={true}
+        />
       </div>
       {/* Hero Section with Video */}
-      <section className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0" style={{ minHeight: '100vh', maxWidth: '100vw' }}>
+      <section
+        className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0"
+        style={{ minHeight: "100vh", maxWidth: "100vw" }}
+      >
         <video
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ minHeight: '100vh', minWidth: '100vw', objectFit: 'cover' }}
+          style={{ minHeight: "100vh", minWidth: "100vw", objectFit: "cover" }}
         >
           <source src={corporate} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
-          <h1 className="font-bold text-5xl mb-6 text-white drop-shadow-lg" data-aos="fade-down">
+          <h1
+            className="font-bold text-5xl mb-6 text-white drop-shadow-lg"
+            data-aos="fade-down"
+          >
             Corporate Law
           </h1>
-          <p className="max-w-2xl mx-auto text-lg text-white drop-shadow-lg" data-aos="fade-up">
+          <p
+            className="max-w-2xl mx-auto text-lg text-white drop-shadow-lg"
+            data-aos="fade-up"
+          >
             End-to-end legal support for all stages of corporate growth.
           </p>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="w-full py-16 px-4 transition-colors duration-300" style={{ backgroundColor: darkMode ? '#002346' : '#f9f9f9' }}>
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8" style={{ color: '#002346' }} data-aos="fade-down">
-            Why Choose Us?
-          </h2>
+      <section id="key-benefits" className="w-full py-16 px-4 transition-colors duration-300"
+        style={{ backgroundColor: darkMode ? COLOR_1 : COLOR_2 }}
+        data-aos="fade-up" data-aos-duration="1000" data-aos-once="false">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="text-center mb-16" data-aos="fade-up" data-aos-delay="200">
+            <h2 className="text-5xl font-bold mb-4" style={{ color: darkMode ? "#F8F4E3" : "#002346" }}>
+              Key Advantages
+            </h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
+              Mediation, arbitration, or litigation to resolve conflicts effectively
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="space-y-8" data-aos="fade-right" data-aos-delay="300">
+              {benefits.slice(0, 3).map((b, idx) => (
+                <div key={idx} className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
+                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}>
+                  <h3 className="text-2xl font-bold mb-2" style={{ color: "#F8F4E3" }}>{b.split(':')[0]}</h3>
+                  <p className="text-base" style={{ color: "#F8F4E3" }}>{b}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col items-center lg:items-start justify-start h-full" data-aos="zoom-in" data-aos-delay="600">
+              <img
+                src={corporatePhoto}
+                alt="Corporate Law"
+                className="rounded-2xl shadow-xl mb-6 w-[420px] h-[420px] object-fill border-4 border-[#F8F4E3] dark:border-[#002346]"
+                style={{ maxWidth: '100%', background: darkMode ? '#333333' : '#fff', marginTop: 0, alignSelf: 'flex-start' }}
+              />
+              <h3 className="text-2xl font-bold mb-4 self-center lg:self-start" style={{ color: darkMode ? "#F8F4E3" : "#002346" }}>Arbitration and Litigation.</h3>
+              <p className="text-lg max-w-md self-center lg:self-start" style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
+                Get compassionate, effective solutions for even the most delicate matters.
+              </p>
+            </div>
+            <div className="space-y-8" data-aos="fade-left" data-aos-delay="300">
+              {benefits.slice(3, 6).map((b, idx) => (
+                <div key={idx} className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
+                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}>
+                  <h3 className="text-2xl font-bold mb-2" style={{ color: "#F8F4E3" }}>{b.split(':')[0]}</h3>
+                  <p className="text-base" style={{ color: "#F8F4E3" }}>{b}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Corporate Services Overview Section (reference image style) */}
+      <section className="w-full py-16 px-4 relative transition-colors duration-300"
+        style={{ background: COLOR_1 }}>
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <div className="mb-12" data-aos="fade-up">
+            <h2 className="text-5xl text-center font-bold text-white">
+              Corporate Services
+            </h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="p-6 rounded-2xl shadow-lg flex flex-col items-center" style={{ backgroundColor: darkMode ? '#003366' : '#fff' }} data-aos="fade-up">
-                <SparklesIcon className="w-10 h-10 mb-4" style={{ color: '#B57560' }} />
-                <h3 className="text-xl font-semibold mb-2" style={{ color: darkMode ? '#fff' : '#002346' }}>
-                  {benefit}
-                </h3>
-                <p className="text-center text-sm" style={{ color: darkMode ? '#e0e0e0' : '#555' }}>
-                  {/* Add any additional descriptive text here */}
-                </p>
+            {services.map((service, index) => (
+              <div
+                key={index}
+                style={{ backgroundColor: COLOR_2, color: COLOR_3 }}
+                className="rounded-2xl p-6 shadow-lg transform transition-all duration-300 hover:scale-105"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                data-aos-once="false"
+              >
+                <div className="mb-4">
+                  <span className="text-2xl font-bold" style={{ color: COLOR_1 }}>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold mb-4" style={{color: COLOR_1}}>{service.title}</h3>
+                <p className="text-base" style={{color: COLOR_3}}>{service.description}</p>
               </div>
             ))}
           </div>
@@ -178,13 +273,14 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
       </section>
 
       {/* How It Works */}
-      <section className="w-full py-16 px-2 bg-[#f9f5f0]">
+      <section className="w-full py-16 px-2" style={{ background: darkMode ? '#002346' : '#F8F4E3' }}>
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-semibold text-[#002346] text-center mb-4">
-            How We Work
+            <span style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>How We Work</span>
           </h2>
-          <p className="text-center text-[#a4704a] mb-12 max-w-2xl mx-auto">
-            Our 7-step process for handling your corporate legal needs with precision and expertise.
+          <p className="text-center text-[#002346] mb-12 max-w-2xl mx-auto">
+            <span style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>Our 7-step process for handling your corporate legal needs with
+            precision and expertise.</span>
           </p>
           <div className="flex flex-wrap justify-center items-start gap-y-12 gap-x-2">
             {/* STEP 1 */}
@@ -199,25 +295,26 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7">business_center</span>
+                  <span className="material-icons w-7 h-7">Front</span>
                   <span className="mt-1 text-base font-bold tracking-widest">
                     01
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Initial Consultation
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
-                  Discuss your corporate goals, challenges, and legal requirements.
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
+                  Discuss your corporate goals, challenges, and legal
+                  requirements.
                 </p>
               </div>
             </div>
             {/* STEP 2 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#AABF91]"
+                className="relative bg-[#F8F4E3]"
                 style={{
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
@@ -226,25 +323,28 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7 text-[#002346]">description</span>
+                  <span className="material-icons w-7 h-7 text-[#002346]">
+                    Desc
+                  </span>
                   <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
                     02
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Document Review
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
-                  Analyze contracts, company policies, compliance documents, and filings.
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
+                  Analyze contracts, company policies, compliance documents, and
+                  filings.
                 </p>
               </div>
             </div>
             {/* STEP 3 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#B57560] text-white"
+                className="relative bg-[#333333] text-white"
                 style={{
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
@@ -253,18 +353,19 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7">gavel</span>
+                  <span className="material-icons w-7 h-7">Gavel</span>
                   <span className="mt-1 text-base font-bold tracking-widest">
                     03
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Legal Strategy
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
-                  Develop a custom plan for transactions, compliance, or dispute resolution.
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
+                  Develop a custom plan for transactions, compliance, or dispute
+                  resolution.
                 </p>
               </div>
             </div>
@@ -280,25 +381,26 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7">send</span>
+                  <span className="material-icons w-7 h-7">Send</span>
                   <span className="mt-1 text-base font-bold tracking-widest">
                     04
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Drafting & Filings
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
-                  Prepare, file, and serve corporate documents, agreements, and notices.
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
+                  Prepare, file, and serve corporate documents, agreements, and
+                  notices.
                 </p>
               </div>
             </div>
             {/* STEP 5 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#AABF91]"
+                className="relative bg-[#F8F4E3]"
                 style={{
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
@@ -307,25 +409,28 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7 text-[#002346]">groups</span>
+                  <span className="material-icons w-7 h-7 text-[#002346]">
+                    Groups
+                  </span>
                   <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
                     05
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Negotiation & Representation
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
-                  Advocate for your interests in negotiations, meetings, and regulatory hearings.
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
+                  Advocate for your interests in negotiations, meetings, and
+                  regulatory hearings.
                 </p>
               </div>
             </div>
             {/* STEP 6 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#B57560] text-white"
+                className="relative bg-[#333333] text-white"
                 style={{
                   clipPath:
                     "polygon(26% 1%, 74% 1%, 100% 50%, 74% 99%, 26% 99%, 0% 50%)",
@@ -334,18 +439,19 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7">update</span>
+                  <span className="material-icons w-7 h-7">Up</span>
                   <span className="mt-1 text-base font-bold tracking-widest">
                     06
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Ongoing Support
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
-                  Regular updates and legal guidance throughout your corporate matter.
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
+                  Regular updates and legal guidance throughout your corporate
+                  matter.
                 </p>
               </div>
             </div>
@@ -361,18 +467,19 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7">check_circle</span>
+                  <span className="material-icons w-7 h-7">Sure</span>
                   <span className="mt-1 text-base font-bold tracking-widest">
                     07
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Completion & Next Steps
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
-                  Finalize transactions, compliance, or dispute resolution and advise on future needs.
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
+                  Finalize transactions, compliance, or dispute resolution and
+                  advise on future needs.
                 </p>
               </div>
             </div>
@@ -381,44 +488,61 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
       </section>
 
       {/* Features Section */}
-      <section className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ background: 'linear-gradient(120deg, #B57560, #AABF91)' }}>
+      <section
+        className="w-full py-16 px-4 transition-colors duration-300"
+        style={{ background: "#002346" }}
+      >
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Feature descriptions */}
             <div className="flex flex-col space-y-8" data-aos="fade-right">
               <div>
-                <h2 className="text-5xl font-bold mb-6" style={{ color: '#002346' }}>
-                  Our <span style={{ color: '#AABF91' }}>Client Features</span>
+                <h2
+                  className="text-5xl font-bold mb-6"
+                  style={{ color: "#F8F4E3" }}
+                >
+                  Why Choose Us for Corporate Law
                 </h2>
-                <p className="text-xl mb-8" style={{ color: '#fff' }}>
-                  Supporting leaders and teams every step of the way.
+                <p className="text-xl mb-8" style={{ color: "#F8F4E3" }}>
+                  Empowering your business with expert legal solutions tailored for the corporate world.
                 </p>
               </div>
               <div className="space-y-6">
-                <p className="text-base leading-relaxed" style={{ color: '#fff' }}>
-                  Your business deserves proactive, attentive, and informed legal counsel for every deal and decision.
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: "#F8F4E3" }}
+                >
+                  <b>Specialized Corporate Law Expertise:</b> Our team brings years of experience advising companies on formation, governance, restructuring, and compliance with evolving regulations.
                 </p>
-                <p className="text-base leading-relaxed" style={{ color: '#fff' }}>
-                  Track all your matters online, schedule calls, and stay ahead of compliance deadlines with our digital tools.
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: "#F8F4E3" }}
+                >
+                  <b>Comprehensive Compliance Support:</b> Stay ahead of legal obligations with proactive audits, risk assessments, and ongoing regulatory guidance for your business.
                 </p>
-                <p className="text-base leading-relaxed" style={{ color: '#fff' }}>
-                  Access document templates, policy guides, and timely business law updates through our secure portal.
-                </p>
-                <p className="text-base leading-relaxed" style={{ color: '#fff' }}>
-                  We adapt to your business needs, whether you are a startup, SME, or a multinational.
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: "#F8F4E3" }}
+                >
+                  <b>Contract & Transactional Excellence:</b> We draft, review, and negotiate contracts to protect your interests in every deal, merger, or acquisition.
                 </p>
               </div>
             </div>
             {/* Features as cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8" data-aos="fade-left">
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 gap-8"
+              data-aos="fade-left"
+            >
               {features.map((feature, index) => (
-                <div key={index}
+                <div
+                  key={index}
                   className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ background: '#fff', color: '#002346' }}>
+                  style={{ background: "#F8F4E3", color: "#333333" }}
+                >
                   <h3 className="text-xl font-bold mb-2">{feature}</h3>
                   <p className="text-base">
-                    Benefit from {feature.toLowerCase()} as our corporate client.
+                    Benefit from {feature.toLowerCase()} as our corporate
+                    client.
                   </p>
                 </div>
               ))}
@@ -428,38 +552,76 @@ const Corporate = ({ darkMode, setDarkMode, user, onLogout }) => {
       </section>
 
       {/* Final CTA/Pricing Section */}
-      <section id="pricing-section" className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ backgroundColor: darkMode ? '#002346' : '#fff' }}>
+      <section
+        id="pricing-section"
+        className="w-full py-16 px-4 transition-colors duration-300"
+        style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
+      >
         <div className="max-w-6xl mx-auto text-center w-full">
-          <h2 className="text-5xl font-bold mb-4" style={{ color: '#002346' }} data-aos="fade-down" data-aos-delay="50">
+          <h2
+            className="text-5xl font-bold mb-4"
+           style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+            data-aos="fade-down"
+            data-aos-delay="50"
+          >
             Secure Your Corporate Advantage
           </h2>
-          <p className="text-xl mb-12 max-w-2xl mx-auto" style={{ color: '#B57560' }} data-aos="fade-up" data-aos-delay="100">
+          <p
+            className="text-xl mb-12 max-w-2xl mx-auto"
+            style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             Build and grow your company with expert legal partners by your side.
           </p>
           {/* Pricing Tiers */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {pricingTiers.map((tier, i) => (
-              <div key={i} style={tier.boxStyle}
-                className={tier.className}>
+              <div key={i} style={{background: COLOR_2, color: COLOR_3, border: `2px solid ${COLOR_1}`}} className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300">
                 {tier.badge &&
-                  <div className="bg-white text-[#B57560] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
+                  <div className="bg-white text-[#002346] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
                     {tier.badge}
                   </div>}
-                <h3 className="text-2xl font-bold mb-2">{tier.title}</h3>
-                <div className="text-4xl font-bold mb-4">{tier.price}<span className="text-lg">{tier.priceNote}</span></div>
+                <h3 className="text-2xl font-bold mb-2" style={{color: COLOR_1}}>{tier.title}</h3>
+                <div className="text-4xl font-bold mb-4" style={{color: COLOR_3}}>{tier.price}<span className="text-lg">{tier.priceNote}</span></div>
                 <ul className="text-left space-y-3 mb-6">
                   {tier.features.map((feat, j) => (
                     <li key={j}>{feat}</li>
                   ))}
                 </ul>
-                <button className={tier.buttonClass}>{tier.buttonText}</button>
+                {tier.buttonText === 'Book Consult' && (
+                  <button
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
+                    onClick={() => navigate('/home2#consultation-form')}
+                  >
+                    {tier.buttonText}
+                  </button>
+                )}
+                {tier.buttonText === 'Contact Us' && (
+                  <button
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
+                    onClick={() => navigate('/contact')}
+                  >
+                    {tier.buttonText}
+                  </button>
+                )}
+                {tier.buttonText === 'Start Now' && (
+                  <button
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
+                    onClick={() => navigate('/home')}
+                  >
+                    {tier.buttonText}
+                  </button>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
-      <Footer />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode}/>
     </div>
   );
 };

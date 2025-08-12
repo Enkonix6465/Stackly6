@@ -1,12 +1,15 @@
+import lawAndOrder from '../assets/lawAndOrder.jpg';
 import React, { useState } from 'react';
+import { useDarkMode } from '../context/DarkModeContext';
 import { useNavigate } from 'react-router-dom';
 import { Sun, Moon } from 'lucide-react';
 
-const ADMIN_EMAIL = 'admin@verdict.com';
-const ADMIN_PASSWORD = 'adminpassword';
+const ADMIN_EMAIL = 'admin@enkonix.in';
+const ADMIN_PASSWORD = 'admin@123';
 
-const Login = ({ setDarkMode, onLogin }) => {
+const Login = ({ onLogin }) => {
   const navigate = useNavigate();
+  const { darkMode, setDarkMode } = useDarkMode();
   const [isSignup, setIsSignup] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [formData, setFormData] = useState({
@@ -30,12 +33,10 @@ const Login = ({ setDarkMode, onLogin }) => {
   // USER LOGIN
   const handleLogin = (e) => {
     e.preventDefault();
-    // Normally, you would validate real user credentials here
-    const userData = {
-      firstName: 'John',
-      lastName: 'Doe',
-      email: formData.email
-    };
+    // Get registered users from localStorage
+    const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    // Find user by email and password
+    const found = users.find(u => u.email === formData.email && u.password === formData.password);
     // Reject login if admin credentials are used
     if (
       formData.email === ADMIN_EMAIL ||
@@ -44,8 +45,31 @@ const Login = ({ setDarkMode, onLogin }) => {
       alert("These credentials are reserved for admin.");
       return;
     }
-    onLogin(userData);
-    navigate('/home');
+    if (!found) {
+      alert('No such user registered. Please sign up first.');
+      return;
+    }
+    const userData = {
+      firstName: found.firstName,
+      lastName: found.lastName,
+      email: found.email
+    };
+    // Store login info with timestamp
+    const now = new Date();
+    const loginInfo = {
+      email: found.email,
+      name: found.firstName + ' ' + found.lastName,
+      loginTime: now.toLocaleTimeString(),
+      loginDate: now.toLocaleDateString()
+    };
+    // Save to localStorage (append to array)
+    const logins = JSON.parse(localStorage.getItem('userLogins') || '[]');
+    logins.push(loginInfo);
+    localStorage.setItem('userLogins', JSON.stringify(logins));
+  // Store current user for profile initials
+  localStorage.setItem('currentUser', JSON.stringify({ firstName: found.firstName, lastName: found.lastName, email: found.email }));
+  onLogin(userData);
+  navigate('/home');
   };
 
   // USER SIGNUP
@@ -63,13 +87,38 @@ const Login = ({ setDarkMode, onLogin }) => {
       alert("These credentials are reserved for admin.");
       return;
     }
+    // Get registered users from localStorage
+    const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    // Prevent duplicate registration
+    if (users.some(u => u.email === formData.email)) {
+      alert('User already registered. Please login.');
+      return;
+    }
     const userData = {
       firstName: formData.firstName,
       lastName: formData.lastName,
-      email: formData.email
+      email: formData.email,
+      password: formData.password
     };
-    onLogin(userData);
-    navigate('/home');
+    users.push(userData);
+    localStorage.setItem('registeredUsers', JSON.stringify(users));
+    // Remove password before passing to onLogin
+    const { password, ...loginUser } = userData;
+    // Store login info with timestamp for signup
+    const now = new Date();
+    const loginInfo = {
+      email: userData.email,
+      name: userData.firstName + ' ' + userData.lastName,
+      loginTime: now.toLocaleTimeString(),
+      loginDate: now.toLocaleDateString()
+    };
+    const logins = JSON.parse(localStorage.getItem('userLogins') || '[]');
+    logins.push(loginInfo);
+    localStorage.setItem('userLogins', JSON.stringify(logins));
+  // Store current user for profile initials
+  localStorage.setItem('currentUser', JSON.stringify({ firstName: userData.firstName, lastName: userData.lastName, email: userData.email }));
+  onLogin(loginUser);
+  navigate('/home');
   };
 
   // ADMIN LOGIN
@@ -79,19 +128,39 @@ const Login = ({ setDarkMode, onLogin }) => {
       formData.adminEmail === ADMIN_EMAIL &&
       formData.adminPassword === ADMIN_PASSWORD
     ) {
-      // You can set an 'admin' flag in context if needed
-      onLogin({ email: ADMIN_EMAIL, isAdmin: true });
-      navigate('/admin-dashboard');
+      // Store admin login info with timestamp
+      const now = new Date();
+      const loginInfo = {
+        email: ADMIN_EMAIL,
+        name: 'Admin',
+        loginTime: now.toLocaleTimeString(),
+        loginDate: now.toLocaleDateString()
+      };
+      const logins = JSON.parse(localStorage.getItem('userLogins') || '[]');
+      logins.push(loginInfo);
+      localStorage.setItem('userLogins', JSON.stringify(logins));
+  // Store current admin for profile initials
+  localStorage.setItem('currentUser', JSON.stringify({ firstName: 'Admin', lastName: '', email: ADMIN_EMAIL }));
+  onLogin({ email: ADMIN_EMAIL, isAdmin: true });
+  navigate('/admin-dashboard');
     } else {
       alert("Invalid admin credentials!");
     }
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-white dark:bg-[#002346] transition duration-300 px-4" style={{overflowX: 'hidden'}}>
-      <div className="bg-[#f3f4f6] dark:bg-[#1e293b] p-8 rounded-lg shadow-md w-full max-w-md mx-auto">
+    <div
+      className="min-h-screen w-screen flex items-center justify-center transition duration-300 relative"
+      style={{
+        backgroundImage: `url(${lawAndOrder})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+  <div className={`bg-[#f3f4f6] ${darkMode ? 'dark:bg-[#1e293b]' : ''} p-8 rounded-lg shadow-md w-full max-w-md mx-auto relative z-10`}>
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-semibold text-[#002346] dark:text-white">
+          <h2 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-[#002346]'}`}> 
             {
               isAdmin
                 ? 'Admin Login - Verdict'
@@ -102,7 +171,7 @@ const Login = ({ setDarkMode, onLogin }) => {
           </h2>
           <button
             onClick={() => setDarkMode(prev => !prev)}
-            className="flex items-center bg-[#B57560] dark:bg-[#AABF91] rounded-full px-3 py-1"
+            className={`flex items-center rounded-full px-3 py-1 ${darkMode ? 'bg-[#AABF91]' : 'bg-[#B57560]'}`}
           >
             <Sun size={16} className="mr-1" /> / <Moon size={16} className="ml-1" />
           </button>

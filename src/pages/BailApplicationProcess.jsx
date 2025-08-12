@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
+import { useDarkMode } from '../context/DarkModeContext';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
+import bail from '../assets/bail.png';
 
-const BailApplicationProcess = ({ darkMode, setDarkMode, user, onLogout }) => {
+const BailApplicationProcess = ({ user, onLogout }) => {
+  const { darkMode, setDarkMode } = useDarkMode();
 
   const navigate = useNavigate();
 
@@ -12,12 +15,14 @@ const BailApplicationProcess = ({ darkMode, setDarkMode, user, onLogout }) => {
   }, []);
 
   return (
-    <div className={`min-h-screen bg-white dark:bg-[#002346] text-[#002346] dark:text-white flex flex-col transition-colors duration-300`}>
+    <div className={`min-h-screen ${darkMode ? 'bg-[#002346] text-white' : 'bg-white text-[#002346]'} flex flex-col transition-colors duration-300`}>
       <div className="fixed top-0 left-0 w-full z-[100] bg-white dark:bg-[#002346] shadow-lg">
         <Header darkMode={darkMode} setDarkMode={setDarkMode} user={user} onLogout={onLogout} />
+        
       </div>
-      <main className="flex-grow max-w-4xl mx-auto p-8 pt-28 md:pt-40">
+      <main className="flex-grow max-w-4xl mx-auto p-8 pt-0">
         <article>
+          <img src={bail} alt="Bail Application Process" className="w-full max-h-96 object-cover rounded-xl mb-8 mt-20" />
           <h1 className="text-4xl font-bold mb-4 mt-4 md:mt-0">The Bail Application Process: What to Expect</h1>
           <p className="mb-1 font-semibold">Adv. Rahul Mohanty</p>
           <p className="mb-6 text-sm">July 24, 2025</p>

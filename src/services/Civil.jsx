@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Header from "../components/Header.jsx";
+import { useDarkMode } from "../context/DarkModeContext";
 import Footer from "../components/Footer.jsx";
 import AOS from "aos";
 import {
@@ -12,15 +14,22 @@ import {
   Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
 import civil from '../assets/civilHero.mp4';
+import civilPhoto from '../assets/civilSection.jpg';
 
-const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
-  // Prevent horizontal scroll on the whole page
+const COLOR_1 = '#002346'; // deep blue
+const COLOR_2 = '#F8F4E3'; // off-white
+const COLOR_3 = '#333333'; // dark gray
+
+const Civil = ({ user, onLogout }) => {
+  const { darkMode, setDarkMode } = useDarkMode();
+  const navigate = useNavigate();
   useEffect(() => {
     const style = document.createElement('style');
     style.innerHTML = 'html, body { overflow-x: hidden !important; }';
     document.head.appendChild(style);
     return () => { document.head.removeChild(style); };
   }, []);
+
   const scrollToBenefits = () => {
     const benefitsSection = document.getElementById("key-benefits");
     if (benefitsSection) benefitsSection.scrollIntoView({ behavior: "smooth" });
@@ -34,7 +43,6 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  // Civil law page content
   const benefits = [
     "Experienced guidance from initiation to final resolution",
     "Thorough analysis of facts, documents, and legal strategy",
@@ -96,10 +104,10 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
       ],
       buttonText: "Book Consult",
       buttonClass:
-        "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
-      boxStyle: { background: "#AABF91", color: "#002346" },
+        `w-full bg-${COLOR_1} text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105`,
+      boxStyle: { background: COLOR_2, color: COLOR_3 },
       className:
-        "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300"
+        `rounded-2xl p-6 border-2 border-${COLOR_1} hover:border-${COLOR_3} transition-all duration-300`
     },
     {
       title: "Full Litigation",
@@ -113,10 +121,10 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
       ],
       buttonText: "Contact Us",
       buttonClass:
-        "w-full bg-[#AABF91] text-[#002346] font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] hover:text-white transition-colors duration-300 transform hover:scale-105",
+        `w-full bg-[#AABF91] text-${COLOR_1} font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] hover:text-white transition-colors duration-300 transform hover:scale-105`,
       badge: "MOST POPULAR",
-      boxStyle: { background: "#002346", color: "#AABF91" },
-      className: "rounded-2xl p-6 border-2 border-[#AABF91] scale-105"
+      boxStyle: { background: COLOR_1, color: COLOR_2 },
+      className: `rounded-2xl p-6 border-2 border-${COLOR_1} scale-105`
     },
     {
       title: "Appeals & Enforcement",
@@ -130,19 +138,19 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
       ],
       buttonText: "Start Now",
       buttonClass:
-        "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
-      boxStyle: { background: "#AABF91", color: "#002346" },
+        `w-full bg-${COLOR_1} text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105`,
+      boxStyle: { background: COLOR_2, color: COLOR_3 },
       className:
-        "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300"
+        `rounded-2xl p-6 border-2 border-${COLOR_1} hover:border-${COLOR_3} transition-all duration-300`
     }
   ];
 
   return (
     <div
-      className={`min-h-screen w-full transition-colors duration-300 ${darkMode ? 'bg-[#002346]' : 'bg-white'}`}
+      className={`min-h-screen w-full transition-colors duration-300 ${darkMode ? `bg-[${COLOR_1}]` : `bg-[${COLOR_2}]`}`}
       style={{overflowX: 'hidden'}}
     >
-      <div className="fixed top-0 left-0 w-full z-[100] bg-white dark:bg-[#002346] shadow-lg">
+      <div className={`fixed top-0 left-0 w-full z-[100] ${darkMode ? `bg-[${COLOR_3}]` : `bg-[${COLOR_2}]`} shadow-lg`}>
         <Header
           darkMode={darkMode}
           setDarkMode={setDarkMode}
@@ -153,7 +161,7 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0" style={{ minHeight: '100vh', maxWidth: '100vw' }}>
+      <section className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0" style={{ minHeight: '100vh', maxWidth: '100vw', backgroundColor: COLOR_1 }}>
         <video
           autoPlay
           loop
@@ -179,7 +187,7 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
       <section
         id="key-benefits"
         className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ backgroundColor: darkMode ? "#002346" : "#fff" }}
+        style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-once="false"
@@ -192,13 +200,13 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
           >
             <h2
               className="text-5xl font-bold mb-4"
-              style={{ color: "#002346" }}
+              style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
             >
-              Key <span style={{ color: "#AABF91" }}>Advantages</span>
+              Key Advantages
             </h2>
             <p
               className="text-lg max-w-2xl mx-auto"
-              style={{ color: "#B57560" }}
+              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             >
               Diligent legal support for individuals, families, and businesses
               in any civil dispute or challenge.
@@ -215,33 +223,39 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
                 <div
                   key={idx}
                   className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: "#AABF91", maxWidth: '420px', width: '100%' }}
+                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}
                 >
                   <h3
                     className="text-2xl font-bold mb-2"
-                    style={{ color: "#002346" }}
+                    style={{ color: "#F8F4E3" }}
                   >
                     {b.split(":")[0]}
                   </h3>
-                  <p className="text-base" style={{ color: "#002346" }}>
+                  <p className="text-base" style={{ color: "#F8F4E3" }}>
                     {b}
                   </p>
                 </div>
               ))}
             </div>
-            {/* Center: Tagline */}
+            {/* Center: Image and Tagline */}
             <div
-              className="flex flex-col items-center justify-center"
+              className="flex flex-col items-center lg:items-start justify-start h-full"
               data-aos="zoom-in"
               data-aos-delay="600"
             >
+              <img
+                src={civilPhoto}
+                alt="Civil Law"
+                className="rounded-2xl shadow-xl mb-6 w-[420px] h-[420px] object-fill border-4 border-[#F8F4E3] dark:border-[#002346]"
+                style={{ maxWidth: '100%', background: darkMode ? '#333333' : '#fff', marginTop: 0, alignSelf: 'flex-start' }}
+              />
               <h3
-                className="text-2xl font-bold mb-4"
-                style={{ color: "#B57560" }}
+                className="text-2xl font-bold mb-4 self-center lg:self-start"
+                style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
               >
                 Your Rights. Our Focus.
               </h3>
-              <p className="text-lg max-w-md" style={{ color: "#002346" }}>
+              <p className="text-lg max-w-md self-center lg:self-start" style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
                 Dedicated, responsive lawyers—committed to securing the best
                 civil outcome for you.
               </p>
@@ -256,15 +270,15 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
                 <div
                   key={idx}
                   className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: "#AABF91" }}
+                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}
                 >
                   <h3
                     className="text-2xl font-bold mb-2"
-                    style={{ color: "#002346" }}
+                    style={{ color: "#F8F4E3" }}
                   >
                     {b.split(":")[0]}
                   </h3>
-                  <p className="text-base" style={{ color: "#002346" }}>
+                  <p className="text-base" style={{ color: "#F8F4E3" }}>
                     {b}
                   </p>
                 </div>
@@ -278,20 +292,20 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
       <section
         className="w-full py-16 px-4 relative transition-colors duration-300"
         style={{
-          background: "linear-gradient(120deg, #002346 90%, #B57560 120%)",
+          background: "#002346",
         }}
       >
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="mb-12" data-aos="fade-up">
-            <h2 className="text-5xl font-bold text-white">
-              Civil <span style={{ color: "#AABF91" }}>Services</span>
+            <h2 className="text-5xl text-center font-bold text-white">
+              Civil Services
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
-                style={{ backgroundColor: "#fff", color: "#002346" }}
+                style={{ backgroundColor: COLOR_2, color: COLOR_3 }}
                 className="rounded-2xl p-6 shadow-lg transform transition-all duration-300 hover:scale-105"
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
@@ -300,12 +314,12 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
                 <div className="mb-4">
                   <span
                     className="text-2xl font-bold"
-                    style={{ color: "#AABF91" }}
+                    style={{ color: "#002346" }}
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                <h3 className="text-xl text-[#002346] font-bold mb-4">{service.title}</h3>
                 <p className="text-base">{service.description}</p>
               </div>
             ))}
@@ -314,21 +328,23 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
       </section>
 
       {/* How It Works */}
-      <section className="w-full py-16 px-2 bg-[#f9f5f0]">
+      <section className="w-full py-16 px-2" style={{ background: darkMode ? '#002346' : '#F8F4E3' }}>
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-semibold text-[#002346] text-center mb-4">
-            How We Work
+            <span style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>How We Work</span>
           </h2>
-          <p className="text-center text-[#a4704a] mb-12 max-w-2xl mx-auto">
-            Our 7-step process to pursue your civil legal matters thoroughly and
-            efficiently.
+          <p className="text-center text-[#002346] mb-12 max-w-2xl mx-auto">
+            <span style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>Our 7-step process to pursue your civil legal matters thoroughly and
+            efficiently.</span>
           </p>
           <div className="flex flex-wrap justify-center items-start gap-y-12 gap-x-2">
             {/* STEP 1 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#002346] text-white"
+                className="relative"
                 style={{
+                  background: COLOR_1,
+                  color: COLOR_2,
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
@@ -336,17 +352,17 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <UserIcon className="w-7 h-7" />
-                  <span className="mt-1 text-base font-bold tracking-widest">
+                  <UserIcon className="w-7 h-7" style={{color: COLOR_2}} />
+                  <span className="mt-1 text-base font-bold tracking-widest" style={{color: COLOR_2}}>
                     01
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Consultation
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Understand your dispute, rights, and legal options in a
                   confidential session.
                 </p>
@@ -355,8 +371,10 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 2 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#AABF91]"
+                className="relative"
                 style={{
+                  background: COLOR_2,
+                  color: COLOR_1,
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
@@ -364,17 +382,17 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <DocumentDuplicateIcon className="w-7 h-7 text-[#002346]" />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
+                  <DocumentDuplicateIcon className="w-7 h-7" style={{color: COLOR_1}} />
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_1}}>
                     02
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Detailed Case Review
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Assess evidence, contracts, communications, and other relevant
                   documents.
                 </p>
@@ -383,8 +401,10 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 3 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#B57560] text-white"
+                className="relative"
                 style={{
+                  background: COLOR_3,
+                  color: COLOR_2,
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
@@ -392,17 +412,17 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <ClipboardDocumentCheckIcon className="w-7 h-7" />
-                  <span className="mt-1 text-base font-bold tracking-widest">
+                  <ClipboardDocumentCheckIcon className="w-7 h-7" style={{color: COLOR_2}} />
+                  <span className="mt-1 text-base font-bold tracking-widest" style={{color: COLOR_2}}>
                     03
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Legal Strategy
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Develop a tailored legal plan: negotiation, mediation, or
                   formal litigation.
                 </p>
@@ -411,8 +431,10 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 4 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#002346] text-white"
+                className="relative"
                 style={{
+                  background: COLOR_1,
+                  color: COLOR_2,
                   clipPath:
                     "polygon(26% 1%, 74% 1%, 100% 50%, 74% 99%, 26% 99%, 0% 50%)",
                   width: "84px",
@@ -420,17 +442,17 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <PaperAirplaneIcon className="w-7 h-7" />
-                  <span className="mt-1 text-base font-bold tracking-widest">
+                  <PaperAirplaneIcon className="w-7 h-7" style={{color: COLOR_2}} />
+                  <span className="mt-1 text-base font-bold tracking-widest" style={{color: COLOR_2}}>
                     04
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Filing & Communications
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Draft, file, and serve legal documents; maintain clear
                   communication throughout.
                 </p>
@@ -439,8 +461,10 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 5 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#AABF91]"
+                className="relative"
                 style={{
+                  background: COLOR_2,
+                  color: COLOR_1,
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
@@ -448,17 +472,17 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <BriefcaseIcon className="w-7 h-7 text-[#002346]" />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
+                  <BriefcaseIcon className="w-7 h-7" style={{color: COLOR_1}} />
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_1}}>
                     05
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Advocacy & Hearings
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Represent your interests in negotiations, ADR, and court
                   hearings.
                 </p>
@@ -467,8 +491,10 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 6 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#B57560] text-white"
+                className="relative"
                 style={{
+                  background: COLOR_3,
+                  color: COLOR_2,
                   clipPath:
                     "polygon(26% 1%, 74% 1%, 100% 50%, 74% 99%, 26% 99%, 0% 50%)",
                   width: "84px",
@@ -483,10 +509,10 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Progress Updates
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Ongoing status reports and legal support at each stage.
                 </p>
               </div>
@@ -494,8 +520,10 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
             {/* STEP 7 */}
             <div className="flex flex-col items-center mx-3 w-[120px]">
               <div
-                className="relative bg-[#002346] text-white"
+                className="relative"
                 style={{
+                  background: COLOR_1,
+                  color: COLOR_2,
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
@@ -504,16 +532,16 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <Cog6ToothIcon className="w-7 h-7" />
-                  <span className="mt-1 text-base font-bold tracking-widest">
+                  <span className="mt-1 text-base font-bold tracking-widest" style={{color: COLOR_2}}>
                     07
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base">
+                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
                   Resolution & Next Steps
                 </h3>
-                <p className="text-[#2a2a2a] text-center text-xs mt-1">
+                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
                   Final court outcome, enforcement, and assistance after
                   judgment, if needed.
                 </p>
@@ -526,7 +554,7 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
       {/* Features Section */}
       <section
         className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ background: "linear-gradient(120deg, #B57560, #AABF91)" }}
+        style={{ background: COLOR_1 }}
       >
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -535,39 +563,39 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
               <div>
                 <h2
                   className="text-5xl font-bold mb-6"
-                  style={{ color: "#002346" }}
+                  style={{ color: COLOR_2 }}
                 >
-                  Our <span style={{ color: "#AABF91" }}>Client Features</span>
+                  Our Client Features
                 </h2>
-                <p className="text-xl mb-8" style={{ color: "#fff" }}>
+                <p className="text-xl mb-8" style={{ color: COLOR_2 }}>
                   Focused on justice and peace of mind for you.
                 </p>
               </div>
               <div className="space-y-6">
                 <p
                   className="text-base leading-relaxed"
-                  style={{ color: "#fff" }}
+                  style={{ color: COLOR_2 }}
                 >
                   We combine deep courtroom experience with sensitivity and
                   practical problem-solving.
                 </p>
                 <p
                   className="text-base leading-relaxed"
-                  style={{ color: "#fff" }}
+                  style={{ color: COLOR_2 }}
                 >
                   You can view case documents, timelines, and updates online, or
                   call us for personalized support.
                 </p>
                 <p
                   className="text-base leading-relaxed"
-                  style={{ color: "#fff" }}
+                  style={{ color: COLOR_2 }}
                 >
                   Our team is available for urgent hearings, restraining orders,
                   and last-minute filings.
                 </p>
                 <p
                   className="text-base leading-relaxed"
-                  style={{ color: "#fff" }}
+                  style={{ color: COLOR_2 }}
                 >
                   Every question is answered with compassion, speed, and
                   clarity.
@@ -583,7 +611,7 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
                 <div
                   key={index}
                   className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ background: "#fff", color: "#002346" }}
+                  style={{ background: COLOR_2, color: COLOR_3 }}
                 >
                   <h3 className="text-xl font-bold mb-2">{feature}</h3>
                   <p className="text-base">
@@ -600,12 +628,12 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
       <section
         id="pricing-section"
         className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ backgroundColor: darkMode ? "#002346" : "#fff" }}
+        style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
       >
         <div className="max-w-6xl mx-auto text-center w-full">
           <h2
             className="text-5xl font-bold mb-4"
-            style={{ color: "#002346" }}
+            style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
             data-aos="fade-down"
             data-aos-delay="50"
           >
@@ -613,7 +641,7 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
           </h2>
           <p
             className="text-xl mb-12 max-w-2xl mx-auto"
-            style={{ color: "#B57560" }}
+            style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             data-aos="fade-up"
             data-aos-delay="100"
           >
@@ -622,29 +650,51 @@ const Civil = ({ darkMode, setDarkMode, user, onLogout }) => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {pricingTiers.map((tier, i) => (
-              <div key={i} style={tier.boxStyle} className={tier.className}>
-                {tier.badge && (
-                  <div className="bg-white text-[#B57560] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
+              <div key={i} style={{background: COLOR_2, color: COLOR_3, border: `2px solid ${COLOR_1}`}} className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300">
+                {tier.badge &&
+                  <div className="bg-white text-[#002346] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
                     {tier.badge}
-                  </div>
-                )}
-                <h3 className="text-2xl font-bold mb-2">{tier.title}</h3>
-                <div className="text-4xl font-bold mb-4">
-                  {tier.price}
-                  <span className="text-lg">{tier.priceNote}</span>
-                </div>
+                  </div>}
+                <h3 className="text-2xl font-bold mb-2" style={{color: COLOR_1}}>{tier.title}</h3>
+                <div className="text-4xl font-bold mb-4" style={{color: COLOR_3}}>{tier.price}<span className="text-lg">{tier.priceNote}</span></div>
                 <ul className="text-left space-y-3 mb-6">
                   {tier.features.map((feat, j) => (
                     <li key={j}>{feat}</li>
                   ))}
                 </ul>
-                <button className={tier.buttonClass}>{tier.buttonText}</button>
+                {tier.buttonText === 'Book Consult' && (
+                  <button
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
+                    onClick={() => navigate('/home2#consultation-form')}
+                  >
+                    {tier.buttonText}
+                  </button>
+                )}
+                {tier.buttonText === 'Contact Us' && (
+                  <button
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
+                    onClick={() => navigate('/contact')}
+                  >
+                    {tier.buttonText}
+                  </button>
+                )}
+                {tier.buttonText === 'Start Now' && (
+                  <button
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
+                    onClick={() => navigate('/home')}
+                  >
+                    {tier.buttonText}
+                  </button>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
-      <Footer />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode}/>
     </div>
   );
 };

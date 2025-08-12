@@ -1,204 +1,439 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Sun, Moon, ChevronDown, User, LogOut } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDarkMode } from "../context/DarkModeContext";
+import logo from "../assets/logo1.png";
 
-const Header = ({ darkMode, setDarkMode, user, onLogout, sticky }) => {
+export default function Header() {
   const navigate = useNavigate();
-  const [homeDropdownOpen, setHomeDropdownOpen] = useState(false);
-  const [mobileHomeDropdownOpen, setMobileHomeDropdownOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const { darkMode, setDarkMode } = useDarkMode();
+  const [homeDropdown, setHomeDropdown] = useState(false);
+  const [servicesDropdown, setServicesDropdown] = useState(false);
+  const [mobileServicesDropdown, setMobileServicesDropdown] = useState(false);
+  const [initials, setInitials] = useState("");
+  const [servicesTimeout, setServicesTimeout] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAvatarDropdownOpen, setIsAvatarDropdownOpen] = useState(false);
 
-  const getInitials = (firstName, lastName) => {
-    if (!firstName || !lastName) return 'U';
-    return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+  useEffect(() => {
+    let currentUser = { firstName: '', lastName: '' };
+    try {
+      currentUser = JSON.parse(localStorage.getItem('currentUser')) || { firstName: '', lastName: '' };
+    } catch (e) {}
+    setInitials(
+      `${currentUser.firstName?.[0] || ''}${currentUser.lastName?.[0] || ''}`.toUpperCase()
+    );
+  }, []);
+
+  // Close avatar dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isAvatarDropdownOpen && !event.target.closest('.avatar-dropdown')) {
+        setIsAvatarDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isAvatarDropdownOpen]);
+
+  // Use global darkMode and setDarkMode props for dark mode
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+  };
+
+  const handleServicesMouseEnter = () => {
+    if (servicesTimeout) {
+      clearTimeout(servicesTimeout);
+      setServicesTimeout(null);
+    }
+    setServicesDropdown(true);
+  };
+
+  const handleServicesMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setServicesDropdown(false);
+    }, 300); // 300ms delay before closing
+    setServicesTimeout(timeout);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setHomeDropdown(false);
+    setServicesDropdown(false);
+    setMobileServicesDropdown(false);
   };
 
   const handleLogout = () => {
-    if (onLogout) {
-      onLogout();
-    }
-    setProfileDropdownOpen(false);
+    // Clear user data from localStorage
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('userLogins');
+    // Navigate to welcome page
     navigate('/');
+    // Close dropdown
+    setIsAvatarDropdownOpen(false);
   };
-
-  const handleDarkModeToggle = () => {
-    if (typeof setDarkMode === 'function') {
-      setDarkMode(!darkMode);
-    }
-  };
-
-  // Scroll to top on mount
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
-    <header
-      style={sticky ? { position: 'sticky', top: 0, zIndex: 50 } : {}}
-      className={`flex flex-wrap justify-between items-center px-4 py-4 bg-[#002346] text-white shadow-sm w-full${sticky ? ' sticky-header-fallback' : ''}`}
-    >
-      <h1 className="text-2xl font-semibold">Verdict</h1>
+  <header className={`fixed top-0 left-0 right-0 z-50 w-full shadow-md transition-colors duration-300 ${darkMode ? 'bg-black' : 'bg-white'}`} style={{minHeight: '56px', height: '56px'}}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex items-center justify-between" style={{minHeight: '56px', height: '56px'}}>
+        {/* Logo - Left Side */}
+        <div className="flex items-center">
+          <div className="flex items-center space-x-2">
+            <img src={logo} alt="LIFE Logo" className="w-24 h-24 sm:w-28 sm:h-28 object-contain" />
+          </div>
+        </div>
 
-      {/* Hamburger for mobile */}
-      <div className="flex items-center gap-4 md:hidden">
-        <button
-          className="block text-white"
-          onClick={() => setHomeDropdownOpen(!homeDropdownOpen)}
-          aria-label="Open Menu"
-        >
-          <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
+        {/* Desktop Navigation - Right Side with Equal Gaps */}
+        <nav className="hidden lg:flex items-center space-x-12">
+          <div className="relative">
+            <button
+              className={`text-lg font-semibold hover:text-teal flex items-center gap-1 focus:outline-none transition-colors duration-200`}
+              style={darkMode ? { color: '#fff', background: '#000' } : { color: '#000', background: 'transparent' }}
+              onClick={() => setHomeDropdown((open) => !open)}
+            >
+              Home
+              <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            {homeDropdown && (
+              <div
+                className={`absolute left-0 mt-2 w-48 border rounded shadow-lg z-50 transition-colors duration-200 ${darkMode ? 'bg-gray-800 border-gray-600' : 'bg-white '}`}
+              >
+                <Link to="/home" className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} onClick={() => { setHomeDropdown(false); scrollToTop(); }}>Home1</Link>
+                <Link to="/home2" className={`block px-4 py-3 text-base hover:bg-blue-100 transition-colors duration-200 ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} onClick={() => { setHomeDropdown(false); scrollToTop(); }}>Home2</Link>
+              </div>
+            )}
+          </div>
+          <Link to="/about" className={`text-lg font-semibold hover:text-teal transition-colors duration-200 ${darkMode ? 'text-white' : 'text-black'}`} onClick={scrollToTop}>About Us</Link>
+          <div className="relative">
+            <button
+              className={`text-lg font-semibold hover:text-teal flex items-center gap-1 focus:outline-none transition-colors duration-200`}
+              style={darkMode ? { color: '#fff', background: '#000' } : { color: '#000', background: 'transparent' }}
+              onClick={() => { navigate('/services'); scrollToTop(); }}
+              onMouseEnter={handleServicesMouseEnter}
+              onMouseLeave={handleServicesMouseLeave}
+              onFocus={() => setServicesDropdown(true)}
+              onBlur={() => setServicesDropdown(false)}
+            >
+              Services
+              <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            </button>
+            {servicesDropdown && (
+              <div
+                className={`absolute left-0 mt-2 w-56 border rounded shadow-lg z-50 transition-colors duration-200 ${darkMode ? 'bg-gray-800 border-gray-600' : 'bg-white border-gray-200'}`}
+                onMouseEnter={handleServicesMouseEnter}
+                onMouseLeave={handleServicesMouseLeave}
+              >
+                <div 
+                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer border-b ${darkMode ? 'text-white hover:bg-gray-700 border-gray-600' : 'text-black hover:bg-gray-100 border-gray-200'}`} 
+                  onClick={() => { 
+                    setServicesDropdown(false); 
+                    navigate('/services');
+                    scrollToTop();
+                  }}
+                >
+                  View All Services
+                </div>
+                <div 
+                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
+                  onClick={() => { 
+                    setServicesDropdown(false); 
+                    navigate('/services/family');
+                    scrollToTop();
+                  }}
+                >
+                  Family Law
+                </div>
+                <div 
+                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
+                  onClick={() => { 
+                    setServicesDropdown(false); 
+                    navigate('/services/civil');
+                    scrollToTop();
+                  }}
+                >
+                  Civil Law
+                </div>
+                <div 
+                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
+                  onClick={() => { 
+                    setServicesDropdown(false); 
+                    navigate('/services/corporate');
+                    scrollToTop();
+                  }}
+                >
+                  Corporate Law
+                </div>
+                <div 
+                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
+                  onClick={() => { 
+                    setServicesDropdown(false); 
+                    navigate('/services/real-estate');
+                    scrollToTop();
+                  }}
+                >
+                  Real-Estate Law
+                </div>
+                <div 
+                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
+                  onClick={() => { 
+                    setServicesDropdown(false); 
+                    navigate('/services/criminal');
+                    scrollToTop();
+                  }}
+                >
+                  Criminal Law
+                </div>
+                <div 
+                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
+                  onClick={() => { 
+                    setServicesDropdown(false); 
+                    navigate('/services/immigration');
+                    scrollToTop();
+                  }}
+                >
+                  Immigration Law
+                </div>
+              </div>
+            )}
+          </div>
+          <Link to="/blog" className={`text-lg font-semibold hover:text-teal transition-colors duration-200 ${darkMode ? 'text-white' : 'text-black'}`} onClick={scrollToTop}>Blog</Link>
+          <Link to="/contact" className={`text-lg font-semibold hover:text-teal transition-colors duration-200 ${darkMode ? 'text-white' : 'text-black'}`} onClick={scrollToTop}>Contact Us</Link>
+          
+          {/* Dark Mode Toggle Button */}
+          <button
+            onClick={toggleDarkMode}
+            className={`p-2 rounded-lg transition-colors duration-200 ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-200 hover:bg-gray-300'}`}
+            title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          >
+            {darkMode ? (
+              <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+              </svg>
+            )}
+          </button>
+          
+          {/* Avatar with Dropdown */}
+          <div className="relative avatar-dropdown">
+            <div 
+              onClick={() => setIsAvatarDropdownOpen(!isAvatarDropdownOpen)}
+              className="w-10 h-10 bg-[#26A0A2] rounded-full flex items-center justify-center text-white font-bold text-base cursor-pointer hover:bg-[#1f8a8c] transition-colors duration-200"
+            >
+              {initials}
+            </div>
+            
+            {/* Avatar Dropdown */}
+            {isAvatarDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                <div className="py-2">
+                  <div className="px-4 py-2 text-sm text-gray-700 border-b border-gray-100">
+                    <div className="font-medium">User Profile</div>
+                    <div className="text-gray-500 text-xs">Signed in</div>
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200 flex items-center"
+                  >
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Logout
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden flex items-center space-x-3">
+          {/* Dark Mode Toggle Button for Mobile */}
+          <button
+            onClick={toggleDarkMode}
+            className={`p-2 rounded-lg transition-colors duration-200 ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-200 hover:bg-gray-300'}`}
+            title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          >
+            {darkMode ? (
+              <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+              </svg>
+            )}
+          </button>
+
+          {/* Hamburger Menu Button */}
+          <button
+            onClick={toggleMobileMenu}
+            className={`p-2 rounded-lg transition-colors duration-200 ${darkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-200 hover:bg-gray-300'}`}
+            aria-label="Toggle mobile menu"
+          >
+            <svg className={`w-6 h-6 transition-transform duration-200 ${darkMode ? 'text-white' : 'text-gray-600'} ${isMobileMenuOpen ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
-      {/* Desktop Nav */}
-      <nav className="hidden md:flex items-center space-x-6">
-        {/* ...existing code for nav links and dropdowns... */}
-        {/* Home Dropdown */}
-        <div className="relative">
-          <button
-            onClick={() => setHomeDropdownOpen(!homeDropdownOpen)}
-            className="flex items-center space-x-1 bg-[#002346F2] text-[#646cff] hover:text-[#535bf2] transition-colors border-none outline-none focus:outline-none focus:ring-0 focus:border-none"
-          >
-            <span>Home</span>
-            <ChevronDown size={16} />
-          </button>
-          {homeDropdownOpen && (
-            <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-50">
-              <Link
-                to="/home"
-                className="block px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                onClick={() => setHomeDropdownOpen(false)}
+      {/* Mobile Navigation Menu */}
+      {isMobileMenuOpen && (
+  <div className={`lg:hidden border-t ${darkMode ? 'border-gray-700 bg-gray-900' : 'border-gray-200 bg-white'}`}>
+          <div className={`px-4 py-6 space-y-4 max-h-[70vh] overflow-y-auto scroll-smooth [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full ${darkMode ? '[&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar-thumb]:bg-gray-600' : ''}`}>
+            {/* Home Dropdown */}
+            <div>
+              <button
+                onClick={() => setHomeDropdown(!homeDropdown)}
+                className={`w-full text-left flex items-center justify-between py-3 px-4 rounded-lg transition-colors duration-200`}
+                style={darkMode ? { background: '#0F1524', color: '#F8F4E3' } : { background: '#fff', color: '#333333' }}
               >
-                Home1
-              </Link>
-              <Link
-                to="/home2"
-                className="block px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                onClick={() => setHomeDropdownOpen(false)}
-              >
-                Home2
-              </Link>
-            </div>
-          )}
-        </div>
-        <Link to="/about" className="text-[#646cff] hover:text-[#535bf2] transition-colors">About Us</Link>
-        <div className="relative">
-          <button
-            onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
-            className="flex items-center space-x-1 bg-[#002346F2] text-[#646cff] hover:text-[#535bf2] transition-colors border-none outline-none focus:outline-none focus:ring-0 focus:border-none"
-          >
-            <span>Services</span>
-            <ChevronDown size={16} />
-          </button>
-          {servicesDropdownOpen && (
-            <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-50">
-              <Link to="/services/criminal" className="block px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={() => setServicesDropdownOpen(false)}>Criminal Law</Link>
-              <Link to="/services/civil" className="block px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={() => setServicesDropdownOpen(false)}>Civil Law</Link>
-              <Link to="/services/family" className="block px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={() => setServicesDropdownOpen(false)}>Family Law</Link>
-              <Link to="/services/corporate" className="block px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={() => setServicesDropdownOpen(false)}>Corporate Law</Link>
-              <Link to="/services/real-estate" className="block px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={() => setServicesDropdownOpen(false)}>Real Estate Law</Link>
-              <Link to="/services/immigration" className="block px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={() => setServicesDropdownOpen(false)}>Immigration Law</Link>
-              <div className="border-t border-gray-200 dark:border-gray-700">
-                <Link to="/services" className="block px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={() => setServicesDropdownOpen(false)}>View All Services</Link>
-              </div>
-            </div>
-          )}
-        </div>
-        <Link to="/blog" className="text-[#646cff] hover:text-[#535bf2] transition-colors">Blog</Link>
-        <Link to="/contact" className="text-[#646cff] hover:text-[#535bf2] transition-colors">Contact Us</Link>
-      </nav>
-
-      {/* Mobile Nav with dropdowns */}
-      {homeDropdownOpen && (
-        <nav className="md:hidden fixed top-0 left-0 w-full h-full bg-[#002346] bg-opacity-95 flex flex-col items-center justify-center z-50 overflow-y-auto">
-          {/* Theme/Profile Buttons in mobile menu */}
-          <div className="flex items-center gap-4 mb-8">
-            <button onClick={handleDarkModeToggle} className="flex items-center bg-[#242424] text-white rounded-lg px-3 py-2 hover:bg-[#333333] transition-colors">{darkMode ? <Sun size={16} /> : <Moon size={16} />}</button>
-            <div className="relative">
-              <button onClick={() => setProfileDropdownOpen(!profileDropdownOpen)} className="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-semibold hover:bg-teal-600 transition-colors border-none outline-none focus:outline-none focus:ring-0 focus:border-none">{getInitials(user?.firstName, user?.lastName)}</button>
-              {profileDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-50">
-                  <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
-                    <p className="text-sm font-medium text-gray-800 dark:text-white">{user?.firstName} {user?.lastName}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{user?.email}</p>
-                  </div>
-                  <button onClick={handleLogout} className="w-full flex items-center px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"><LogOut size={16} className="mr-2" />Logout</button>
+                <span className="font-semibold">Home</span>
+                <svg className={`w-5 h-5 transition-transform duration-200 ${homeDropdown ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {homeDropdown && (
+                <div className="ml-4 mt-2 space-y-2">
+                  <Link 
+                    to="/home1" 
+                    onClick={closeMobileMenu}
+                    className={`block py-2 px-4 rounded-lg transition-colors duration-200 ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+                  >
+                    Home1
+                  </Link>
+                  <Link 
+                    to="/home2" 
+                    onClick={closeMobileMenu}
+                    className={`block py-2 px-4 rounded-lg transition-colors duration-200 ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+                  >
+                    Home2
+                  </Link>
                 </div>
               )}
             </div>
-          </div>
-          <button className="absolute top-6 right-6 text-white" onClick={() => setHomeDropdownOpen(false)} aria-label="Close Menu">
-            <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          </button>
-          {/* Home Dropdown */}
-          <div className="w-full flex flex-col items-center">
-            <button onClick={() => setMobileHomeDropdownOpen(!mobileHomeDropdownOpen)} className="block py-4 text-2xl text-white w-full text-center bg-[#002346F2]">Home <ChevronDown size={20} className="inline" /></button>
-            {/* Home dropdown options */}
-            {mobileHomeDropdownOpen && (
-              <div className="w-full flex flex-col items-center">
-                <Link to="/home" className="block py-2 text-lg text-white w-full text-center" onClick={() => setMobileHomeDropdownOpen(false)}>Home1</Link>
-                <Link to="/home2" className="block py-2 text-lg text-white w-full text-center" onClick={() => setMobileHomeDropdownOpen(false)}>Home2</Link>
-              </div>
-            )}
-          </div>
-          {/* Services Dropdown */}
-          <div className="w-full flex flex-col items-center">
-            <button onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)} className="block py-4 text-2xl text-white w-full text-center bg-[#002346F2]">Services <ChevronDown size={20} className="inline" /></button>
-            {/* Services dropdown options */}
-            {servicesDropdownOpen && (
-              <div className="w-full flex flex-col items-center">
-                <Link to="/services/criminal" className="block py-2 text-lg text-white w-full text-center" onClick={() => setHomeDropdownOpen(false)}>Criminal Law</Link>
-                <Link to="/services/civil" className="block py-2 text-lg text-white w-full text-center" onClick={() => setHomeDropdownOpen(false)}>Civil Law</Link>
-                <Link to="/services/family" className="block py-2 text-lg text-white w-full text-center" onClick={() => setHomeDropdownOpen(false)}>Family Law</Link>
-                <Link to="/services/corporate" className="block py-2 text-lg text-white w-full text-center" onClick={() => setHomeDropdownOpen(false)}>Corporate Law</Link>
-                <Link to="/services/real-estate" className="block py-2 text-lg text-white w-full text-center" onClick={() => setHomeDropdownOpen(false)}>Real Estate Law</Link>
-                <Link to="/services/immigration" className="block py-2 text-lg text-white w-full text-center" onClick={() => setHomeDropdownOpen(false)}>Immigration Law</Link>
-                <Link to="/services" className="block py-2 text-lg text-blue-300 w-full text-center" onClick={() => setHomeDropdownOpen(false)}>View All Services</Link>
-              </div>
-            )}
-          </div>
-          <Link to="/about" className="block py-4 text-2xl text-white w-full text-center" onClick={() => setHomeDropdownOpen(false)}>About Us</Link>
-          <Link to="/blog" className="block py-4 text-2xl text-white w-full text-center" onClick={() => setHomeDropdownOpen(false)}>Blog</Link>
-          <Link to="/contact" className="block py-4 text-2xl text-white w-full text-center" onClick={() => setHomeDropdownOpen(false)}>Contact Us</Link>
-        </nav>
-      )}
 
-      <div className="flex items-center space-x-4">
-        <button onClick={handleDarkModeToggle} className="flex items-center bg-[#242424] text-white rounded-lg px-3 py-2 hover:bg-[#333333] transition-colors">{darkMode ? <Sun size={16} /> : <Moon size={16} />}</button>
-        <div className="relative">
-          <button onClick={() => setProfileDropdownOpen(!profileDropdownOpen)} className="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-semibold hover:bg-teal-600 transition-colors border-none outline-none focus:outline-none focus:ring-0 focus:border-none">{getInitials(user?.firstName, user?.lastName)}</button>
-          {profileDropdownOpen && (
-            <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-50">
-              <div className="px-4 py-2 border-b border-gray-200 dark:border-gray-700">
-                <p className="text-sm font-medium text-gray-800 dark:text-white">{user?.firstName} {user?.lastName}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{user?.email}</p>
-              </div>
-              <button onClick={handleLogout} className="w-full flex items-center px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"><LogOut size={16} className="mr-2" />Logout</button>
+            {/* About Us */}
+            <Link 
+              to="/about" 
+              onClick={closeMobileMenu}
+              className={`block py-3 px-4 rounded-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white hover:bg-gray-800' : 'text-black hover:bg-gray-100'}`}
+            >
+              About Us
+            </Link>
+
+            {/* Services Dropdown */}
+            <div>
+              <button
+                onClick={() => setMobileServicesDropdown(!mobileServicesDropdown)}
+                className={`w-full text-left flex items-center justify-between py-3 px-4 rounded-lg transition-colors duration-200`}
+                  style={darkMode ? { background: '#0F1524', color: '#F8F4E3' } : { background: '#fff', color: '#333333' }}
+              >
+                <span className="font-semibold">Services</span>
+                <svg className={`w-5 h-5 transition-transform duration-200 ${mobileServicesDropdown ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {mobileServicesDropdown && (
+                <div className="ml-4 mt-2 space-y-2">
+                  <div 
+                    onClick={() => { closeMobileMenu(); navigate('/services'); scrollToTop(); }}
+                    className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+                  >
+                    View All Services
+                  </div>
+                  <div 
+                    onClick={() => { closeMobileMenu(); navigate('/services/family'); scrollToTop(); }}
+                    className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+                  >
+                    Family
+                  </div>
+                  <div 
+                    onClick={() => { closeMobileMenu(); navigate('/services/civil'); scrollToTop(); }}
+                    className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+                  >
+                    Civil
+                  </div>
+                  <div 
+                    onClick={() => { closeMobileMenu(); navigate('/services/corporate'); scrollToTop(); }}
+                    className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+                  >
+                    Corporate
+                  </div>
+                  <div 
+                    onClick={() => { closeMobileMenu(); navigate('/services/real-estate'); scrollToTop(); }}
+                    className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+                  >
+                    Real-Estate
+                  </div>
+                  <div 
+                    onClick={() => { closeMobileMenu(); navigate('/services/criminal'); scrollToTop(); }}
+                    className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+                  >
+                    Criminal
+                  </div>
+                  <div 
+                    onClick={() => { closeMobileMenu(); navigate('/services/immigration'); scrollToTop(); }}
+                    className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+                  >
+                    Immigration
+                  </div>
+                </div>
+              )}
             </div>
-          )}
-        </div>
-      </div>
 
-      {(servicesDropdownOpen || profileDropdownOpen) && (
-        <div className="fixed inset-0 z-40" onClick={() => { setServicesDropdownOpen(false); setProfileDropdownOpen(false); }} />
+            {/* Blog */}
+            <Link 
+              to="/blog" 
+              onClick={closeMobileMenu}
+              className={`block py-3 px-4 rounded-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white hover:bg-gray-800' : 'text-black hover:bg-gray-100'}`}
+            >
+              Blog
+            </Link>
+
+            {/* Contact Us */}
+            <Link 
+              to="/contact" 
+              onClick={closeMobileMenu}
+              className={`block py-3 px-4 rounded-lg font-semibold transition-colors duration-200 ${darkMode ? 'text-white hover:bg-gray-800' : 'text-black hover:bg-gray-100'}`}
+            >
+              Contact Us
+            </Link>
+
+            {/* User Profile */}
+            <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex items-center space-x-3 px-4">
+                <div className="w-8 h-8 bg-teal rounded-full flex items-center justify-center text-white font-bold text-sm">{initials}</div>
+                <span className={`font-medium ${darkMode ? 'text-white' : 'text-black'}`}>User Profile</span>
+              </div>
+            </div>
+            
+            {/* Bottom padding for scroll space */}
+            <div className="pb-8"></div>
+          </div>
+        </div>
       )}
     </header>
   );
-};
-
-export default Header;
-
-// Add this to the bottom of the file for sticky fallback support
-// You can move this to your main CSS if preferred
-if (typeof window !== 'undefined') {
-  const style = document.createElement('style');
-  style.innerHTML = `
-    .sticky-header-fallback {
-      position: sticky !important;
-      top: 0 !important;
-      z-index: 50 !important;
-    }
-  `;
-  document.head.appendChild(style);
-}
+} 

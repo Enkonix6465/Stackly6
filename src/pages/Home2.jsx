@@ -81,6 +81,7 @@ export default function Home2({ user, onLogout }) {
           autoPlay
           loop
           muted
+          loading="lazy"
           playsInline
           className="absolute inset-0 w-full h-full object-cover z-0"
           style={{ minHeight: "100vh", minWidth: "100vw", objectFit: "cover" }}

@@ -25,7 +25,7 @@ const Footer = ({ darkMode, bgColor }) => {
         {/* Logo Only */}
         <div className="col-span-1 flex items-start">
           <div className="w-28 h-28 flex items-center justify-center overflow-hidden">
-            <img src={logo1} alt="Logo" className="w-24 h-24 object-contain" style={{ filter: 'grayscale(100%) brightness(0.5) sepia(1) hue-rotate(160deg) saturate(4) contrast(1.2)' }} />
+            <img src={logo1} alt="Logo" className="w-52 h-52 object-contain" style={{ filter: 'grayscale(100%) brightness(0.5) sepia(1) hue-rotate(160deg) saturate(4) contrast(1.2)' }} />
           </div>
         </div>
 
@@ -33,10 +33,11 @@ const Footer = ({ darkMode, bgColor }) => {
         <div>
           <h4 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-[#F8F4E3]' : 'text-[#002346]'}`}>Quick Links</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Home</Link></li>
+            <li><Link to="/home" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Home</Link></li>
             <li><Link to="/about" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>About Us</Link></li>
             <li><Link to="/blog" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Blog</Link></li>
             <li><Link to="/contact" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Contact Us</Link></li>
+            <li><Link to="/services" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Services</Link></li>
           </ul>
         </div>
 

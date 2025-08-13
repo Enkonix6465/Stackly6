@@ -115,7 +115,7 @@ export default function Header() {
         {/* Logo - Left Side */}
         <div className="flex items-center">
           <div className="flex items-center space-x-2">
-            <img src={logo} alt="LIFE Logo" className="w-24 h-24 sm:w-28 sm:h-28 object-contain" />
+            <img src={logo} alt="LIFE Logo" className="w-36 h-36 sm:w-44 sm:h-44 object-contain" />
           </div>
         </div>
 

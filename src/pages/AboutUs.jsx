@@ -65,6 +65,7 @@ const AboutUs = ({ user, onLogout }) => {
           src={aboutUsHero}
           autoPlay
           loop
+          loading="lazy"
           muted
           playsInline
         />

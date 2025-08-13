@@ -130,6 +130,7 @@ const Services = ({ user, onLogout }) => {
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         src={servicesHero}
+        loading="lazy"
         autoPlay
         loop
         muted

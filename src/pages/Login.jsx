@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Sun, Moon } from 'lucide-react';
 
 const ADMIN_EMAIL = 'admin@enkonix.in';
-const ADMIN_PASSWORD = 'admin@123';
+const ADMIN_PASSWORD = 'admin123';
 
 const Login = ({ onLogin }) => {
   const navigate = useNavigate();

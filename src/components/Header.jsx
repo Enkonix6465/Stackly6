@@ -14,15 +14,37 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAvatarDropdownOpen, setIsAvatarDropdownOpen] = useState(false);
 
+  // Robust initials logic: always update on mount, menu open, and storage change
   useEffect(() => {
-    let currentUser = { firstName: '', lastName: '' };
-    try {
-      currentUser = JSON.parse(localStorage.getItem('currentUser')) || { firstName: '', lastName: '' };
-    } catch (e) {}
-    setInitials(
-      `${currentUser.firstName?.[0] || ''}${currentUser.lastName?.[0] || ''}`.toUpperCase()
-    );
+    const getInitials = () => {
+      let currentUser = { firstName: '', lastName: '' };
+      try {
+        currentUser = JSON.parse(localStorage.getItem('currentUser')) || { firstName: '', lastName: '' };
+      } catch (e) {}
+      const first = currentUser.firstName?.trim?.()[0] || '';
+      const last = currentUser.lastName?.trim?.()[0] || '';
+      const initials = `${first}${last}`.toUpperCase();
+      return initials || 'U'; // fallback to 'U' for User
+    };
+    setInitials(getInitials());
+    const handleStorage = () => setInitials(getInitials());
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
   }, []);
+
+  useEffect(() => {
+    const getInitials = () => {
+      let currentUser = { firstName: '', lastName: '' };
+      try {
+        currentUser = JSON.parse(localStorage.getItem('currentUser')) || { firstName: '', lastName: '' };
+      } catch (e) {}
+      const first = currentUser.firstName?.trim?.()[0] || '';
+      const last = currentUser.lastName?.trim?.()[0] || '';
+      const initials = `${first}${last}`.toUpperCase();
+      return initials || 'U';
+    };
+    setInitials(getInitials());
+  }, [isAvatarDropdownOpen, isMobileMenuOpen]);
 
   // Close avatar dropdown when clicking outside
   useEffect(() => {
@@ -249,7 +271,7 @@ export default function Header() {
                   </div>
                   <button
                     onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200 flex items-center"
+                    className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-100 transition-colors duration-200 flex items-center"
                   >
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -302,6 +324,8 @@ export default function Header() {
       {isMobileMenuOpen && (
   <div className={`lg:hidden border-t ${darkMode ? 'border-gray-700 bg-gray-900' : 'border-gray-200 bg-white'}`}>
           <div className={`px-4 py-6 space-y-4 max-h-[70vh] overflow-y-auto scroll-smooth [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full ${darkMode ? '[&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar-thumb]:bg-gray-600' : ''}`}>
+            {/* User Profile Circle at Top */}
+
             {/* Home Dropdown */}
             <div>
               <button
@@ -421,12 +445,21 @@ export default function Header() {
               Contact Us
             </Link>
 
-            {/* User Profile */}
+            {/* User Profile & Logout for Mobile */}
             <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
               <div className="flex items-center space-x-3 px-4">
-                <div className="w-8 h-8 bg-teal rounded-full flex items-center justify-center text-white font-bold text-sm">{initials}</div>
                 <span className={`font-medium ${darkMode ? 'text-white' : 'text-black'}`}>User Profile</span>
+                <div className="w-8 h-8 bg-[#26A0A2] rounded-full flex items-center justify-center text-white font-bold text-sm">{initials}</div>
               </div>
+              <button
+                onClick={() => { handleLogout(); closeMobileMenu(); }}
+                className={`w-full text-left px-4 py-3 mt-2 text-sm font-semibold rounded-lg transition-colors duration-200 flex items-center ${darkMode ? 'text-white hover:bg-gray-800' : 'text-white hover:bg-gray-100'}`}
+              >
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Logout
+              </button>
             </div>
             
             {/* Bottom padding for scroll space */}

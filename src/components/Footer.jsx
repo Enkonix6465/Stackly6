@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter } from "react-icons/fa";
 import logo1 from '../assets/logo1.png';
 
@@ -32,10 +33,10 @@ const Footer = ({ darkMode, bgColor }) => {
         <div>
           <h4 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-[#F8F4E3]' : 'text-[#002346]'}`}>Quick Links</h4>
           <ul className="space-y-2 text-sm">
-            <li><a href="/" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Home</a></li>
-            <li><a href="/about" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>About Us</a></li>
-            <li><a href="/blog" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Blog</a></li>
-            <li><a href="/contact" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Contact Us</a></li>
+            <li><Link to="/" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Home</Link></li>
+            <li><Link to="/about" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>About Us</Link></li>
+            <li><Link to="/blog" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Blog</Link></li>
+            <li><Link to="/contact" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Contact Us</Link></li>
           </ul>
         </div>
 
@@ -43,12 +44,12 @@ const Footer = ({ darkMode, bgColor }) => {
         <div>
           <h4 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-[#F8F4E3]' : 'text-[#002346]'}`}>Practice Areas</h4>
           <ul className="space-y-2 text-sm">
-            <li><a href="/services/criminal" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Criminal Law</a></li>
-            <li><a href="/services/family" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Family Law</a></li>
-            <li><a href="/services/corporate" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Corporate Law</a></li>
-            <li><a href="/services/civil" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Civil Law</a></li>
-            <li><a href="/services/real-estate" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Real Estate Law</a></li>
-            <li><a href="/services/immigration" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Immigration Law</a></li>
+            <li><Link to="/services/criminal" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Criminal Law</Link></li>
+            <li><Link to="/services/family" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Family Law</Link></li>
+            <li><Link to="/services/corporate" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Corporate Law</Link></li>
+            <li><Link to="/services/civil" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Civil Law</Link></li>
+            <li><Link to="/services/real-estate" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Real Estate Law</Link></li>
+            <li><Link to="/services/immigration" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Immigration Law</Link></li>
           </ul>
         </div>
 
@@ -97,9 +98,9 @@ const Footer = ({ darkMode, bgColor }) => {
       <div className={`border-t mt-10 pt-4 text-center text-sm ${darkMode ? 'border-[#F8F4E3] text-[#F8F4E3]' : 'border-[#002346] text-[#333333]'}`}>
         <p>© 2025 Blue Justice Law. All rights reserved.</p>
         <div className="mt-2 space-x-4">
-          <a href="/privacy" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Privacy Policy</a>
-          <a href="/terms" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Terms & Conditions</a>
-          <a href="/disclaimer" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Disclaimer</a>
+          <Link to="/privacy" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Privacy Policy</Link>
+          <Link to="/terms" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Terms & Conditions</Link>
+          <Link to="/disclaimer" className={`hover:underline ${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'}`}>Disclaimer</Link>
         </div>
       </div>
     </footer>

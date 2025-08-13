@@ -37,15 +37,41 @@ ChartJS.register(
 );
 
 export default function AdminDashboard({ user, onLogout }) {
-  // Get all user logins from localStorage
-  let userLogins = JSON.parse(localStorage.getItem('userLogins') || '[]');
-  // Add a role property for display
-  userLogins = userLogins.map(l => ({
-    ...l,
-    role: (l.email === 'admin@enkonix.in' || l.name === 'Admin') ? 'Admin' : 'User'
-  }));
-  // Get all registered users from localStorage
-  const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+  // Always get latest user logins and registered users from localStorage
+  const [userLogins, setUserLogins] = React.useState([]);
+  const [registeredUsers, setRegisteredUsers] = React.useState([]);
+
+  useEffect(() => {
+    const fetchUserData = () => {
+      let logins = JSON.parse(localStorage.getItem('userLogins') || '[]');
+      // Remove duplicate admin entries (optional)
+      logins = logins.map(l => ({
+        ...l,
+        role: (l.email === 'admin@enkonix.in' || l.name === 'Admin') ? 'Admin' : 'User'
+      }));
+      // Optionally filter out duplicate logins for the same user on the same event/time
+      const uniqueLogins = [];
+      const seen = new Set();
+      for (const entry of logins) {
+        const key = `${entry.email}-${entry.event}-${entry.loginDate}-${entry.loginTime}`;
+        if (!seen.has(key)) {
+          uniqueLogins.push(entry);
+          seen.add(key);
+        }
+      }
+      setUserLogins(uniqueLogins);
+      setRegisteredUsers(JSON.parse(localStorage.getItem('registeredUsers') || '[]'));
+    };
+    fetchUserData();
+    // Listen for storage changes (other tabs/windows)
+    window.addEventListener('storage', fetchUserData);
+    // Refresh when page regains focus
+    window.addEventListener('focus', fetchUserData);
+    return () => {
+      window.removeEventListener('storage', fetchUserData);
+      window.removeEventListener('focus', fetchUserData);
+    };
+  }, []);
   const { darkMode, setDarkMode } = useDarkMode();
   // Strict palette
   const COLOR_1 = "#002346"; // Deep Blue
@@ -175,13 +201,14 @@ export default function AdminDashboard({ user, onLogout }) {
                     <th className="py-2">Email</th>
                     <th className="py-2">Name</th>
                     <th className="py-2">Role</th>
-                    <th className="py-2">Login Time</th>
-                    <th className="py-2">Login Date</th>
+                    <th className="py-2">Time</th>
+                    <th className="py-2">Date</th>
+                    <th className="py-2">Event</th>
                   </tr>
                 </thead>
                 <tbody>
                   {userLogins.length === 0 ? (
-                    <tr><td colSpan="5" className="py-4 text-center">No user logins yet.</td></tr>
+                    <tr><td colSpan="6" className="py-4 text-center">No user logins or signups yet.</td></tr>
                   ) : (
                     userLogins.slice().reverse().map((login, idx) => (
                       <tr key={idx} className="border-t" style={{ borderColor: '#EEE' }}>
@@ -190,6 +217,7 @@ export default function AdminDashboard({ user, onLogout }) {
                         <td className="py-2">{login.role}</td>
                         <td className="py-2">{login.loginTime}</td>
                         <td className="py-2">{login.loginDate}</td>
+                        <td className="py-2">{login.event === 'signup' ? 'Signup' : 'Login'}</td>
                       </tr>
                     ))
                   )}
@@ -434,32 +462,6 @@ export default function AdminDashboard({ user, onLogout }) {
             </div>
           </div>
         </section>
-
-        {/* Quick Actions */}
-        {/* <section className="flex flex-wrap gap-5 items-center justify-center mb-12">
-          <button
-            className="flex items-center gap-2 px-6 py-3 rounded-xl shadow-md font-semibold transition"
-            style={{ background: COLOR_1, color: COLOR_2 }}
-          >
-            <PlusCircle size={20} /> Add Case
-          </button>
-          <button
-            className="flex items-center gap-2 px-6 py-3 rounded-xl shadow-md font-semibold transition"
-            style={{ background: COLOR_3, color: COLOR_2 }}
-          >
-            <Calendar size={20} /> New Appointment
-          </button>
-          <button
-            className="flex items-center gap-2 px-6 py-3 rounded-xl shadow-md font-semibold border-2 transition"
-            style={{
-              background: COLOR_2,
-              color: COLOR_3,
-              borderColor: COLOR_1,
-            }}
-          >
-            <Upload size={20} style={{ color: COLOR_1 }} /> Upload Document
-          </button>
-        </section> */}
       </main>
   <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>

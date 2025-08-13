@@ -30,18 +30,28 @@ const Login = ({ onLogin }) => {
     }));
   };
 
+  // Helper to log any event to localStorage in a consistent format
+  const logUserEvent = (email, name, event) => {
+    const now = new Date();
+    const newLog = {
+      email,
+      name,
+      loginTime: now.toLocaleTimeString(),
+      loginDate: now.toLocaleDateString(),
+      event // 'login' or 'signup'
+    };
+    const logins = JSON.parse(localStorage.getItem('userLogins') || '[]');
+    logins.push(newLog);
+    localStorage.setItem('userLogins', JSON.stringify(logins));
+  };
+
   // USER LOGIN
   const handleLogin = (e) => {
     e.preventDefault();
-    // Get registered users from localStorage
     const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-    // Find user by email and password
     const found = users.find(u => u.email === formData.email && u.password === formData.password);
-    // Reject login if admin credentials are used
-    if (
-      formData.email === ADMIN_EMAIL ||
-      formData.password === ADMIN_PASSWORD
-    ) {
+
+    if (formData.email === ADMIN_EMAIL || formData.password === ADMIN_PASSWORD) {
       alert("These credentials are reserved for admin.");
       return;
     }
@@ -49,27 +59,17 @@ const Login = ({ onLogin }) => {
       alert('No such user registered. Please sign up first.');
       return;
     }
-    const userData = {
-      firstName: found.firstName,
-      lastName: found.lastName,
-      email: found.email
-    };
-    // Store login info with timestamp
-    const now = new Date();
-    const loginInfo = {
-      email: found.email,
-      name: found.firstName + ' ' + found.lastName,
-      loginTime: now.toLocaleTimeString(),
-      loginDate: now.toLocaleDateString()
-    };
-    // Save to localStorage (append to array)
-    const logins = JSON.parse(localStorage.getItem('userLogins') || '[]');
-    logins.push(loginInfo);
-    localStorage.setItem('userLogins', JSON.stringify(logins));
-  // Store current user for profile initials
-  localStorage.setItem('currentUser', JSON.stringify({ firstName: found.firstName, lastName: found.lastName, email: found.email }));
-  onLogin(userData);
-  navigate('/home');
+
+    const fullName = `${found.firstName} ${found.lastName}`;
+    logUserEvent(found.email, fullName, 'login');
+
+    localStorage.setItem(
+      'currentUser',
+      JSON.stringify({ firstName: found.firstName, lastName: found.lastName, email: found.email })
+    );
+
+    onLogin({ firstName: found.firstName, lastName: found.lastName, email: found.email });
+    navigate('/home');
   };
 
   // USER SIGNUP
@@ -79,21 +79,16 @@ const Login = ({ onLogin }) => {
       alert('Passwords do not match!');
       return;
     }
-    // Prevent admin credentials from being used for signup
-    if (
-      formData.email === ADMIN_EMAIL ||
-      formData.password === ADMIN_PASSWORD
-    ) {
+    if (formData.email === ADMIN_EMAIL || formData.password === ADMIN_PASSWORD) {
       alert("These credentials are reserved for admin.");
       return;
     }
-    // Get registered users from localStorage
     const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-    // Prevent duplicate registration
     if (users.some(u => u.email === formData.email)) {
       alert('User already registered. Please login.');
       return;
     }
+
     const userData = {
       firstName: formData.firstName,
       lastName: formData.lastName,
@@ -102,47 +97,32 @@ const Login = ({ onLogin }) => {
     };
     users.push(userData);
     localStorage.setItem('registeredUsers', JSON.stringify(users));
-    // Remove password before passing to onLogin
+
+    logUserEvent(userData.email, `${userData.firstName} ${userData.lastName}`, 'signup');
+
+    localStorage.setItem(
+      'currentUser',
+      JSON.stringify({ firstName: userData.firstName, lastName: userData.lastName, email: userData.email })
+    );
+
     const { password, ...loginUser } = userData;
-    // Store login info with timestamp for signup
-    const now = new Date();
-    const loginInfo = {
-      email: userData.email,
-      name: userData.firstName + ' ' + userData.lastName,
-      loginTime: now.toLocaleTimeString(),
-      loginDate: now.toLocaleDateString()
-    };
-    const logins = JSON.parse(localStorage.getItem('userLogins') || '[]');
-    logins.push(loginInfo);
-    localStorage.setItem('userLogins', JSON.stringify(logins));
-  // Store current user for profile initials
-  localStorage.setItem('currentUser', JSON.stringify({ firstName: userData.firstName, lastName: userData.lastName, email: userData.email }));
-  onLogin(loginUser);
-  navigate('/home');
+    onLogin(loginUser);
+    navigate('/home');
   };
 
   // ADMIN LOGIN
   const handleAdminLogin = (e) => {
     e.preventDefault();
-    if (
-      formData.adminEmail === ADMIN_EMAIL &&
-      formData.adminPassword === ADMIN_PASSWORD
-    ) {
-      // Store admin login info with timestamp
-      const now = new Date();
-      const loginInfo = {
-        email: ADMIN_EMAIL,
-        name: 'Admin',
-        loginTime: now.toLocaleTimeString(),
-        loginDate: now.toLocaleDateString()
-      };
-      const logins = JSON.parse(localStorage.getItem('userLogins') || '[]');
-      logins.push(loginInfo);
-      localStorage.setItem('userLogins', JSON.stringify(logins));
-  // Store current admin for profile initials
-  localStorage.setItem('currentUser', JSON.stringify({ firstName: 'Admin', lastName: '', email: ADMIN_EMAIL }));
-  onLogin({ email: ADMIN_EMAIL, isAdmin: true });
-  navigate('/admin-dashboard');
+    if (formData.adminEmail === ADMIN_EMAIL && formData.adminPassword === ADMIN_PASSWORD) {
+      logUserEvent(ADMIN_EMAIL, 'Admin', 'login');
+
+      localStorage.setItem(
+        'currentUser',
+        JSON.stringify({ firstName: 'Admin', lastName: '', email: ADMIN_EMAIL })
+      );
+
+      onLogin({ email: ADMIN_EMAIL, isAdmin: true });
+      navigate('/admin-dashboard');
     } else {
       alert("Invalid admin credentials!");
     }
@@ -158,16 +138,14 @@ const Login = ({ onLogin }) => {
         backgroundRepeat: 'no-repeat',
       }}
     >
-  <div className={`bg-[#f3f4f6] ${darkMode ? 'dark:bg-[#1e293b]' : ''} p-8 rounded-lg shadow-md w-full max-w-md mx-auto relative z-10`}>
+      <div className={`bg-[#f3f4f6] ${darkMode ? 'dark:bg-[#1e293b]' : ''} p-8 rounded-lg shadow-md w-full max-w-md mx-auto relative z-10`}>
         <div className="flex justify-between items-center mb-6">
-          <h2 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-[#002346]'}`}> 
-            {
-              isAdmin
-                ? 'Admin Login - Verdict'
-                : isSignup
-                  ? 'Sign Up for Verdict'
-                  : 'Login to Verdict'
-            }
+          <h2 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-[#002346]'}`}>
+            {isAdmin
+              ? 'Admin Login - Verdict'
+              : isSignup
+                ? 'Sign Up for Verdict'
+                : 'Login to Verdict'}
           </h2>
           <button
             onClick={() => setDarkMode(prev => !prev)}
@@ -227,7 +205,6 @@ const Login = ({ onLogin }) => {
         ) : (
           // USER FORM
           !isSignup ? (
-            // Login
             <form onSubmit={handleLogin} className="space-y-4">
               <input
                 type="email"
@@ -254,7 +231,6 @@ const Login = ({ onLogin }) => {
               </button>
             </form>
           ) : (
-            // Signup
             <form onSubmit={handleSignup} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <input
@@ -310,7 +286,6 @@ const Login = ({ onLogin }) => {
           )
         )}
 
-        {/* Signup/Login LINK: Only Show for User, Not Admin */}
         {!isAdmin && (
           <p className="mt-4 text-sm text-center text-[#002346] dark:text-white">
             {isSignup ? (

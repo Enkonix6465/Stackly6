@@ -102,6 +102,7 @@ const RealEstate = ({ user, onLogout }) => {
         "30-min session with a property lawyer",
         "Quick title, compliance, or agreement check",
         "Actionable next steps for buyers/sellers",
+        "Email support for 1 week after consult",
       ],
       buttonText: "Book Consult",
       buttonClass: "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
@@ -298,11 +299,12 @@ const RealEstate = ({ user, onLogout }) => {
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
                   height: "80px",
+                  background: COLOR_3
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <DocumentDuplicateIcon className="w-7 h-7 text-[#002346]" />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
+                  <DocumentDuplicateIcon className="w-7 h-7 text-[#002346]" style={{color: COLOR_2}}/>
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
                     02
                   </span>
                 </div>
@@ -382,11 +384,12 @@ const RealEstate = ({ user, onLogout }) => {
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
                   height: "80px",
+                  background: COLOR_3
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <BriefcaseIcon className="w-7 h-7 text-[#002346]" />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
+                  <BriefcaseIcon className="w-7 h-7 text-[#002346]" style={{color: COLOR_2}}/>
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
                     05
                   </span>
                 </div>
@@ -408,8 +411,8 @@ const RealEstate = ({ user, onLogout }) => {
                 style={{
                   clipPath:
                     "polygon(26% 1%, 74% 1%, 100% 50%, 74% 99%, 26% 99%, 0% 50%)",
-                  width: "84px",
-                  height: "92px",
+                  width: "72px",
+                  height: "80px",
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">

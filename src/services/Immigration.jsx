@@ -303,7 +303,7 @@ const Immigration = ({ user, onLogout }) => {
       >
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="mb-12" data-aos="fade-up">
-            <h2 className="text-5xl font-bold text-white">
+            <h2 className="text-5xl text-center font-bold text-white">
               Immigration Services
             </h2>
           </div>
@@ -381,11 +381,12 @@ const Immigration = ({ user, onLogout }) => {
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
                   height: "80px",
+                  background: COLOR_3
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <DocumentDuplicateIcon className="w-7 h-7 text-[#002346]" />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
+                  <DocumentDuplicateIcon className="w-7 h-7 text-[#002346]" style={{color: COLOR_2}}/>
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
                     02
                   </span>
                 </div>
@@ -465,11 +466,12 @@ const Immigration = ({ user, onLogout }) => {
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
                   height: "80px",
+                  background: COLOR_3
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <BriefcaseIcon className="w-7 h-7 text-[#002346]" />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
+                  <BriefcaseIcon className="w-7 h-7 text-[#002346]" style={{color: COLOR_2}}/>
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
                     05
                   </span>
                 </div>
@@ -491,8 +493,8 @@ const Immigration = ({ user, onLogout }) => {
                 style={{
                   clipPath:
                     "polygon(26% 1%, 74% 1%, 100% 50%, 74% 99%, 26% 99%, 0% 50%)",
-                  width: "84px",
-                  height: "92px",
+                  width: "72px",
+                  height: "80px",
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">

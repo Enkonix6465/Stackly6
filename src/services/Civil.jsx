@@ -374,7 +374,7 @@ const Civil = ({ user, onLogout }) => {
               <div
                 className="relative"
                 style={{
-                  background: COLOR_2,
+                  background: COLOR_3,
                   color: COLOR_1,
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
@@ -383,8 +383,8 @@ const Civil = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <DocumentDuplicateIcon className="w-7 h-7" style={{color: COLOR_1}} />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_1}}>
+                  <DocumentDuplicateIcon className="w-7 h-7" style={{color: COLOR_2}} />
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
                     02
                   </span>
                 </div>
@@ -464,7 +464,7 @@ const Civil = ({ user, onLogout }) => {
               <div
                 className="relative"
                 style={{
-                  background: COLOR_2,
+                  background: COLOR_3,
                   color: COLOR_1,
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
@@ -473,8 +473,8 @@ const Civil = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <BriefcaseIcon className="w-7 h-7" style={{color: COLOR_1}} />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_1}}>
+                  <BriefcaseIcon className="w-7 h-7" style={{color: COLOR_2}} />
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
                     05
                   </span>
                 </div>
@@ -498,8 +498,8 @@ const Civil = ({ user, onLogout }) => {
                   color: COLOR_2,
                   clipPath:
                     "polygon(26% 1%, 74% 1%, 100% 50%, 74% 99%, 26% 99%, 0% 50%)",
-                  width: "84px",
-                  height: "92px",
+                  width: "72px",
+                  height: "80px",
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">

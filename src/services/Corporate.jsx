@@ -97,9 +97,11 @@ const Corporate = ({ user, onLogout }) => {
       price: "$299",
       priceNote: "/session",
       features: [
-        "Consultation with a corporate law expert",
+        "Consultation with a law expert",
         "Document review (up to 20 pages)",
         "Initial business appraisal & options",
+        "Strategic recommendations",
+        "Follow-up email support",
       ],
       buttonText: "Book Consult",
       buttonClass:
@@ -296,7 +298,7 @@ const Corporate = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7">Front</span>
+                  <UserIcon className="w-7 h-7" style={{color: COLOR_2}} />
                   <span className="mt-1 text-base font-bold tracking-widest">
                     01
                   </span>
@@ -317,6 +319,7 @@ const Corporate = ({ user, onLogout }) => {
               <div
                 className="relative bg-[#F8F4E3]"
                 style={{
+                  background: COLOR_3,
                   clipPath:
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
@@ -324,10 +327,8 @@ const Corporate = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7 text-[#002346]">
-                    Desc
-                  </span>
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
+                  <DocumentDuplicateIcon className="w-7 h-7" style={{color: COLOR_2}} />
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
                     02
                   </span>
                 </div>
@@ -354,7 +355,7 @@ const Corporate = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7">Gavel</span>
+                  <ClipboardDocumentCheckIcon className="w-7 h-7" style={{color: COLOR_2}} />
                   <span className="mt-1 text-base font-bold tracking-widest">
                     03
                   </span>
@@ -382,7 +383,7 @@ const Corporate = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7">Send</span>
+                  <PaperAirplaneIcon className="w-7 h-7" style={{color: COLOR_2}} />
                   <span className="mt-1 text-base font-bold tracking-widest">
                     04
                   </span>
@@ -407,13 +408,12 @@ const Corporate = ({ user, onLogout }) => {
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
                   height: "80px",
+                  background: COLOR_3
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7 text-[#002346]">
-                    Groups
-                  </span>
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
+                  <BriefcaseIcon className="w-7 h-7" style={{color: COLOR_2}} />
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
                     05
                   </span>
                 </div>
@@ -435,12 +435,12 @@ const Corporate = ({ user, onLogout }) => {
                 style={{
                   clipPath:
                     "polygon(26% 1%, 74% 1%, 100% 50%, 74% 99%, 26% 99%, 0% 50%)",
-                  width: "84px",
-                  height: "92px",
+                  width: "72px",
+                  height: "80px",
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7">Up</span>
+                  <SparklesIcon className="w-7 h-7" />
                   <span className="mt-1 text-base font-bold tracking-widest">
                     06
                   </span>
@@ -468,7 +468,7 @@ const Corporate = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="material-icons w-7 h-7">Sure</span>
+                  <Cog6ToothIcon className="w-7 h-7" />
                   <span className="mt-1 text-base font-bold tracking-widest">
                     07
                   </span>
@@ -622,7 +622,7 @@ const Corporate = ({ user, onLogout }) => {
           </div>
         </div>
       </section>
-      <Footer darkMode={darkMode} setDarkMode={setDarkMode}/>
+  <Footer darkMode={darkMode} setDarkMode={setDarkMode} bgColor="#F8F4E3" />
     </div>
   );
 };

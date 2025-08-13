@@ -116,7 +116,6 @@ const Criminal = ({ user, onLogout }) => {
         "Case review & legal road-map",
         "Actionable advice for next steps",
         "Monthly reports and full online access",
-        "*Fair use policy applies",
       ],
       buttonText: "Book Consult",
       buttonClass:
@@ -384,11 +383,12 @@ const Criminal = ({ user, onLogout }) => {
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
                   height: "80px",
+                  background: COLOR_3
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <DocumentDuplicateIcon className="w-7 h-7 text-[#002346]" />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
+                  <DocumentDuplicateIcon className="w-7 h-7 text-[#002346]" style={{color: COLOR_2}}/>
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
                     02
                   </span>
                 </div>
@@ -468,11 +468,12 @@ const Criminal = ({ user, onLogout }) => {
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
                   height: "80px",
+                  background: COLOR_3
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <BriefcaseIcon className="w-7 h-7 text-[#002346]" />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest">
+                  <BriefcaseIcon className="w-7 h-7 text-[#002346]" style={{color: COLOR_2}}/>
+                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
                     05
                   </span>
                 </div>
@@ -494,8 +495,8 @@ const Criminal = ({ user, onLogout }) => {
                 style={{
                   clipPath:
                     "polygon(26% 1%, 74% 1%, 100% 50%, 74% 99%, 26% 99%, 0% 50%)",
-                  width: "84px",
-                  height: "92px",
+                  width: "72px",
+                  height: "80px",
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">

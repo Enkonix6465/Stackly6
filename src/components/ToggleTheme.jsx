@@ -1,12 +1,12 @@
 // ToggleTheme.jsx
-import { useEffect, useState } from 'react';
-import { Sun, Moon } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { Sun, Moon } from "lucide-react";
 
 export default function ToggleTheme() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
+    document.documentElement.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
   return (

@@ -1,0 +1,1273 @@
+{
+  "corporate": {
+    "hero": {
+      "noVideoSupport": "Your browser does not support the video tag.",
+      "title": "Corporate Law",
+      "subtitle": "End-to-end legal support for all stages of corporate growth."
+    },
+    "benefit1": "End-to-end legal support for all stages of corporate growth",
+    "benefit2": "Meticulous contract review and drafting to protect your interests",
+    "benefit3": "Confidential guidance on mergers, acquisitions, and restructuring",
+    "benefit4": "Comprehensive compliance and governance advice",
+    "benefit5": "Risk management for directors, officers, and stakeholders",
+    "benefit6": "Proactive representation in regulatory and commercial disputes",
+    "benefits": {
+      "title": "Key Advantages",
+      "subtitle": "Mediation, arbitration, or litigation to resolve conflicts effectively",
+      "imageTitle": "Arbitration and Litigation.",
+      "imageSubtitle": "Get compassionate, effective solutions for even the most delicate matters."
+    },
+    "feature1": "Direct access to corporate law specialists",
+    "feature2": "Timely document review and turnaround",
+    "feature3": "Custom compliance checklists",
+    "feature4": "On-demand updates via our client portal",
+    "features": {
+      "title": "Why Choose Us for Corporate Law",
+      "subtitle": "Empowering your business with expert legal solutions tailored for the corporate world.",
+      "desc1": "Specialized Corporate Law Expertise: Our team brings years of experience advising companies on formation, governance, restructuring, and compliance with evolving regulations.",
+      "desc2": "Comprehensive Compliance Support: Stay ahead of legal obligations with proactive audits, risk assessments, and ongoing regulatory guidance for your business.",
+      "desc3": "Contract & Transactional Excellence: We draft, review, and negotiate contracts to protect your interests in every deal, merger, or acquisition.",
+      "benefit": "Benefit from {{feature}} as our corporate client."
+    },
+    "services": {
+      "title": "Corporate Services"
+    },
+    "service1": {
+      "title": "Business Formation & Structuring",
+      "desc": "Strategic guidance for incorporating companies, startups, partnerships, and joint ventures"
+    },
+    "service2": {
+      "title": "Contracts & Agreements",
+      "desc": "Drafting, negotiation, and review of commercial contracts, NDAs, employment agreements, and more"
+    },
+    "service3": {
+      "title": "Mergers & Acquisitions",
+      "desc": "Legal due diligence, transaction structuring, and regulatory filings for M&A deals"
+    },
+    "service4": {
+      "title": "Regulatory Compliance",
+      "desc": "Advice on company law, sectoral regulations, and ongoing compliance audits"
+    },
+    "service5": {
+      "title": "Shareholder Disputes",
+      "desc": "Expert representation and mediation in internal company or partnership disputes"
+    },
+    "service6": {
+      "title": "Corporate Governance",
+      "desc": "Board advisory, risk management, policy development, and compliance with listing rules"
+    },
+    "howWeWork": {
+      "title": "How We Work",
+      "subtitle": "Our 7-step process for handling your corporate legal needs with precision and expertise.",
+      "step1": {
+        "title": "Initial Consultation",
+        "desc": "Discuss your corporate goals, challenges, and legal requirements."
+      },
+      "step2": {
+        "title": "Document Review",
+        "desc": "Analyze contracts, company policies, compliance documents, and filings."
+      },
+      "step3": {
+        "title": "Legal Strategy",
+        "desc": "Develop a custom plan for transactions, compliance, or dispute resolution."
+      },
+      "step4": {
+        "title": "Drafting & Filings",
+        "desc": "Prepare, file, and serve corporate documents, agreements, and notices."
+      },
+      "step5": {
+        "title": "Negotiation & Representation",
+        "desc": "Advocate for your interests in negotiations, meetings, and regulatory hearings."
+      },
+      "step6": {
+        "title": "Ongoing Support",
+        "desc": "Regular updates and legal guidance throughout your corporate matter."
+      },
+      "step7": {
+        "title": "Completion & Next Steps",
+        "desc": "Finalize transactions, compliance, or dispute resolution and advise on future needs."
+      }
+    },
+    "pricing": {
+      "title": "Secure Your Corporate Advantage",
+      "subtitle": "Build and grow your company with expert legal partners by your side."
+    },
+    "pricing1": {
+      "title": "Consult",
+      "price": "$299",
+      "priceNote": "/session",
+      "feature1": "Consultation with a law expert",
+      "feature2": "Document review (up to 20 pages)",
+      "feature3": "Initial business appraisal & options",
+      "feature4": "Strategic recommendations",
+      "feature5": "Follow-up email support",
+      "buttonText": "Book Consult"
+    },
+    "pricing2": {
+      "title": "Annual Retainer",
+      "price": "$4,999",
+      "priceNote": "/year",
+      "feature1": "All Consult services",
+      "feature2": "Unlimited contract drafting & review",
+      "feature3": "Compliance audits & filings",
+      "feature4": "Board advisory & risk management",
+      "buttonText": "Contact Us",
+      "badge": "MOST POPULAR"
+    },
+    "pricing3": {
+      "title": "Full Corporate Support",
+      "price": "$9,999",
+      "priceNote": "/year",
+      "feature1": "End-to-end representation for all corporate matters",
+      "feature2": "M&A, restructuring, and dispute resolution",
+      "feature3": "Dedicated legal team & priority support",
+      "feature4": "Monthly strategy calls & reports",
+      "buttonText": "Start Now"
+    }
+  },
+  "civil": {
+    "hero": {
+      "noVideoSupport": "Your browser does not support the video tag.",
+      "title": "Civil Law",
+      "subtitle": "Experienced guidance from initiation to final resolution."
+    },
+    "benefit1": "Experienced guidance from initiation to final resolution",
+    "benefit2": "Thorough analysis of facts, documents, and legal strategy",
+    "benefit3": "Personalized representation tailored to your objectives",
+    "benefit4": "Clear and frequent client communication",
+    "benefit5": "Aggressive advocacy in negotiations and courtrooms",
+    "benefit6": "Experience in complex, high-stakes civil matters",
+    "benefits": {
+      "title": "Key Advantages",
+      "subtitle": "Diligent legal support for individuals, families, and businesses in any civil dispute or challenge.",
+      "imageTitle": "Your Rights. Our Focus.",
+      "imageSubtitle": "Dedicated, responsive lawyers—committed to securing the best civil outcome for you."
+    },
+    "feature1": "Direct access to civil law specialists",
+    "feature2": "Timely document review and turnaround",
+    "feature3": "Custom compliance checklists",
+    "feature4": "On-demand updates via our client portal",
+    "features": {
+      "title": "Our Client Features",
+      "subtitle": "Focused on justice and peace of mind for you.",
+      "desc1": "We combine deep courtroom experience with sensitivity and practical problem-solving.",
+      "desc2": "You can view case documents, timelines, and updates online, or call us for personalized support.",
+      "desc3": "Our team is available for urgent hearings, restraining orders, and last-minute filings.",
+      "desc4": "Every question is answered with compassion, speed, and clarity.",
+      "benefit": "Benefit from {{feature}} as our civil client."
+    },
+    "services": {
+      "title": "Civil Services"
+    },
+    "service1": {
+      "title": "Dispute Resolution",
+      "desc": "Litigation and Alternate Dispute Resolution (ADR) including mediation and arbitration for civil and commercial claims."
+    },
+    "service2": {
+      "title": "Property & Real Estate Disputes",
+      "desc": "Boundary disputes, title actions, landlord-tenant matters, and partition suits handled by experts."
+    },
+    "service3": {
+      "title": "Contractual Claims",
+      "desc": "Enforcement of contracts, damages, specific performance, and breach of contract representation."
+    },
+    "service4": {
+      "title": "Consumer Protection",
+      "desc": "Filing and defending consumer cases before forums and commissions."
+    },
+    "service5": {
+      "title": "Injunctions & Interim Relief",
+      "desc": "Speedy action to prevent harm through temporary restraining orders, stays, and interim breaches."
+    },
+    "service6": {
+      "title": "Execution, Appeals, & Enforcement",
+      "desc": "Recovery of decrees and post-judgment enforcement, as well as appellate litigation."
+    },
+    "howWeWork": {
+      "title": "How We Work",
+      "subtitle": "Our 7-step process to pursue your civil legal matters thoroughly and efficiently.",
+      "step1": {
+        "title": "Consultation",
+        "desc": "Understand your dispute, rights, and legal options in a confidential session."
+      },
+      "step2": {
+        "title": "Detailed Case Review",
+        "desc": "Assess evidence, contracts, communications, and other relevant documents."
+      },
+      "step3": {
+        "title": "Legal Strategy",
+        "desc": "Develop a tailored legal plan: negotiation, mediation, or formal litigation."
+      },
+      "step4": {
+        "title": "Filing & Communications",
+        "desc": "Draft, file, and serve legal documents; maintain clear communication throughout."
+      },
+      "step5": {
+        "title": "Advocacy & Hearings",
+        "desc": "Represent your interests in negotiations, ADR, and court hearings."
+      },
+      "step6": {
+        "title": "Progress Updates",
+        "desc": "Ongoing status reports and legal support at each stage."
+      },
+      "step7": {
+        "title": "Resolution & Next Steps",
+        "desc": "Final court outcome, enforcement, and assistance after judgment, if needed."
+      }
+    },
+    "pricing": {
+      "title": "Secure Justice In Your Civil Matter",
+      "subtitle": "Get a fair chance, knowledgeable advocacy, and peace of mind—with us."
+    },
+    "pricing1": {
+      "title": "Consult",
+      "price": "$199",
+      "priceNote": "/session",
+      "feature1": "Consultation with a civil law expert",
+      "feature2": "Document review (up to 20 pages)",
+      "feature3": "Initial case appraisal & options",
+      "buttonText": "Book Consult"
+    },
+    "pricing2": {
+      "title": "Full Litigation",
+      "price": "$2,499",
+      "priceNote": "/case",
+      "feature1": "End-to-end representation through trial and judgment",
+      "feature2": "All court appearances",
+      "feature3": "Drafting, filing & processing suit or response",
+      "feature4": "Settlement/ADR attempt included",
+      "buttonText": "Contact Us",
+      "badge": "MOST POPULAR"
+    },
+    "pricing3": {
+      "title": "Appeals & Enforcement",
+      "price": "$1,499",
+      "priceNote": "/case",
+      "feature1": "Appellate litigation",
+      "feature2": "Enforcement of decrees",
+      "feature3": "Post-judgment representation",
+      "feature4": "Urgent interim reliefs",
+      "buttonText": "Start Now"
+    }
+  },
+  "realestate": {
+    "hero": {
+      "noVideoSupport": "Your browser does not support the video tag.",
+      "title": "Real Estate Law",
+      "subtitle": "Comprehensive legal support for property buyers, sellers, and investors."
+    },
+    "benefit1": "Comprehensive support for property buyers, sellers, and investors",
+    "benefit2": "Meticulous due diligence on title, zoning, and compliance",
+    "benefit3": "Protection from real estate fraud and defective transactions",
+    "benefit4": "Smooth closings with minimal hassle and maximum clarity",
+    "benefit5": "Strong negotiation skills for contracts and disputes",
+    "benefit6": "Experience in both residential and commercial real estate matters",
+    "benefits": {
+      "title": "Key Advantages",
+      "subtitle": "The clarity and protection you need for all property and real estate matters.",
+      "imageTitle": "Your Property. Our Priority.",
+      "imageSubtitle": "From buying and selling to disputes, our team secures every step of your real estate journey."
+    },
+    "feature1": "Fast document review and processing",
+    "feature2": "Online updates on every step of your matter",
+    "feature3": "Access to secure portal for all deeds and reports",
+    "feature4": "24/7 attention to urgent property issues",
+    "features": {
+      "title": "Our Client Features",
+      "subtitle": "Real estate law, streamlined for you.",
+      "desc1": "We deliver fast, detail-oriented legal help for real estate buyers, sellers, and landlords.",
+      "desc2": "Enjoy secure uploads and downloads of contracts and reports through our client portal.",
+      "desc3": "Get alerts for deadlines, closings, and regulatory requirements on your phone or email.",
+      "desc4": "Always have a property law expert on your side for emergencies or urgent opinions.",
+      "benefit": "Benefit from {{feature}} as our real estate client."
+    },
+    "services": {
+      "title": "Real Estate Services"
+    },
+    "service1": {
+      "title": "Purchase & Sale Transactions",
+      "desc": "Review, negotiation, and preparation of sale deeds, purchase agreements, and closing documents."
+    },
+    "service2": {
+      "title": "Title Search & Due Diligence",
+      "desc": "Thorough investigation of title, encumbrances, and legal compliance before any property transfer."
+    },
+    "service3": {
+      "title": "Leasing & Tenancy Agreements",
+      "desc": "Drafting, review, and enforcement of residential and commercial lease agreements."
+    },
+    "service4": {
+      "title": "Property Disputes & Litigation",
+      "desc": "Boundary disputes, specific performance, and legal representation in property-related lawsuits."
+    },
+    "service5": {
+      "title": "Development & Construction",
+      "desc": "Advisory for developers on RERA, land acquisition, and regulatory permissions."
+    },
+    "service6": {
+      "title": "Condominium & Association Law",
+      "desc": "Support for owners and associations on by-laws, compliance, and dispute resolution."
+    },
+    "howWeWork": {
+      "title": "How We Work",
+      "subtitle": "Our 7-step process to guide you through your real estate journey.",
+      "step1": {
+        "title": "Consultation",
+        "desc": "Schedule an initial consultation to discuss your property goals and legal needs."
+      },
+      "step2": {
+        "title": "Document Review",
+        "desc": "Review property documents, titles, and legal requirements."
+      },
+      "step3": {
+        "title": "Due Diligence",
+        "desc": "Conduct thorough title search and property investigation."
+      },
+      "step4": {
+        "title": "Transaction",
+        "desc": "Handle purchase agreements, contracts, and closing documents."
+      },
+      "step5": {
+        "title": "Negotiation",
+        "desc": "Negotiate terms, resolve disputes, and protect your interests."
+      },
+      "step6": {
+        "title": "Closing",
+        "desc": "Facilitate smooth closing and property transfer process."
+      },
+      "step7": {
+        "title": "Protection",
+        "desc": "Ongoing legal support and protection for your property investment."
+      }
+    },
+    "pricing": {
+      "title": "Secure Your Next Move in Real Estate",
+      "subtitle": "Trusted guidance for every transaction, dispute, and development."
+    },
+    "pricing1": {
+      "title": "Consult",
+      "price": "$199",
+      "priceNote": "/property",
+      "feature1": "30-min session with a property lawyer",
+      "feature2": "Quick title, compliance, or agreement check",
+      "feature3": "Actionable next steps for buyers/sellers",
+      "feature4": "Email support for 1 week after consult",
+      "buttonText": "Book Consult"
+    },
+    "pricing2": {
+      "title": "Transaction Pack",
+      "price": "$1,299",
+      "priceNote": "/deal",
+      "feature1": "All Consult services",
+      "feature2": "Drafting/Review of all deeds and agreements",
+      "feature3": "Liaison with banks and authorities",
+      "feature4": "Representation at registry/closing",
+      "buttonText": "Contact Us",
+      "badge": "MOST POPULAR"
+    },
+    "pricing3": {
+      "title": "Full Litigation",
+      "price": "$2,799",
+      "priceNote": "/case",
+      "feature1": "Representation for property disputes through final order",
+      "feature2": "All hearings, documentation, and filings",
+      "feature3": "Settlement negotiations and mediation",
+      "feature4": "Monthly updates from your legal team",
+      "buttonText": "Start Now"
+    }
+  },
+  "criminal": {
+    "hero": {
+      "title": "Criminal Law",
+      "subtitle": "Expert representation at every stage of criminal proceedings.",
+      "noVideoSupport": "Your browser does not support the video tag."
+    },
+    "benefits": {
+      "title": "Key Advantages",
+      "subtitle": "Committed to upholding your rights and delivering justice at every turn.",
+      "imageTitle": "Your Defense. Our Priority.",
+      "imageSubtitle": "Experience client-first criminal law representation designed to achieve the best results for your case."
+    },
+    "benefit1": "Expert representation at every stage of criminal proceedings",
+    "benefit2": "Thorough case analysis and evidence gathering",
+    "benefit3": "Confidential and strategic legal advice",
+    "benefit4": "Aggressive defense against prosecution",
+    "benefit5": "Guidance on plea bargains and settlement options",
+    "benefit6": "Support and advocacy in bail hearings",
+    "services": {
+      "title": "Criminal Law Services"
+    },
+    "service1": {
+      "title": "Bail & Remand Hearings",
+      "desc": "Swift intervention for bail applications, minimizing custody time and protecting your rights"
+    },
+    "service2": {
+      "title": "Pre-Charge Consultations",
+      "desc": "Early legal guidance for individuals under investigation"
+    },
+    "service3": {
+      "title": "Trial Defense",
+      "desc": "Meticulous trial preparation and robust advocacy in court"
+    },
+    "service4": {
+      "title": "Appeals & Post-Conviction",
+      "desc": "Challenging verdicts and sentences, seeking justice through the appellate courts"
+    },
+    "service5": {
+      "title": "White-Collar Crime",
+      "desc": "Specialized defense for fraud, embezzlement, and regulatory offenses"
+    },
+    "service6": {
+      "title": "Juvenile Criminal Defense",
+      "desc": "Protection and advocacy for minors facing criminal charges"
+    },
+    "howWeWork": {
+      "title": "How We Work",
+      "subtitle": "Our streamlined 7-step process ensures a strong and proactive criminal defense.",
+      "step1": {
+        "title": "Initial Consultation",
+        "desc": "Private session to discuss the alleged offense, your rights, and initial concerns."
+      },
+      "step2": {
+        "title": "Case Assessment",
+        "desc": "Thoroughly review FIRs, police reports, witness statements, and all prosecution evidence."
+      },
+      "step3": {
+        "title": "Defense Strategy",
+        "desc": "Develop a defense plan—anticipate prosecution steps, identify weaknesses, and prepare motions."
+      },
+      "step4": {
+        "title": "Filing & Representation",
+        "desc": "File necessary applications: bail, anticipatory bail, or discharge, and begin court representation."
+      },
+      "step5": {
+        "title": "Hearings & Trial",
+        "desc": "Advocate in court—cross-examine witnesses, present evidence, and challenge prosecution claims."
+      },
+      "step6": {
+        "title": "Updates & Guidance",
+        "desc": "Provide regular updates, explain legal proceedings, and offer counsel at every stage."
+      },
+      "step7": {
+        "title": "Resolution & Appeals",
+        "desc": "Court decision—assist with bail, sentencing, appeals, or expungement where necessary."
+      }
+    },
+    "features": {
+      "title": "Our Client Features",
+      "subtitle": "Empowering clients at every stage.",
+      "desc1": "Our practice delivers tailored criminal defense backed by in-depth legal knowledge, courtroom experience, and personalized attention.",
+      "desc2": "Receive regular updates and have your questions answered promptly, so you're never left in the dark about your case.",
+      "desc3": "Access our secure client portal for all your documents, case calendars, and direct attorney messaging.",
+      "desc4": "We stand by you, whether you need an immediate bail application or representation in a complex trial.",
+      "feature1": "Direct access to senior attorneys",
+      "feature2": "24/7 client helpline",
+      "feature3": "Case status updates on our secure portal",
+      "feature4": "Comprehensive case documentation",
+      "benefit": "Benefit from {{feature}} as a valued client."
+    },
+    "pricing": {
+      "title": "Secure Your Defense Now",
+      "subtitle": "No matter the charge, our team is ready to protect your future."
+    },
+    "pricing1": {
+      "title": "Consult",
+      "price": "$199",
+      "priceNote": "/session",
+      "feature1": "Single consultation with a senior lawyer",
+      "feature2": "Case review & legal road-map",
+      "feature3": "Actionable advice for next steps",
+      "feature4": "Monthly reports and full online access",
+      "buttonText": "Book Consult"
+    },
+    "pricing2": {
+      "title": "Standard Defense",
+      "price": "$1,299",
+      "priceNote": "/case (initial)",
+      "feature1": "All features from Consult",
+      "feature2": "Representation at investigation & bail",
+      "feature3": "Detailed evidence review & strategy",
+      "feature4": "Preparation for trial (up to 2 hearings)",
+      "buttonText": "Contact Us",
+      "badge": "MOST POPULAR"
+    },
+    "pricing3": {
+      "title": "Comprehensive Defense",
+      "price": "$2,999",
+      "priceNote": "/case",
+      "feature1": "Full representation through trial",
+      "feature2": "Post-conviction motions & appeals",
+      "feature3": "24/7 access to legal team",
+      "feature4": "Weekly case status reports",
+      "buttonText": "Start Now"
+    }
+  },
+  "immigration": {
+    "hero": {
+      "title": "Immigration Law",
+      "subtitle": "Experienced support through every immigration stage.",
+      "noVideoSupport": "Your browser does not support the video tag."
+    },
+    "benefits": {
+      "title": "Key Advantages",
+      "subtitle": "Comprehensive immigration solutions for individuals, families, and employers.",
+      "imageTitle": "Your Future. Our Commitment.",
+      "imageSubtitle": "We guide you through the complex world of immigration with care and expertise."
+    },
+    "benefit1": "Experienced support through every immigration stage",
+    "benefit2": "Document preparation and review to minimize refusals",
+    "benefit3": "Latest knowledge on law and policy changes",
+    "benefit4": "Advocacy in appeals, hearings, and consular processes",
+    "benefit5": "Personalized strategy for every unique case",
+    "benefit6": "Transparent communication at every step",
+    "services": {
+      "title": "Immigration Services"
+    },
+    "service1": {
+      "title": "Visa Applications",
+      "desc": "Preparation and submission of visitor, student, work, and business visa applications."
+    },
+    "service2": {
+      "title": "Permanent Residency & Green Cards",
+      "desc": "End-to-end handling of PR, green card, and family/class-based sponsorship applications."
+    },
+    "service3": {
+      "title": "Citizenship & Naturalization",
+      "desc": "Expert assistance with applications, interviews, and documentation for citizenship."
+    },
+    "service4": {
+      "title": "Deportation Defense & Appeals",
+      "desc": "Representation in immigration court, appeals, and challenging removal orders."
+    },
+    "service5": {
+      "title": "Employer & Sponsorship Solutions",
+      "desc": "Support for companies and individuals with LMIA, sponsorships, and compliance."
+    },
+    "service6": {
+      "title": "Humanitarian & Refugee Cases",
+      "desc": "Applications for asylum, protected person status, and other humanitarian programs."
+    },
+    "howWeWork": {
+      "title": "How We Work",
+      "subtitle": "Our 7-step process to guide you on your immigration journey.",
+      "step1": {
+        "title": "Consultation",
+        "desc": "Schedule an initial confidential consultation to discuss your plans."
+      },
+      "step2": {
+        "title": "Document Preparation",
+        "desc": "Prepare and organize necessary documentation."
+      },
+      "step3": {
+        "title": "Checklist",
+        "desc": "Get a tailored document checklist for your application."
+      },
+      "step4": {
+        "title": "Submission",
+        "desc": "File your full immigration application."
+      },
+      "step5": {
+        "title": "Representation",
+        "desc": "We liaise and represent you with authorities as needed."
+      },
+      "step6": {
+        "title": "Track & Support",
+        "desc": "Track the process and respond to requests."
+      },
+      "step7": {
+        "title": "Resolution",
+        "desc": "Final decision and next steps—ongoing legal support, if needed."
+      }
+    },
+    "features": {
+      "title": "Our Client Features",
+      "subtitle": "Clarity and support for a truly global clientele.",
+      "desc1": "We serve clients from all backgrounds, languages, and countries.",
+      "desc2": "Track your case from anywhere in the world, 24/7.",
+      "desc3": "Get reminders and recommendations long before key deadlines.",
+      "desc4": "Your privacy and goals—always our first priority.",
+      "feature1": "Experienced support through every immigration stage",
+      "feature2": "Document preparation and review to minimize refusals",
+      "feature3": "Latest knowledge on law and policy changes",
+      "feature4": "Advocacy in appeals, hearings, and consular processes",
+      "benefit": "Benefit from {{feature}} as our immigration client."
+    },
+    "pricing": {
+      "title": "Take the Next Step—Begin Your Immigration Journey",
+      "subtitle": "Expert support for dreams, reunification, and new beginnings—worldwide."
+    },
+    "pricing1": {
+      "title": "Full Representation",
+      "price": "$2,199",
+      "priceNote": "/case",
+      "feature1": "Representation in hearings and appeals",
+      "feature2": "Unlimited attorney communication*",
+      "feature3": "Emergency support and resubmissions",
+      "feature4": "Monthly reports and full online access",
+      "feature5": "*Fair use policy applies",
+      "buttonText": "Start Now"
+    },
+    "pricing2": {
+      "title": "Case Filing",
+      "price": "$849",
+      "priceNote": "/case (initial)",
+      "feature1": "All Consult services",
+      "feature2": "Drafting, filing & processing suit or response",
+      "feature3": "Representation at first hearing",
+      "feature4": "Settlement/ADR attempt included",
+      "buttonText": "Contact Us",
+      "badge": "MOST POPULAR"
+    },
+    "pricing3": {
+      "title": "Full Litigation",
+      "price": "$2,499",
+      "priceNote": "/case",
+      "feature1": "End-to-end representation through trial and judgment",
+      "feature2": "All court appearances",
+      "feature3": "Drafting of all motions, written statements, affidavits",
+      "feature4": "Monthly progress calls & reports",
+      "buttonText": "Start Now"
+    }
+  },
+  "blogPage": {
+    "hero": {
+      "title": "Legal Insights & Updates",
+      "subtitle": "News, legal guides, and expert tips from our attorneys helping you stay informed and empowered."
+    },
+    "readMore": "Read More",
+    "posts": [
+      {
+        "title": "Understanding Your Rights When Arrested",
+        "date": "August 1, 2025",
+        "excerpt": "Being arrested can be overwhelming. Learn the crucial rights every citizen should know and how to protect yourself legally...",
+        "author": "Adv. Priya Sinha"
+      },
+      {
+        "title": "The Bail Application Process: What to Expect",
+        "date": "July 24, 2025",
+        "excerpt": "Need help with bail? We break down the step-by-step process and offer tips for best outcomes at your first hearing...",
+        "author": "Adv. Rahul Mohanty"
+      },
+      {
+        "title": "White-Collar Crime: Common Defenses Explained",
+        "date": "July 15, 2025",
+        "excerpt": "White-collar charges are complex. Explore the most effective legal defenses for fraud, embezzlement, and regulatory offences.",
+        "author": "Adv. Sneha Nair"
+      }
+    ],
+    "suggestionsTitle": "How to Prepare if You Face a Crime Situation",
+    "suggestions": [
+      {
+        "title": "Prepare for Arrest",
+        "description": "Know your rights clearly: remain silent, ask for a lawyer, and avoid signing anything without legal advice."
+      },
+      {
+        "title": "Bail Application",
+        "description": "Gather all case-related documents in advance and maintain communication with your attorney to streamline the bail process."
+      },
+      {
+        "title": "White-Collar Crime Defense",
+        "description": "Collect evidence and financial records meticulously to build a strong defense against allegations like fraud or embezzlement."
+      },
+      {
+        "title": "Dealing with Domestic Violence",
+        "description": "Reach out to legal help immediately and document incidents properly for stronger protection and legal action."
+      },
+      {
+        "title": "Cybercrime Preparedness",
+        "description": "Secure digital accounts, keep backups of important data, and report suspicious activity promptly for timely legal intervention."
+      },
+      {
+        "title": "Handling Cyberbullying",
+        "description": "Document incidents thoroughly, avoid direct confrontation, and consult legal professionals for protection and remedies."
+      }
+    ],
+    "precautionsTitle": "Precautions by Age Group",
+    "precautions": {
+      "below18Title": "Below 18 Age",
+      "adultsTitle": "Adults",
+      "seniorCitizensTitle": "Senior Citizens",
+      "below18": [
+        "Inform parents or guardians about suspicious situations.",
+        "Avoid sharing personal information online.",
+        "Be cautious of strangers both online and offline.",
+        "Know emergency contact numbers."
+      ],
+      "adults": [
+        "Use secure passwords and two-factor authentication online.",
+        "Always carry identification documents when outside.",
+        "Be aware of your surroundings and avoid risky areas.",
+        "Seek legal advice immediately if suspected of crime involvement."
+      ],
+      "seniorCitizens": [
+        "Avoid sharing financial information with unknown persons.",
+        "Use trusted contacts for errands and travels.",
+        "Install home security systems or alarms.",
+        "Report scams or suspicious calls to authorities promptly."
+      ]
+    },
+    "supremeCourt": {
+      "title": "Supreme Court of India: Know the Facts",
+      "fact1": "The Supreme Court of India is the highest judicial authority and was established on January 28, 1950.",
+      "fact2": "It is located at Tilak Marg, New Delhi, and its iconic building features a distinctive dome inspired by the Temple of the Vedic gods.",
+      "fact3": "As of August 2025, Justice D.Y. Chandrachud is the Chief Justice of India.",
+      "fact4": "The Court comprises the Chief Justice and up to 33 other judges; appointments are made by the President of India."
+    },
+    "quizTitle": "Test Your Legal Knowledge",
+    "quiz": [
+      {
+        "question": "Which article of the Indian Constitution guarantees the right to equality?",
+        "options": [
+          "A. Article 14",
+          "B. Article 19",
+          "C. Article 21",
+          "D. Article 32"
+        ]
+      },
+      {
+        "question": "What is the minimum age for marriage for women in India?",
+        "options": ["A. 16 years", "B. 18 years", "C. 21 years", "D. 25 years"]
+      },
+      {
+        "question": "Which law deals with the punishment of criminal offences in India?",
+        "options": [
+          "A. Indian Penal Code",
+          "B. Code of Civil Procedure",
+          "C. Indian Evidence Act",
+          "D. Companies Act"
+        ]
+      },
+      {
+        "question": "Who is the head of the judiciary in India?",
+        "options": [
+          "A. President of India",
+          "B. Chief Justice of India",
+          "C. Prime Minister",
+          "D. Attorney General"
+        ]
+      },
+      {
+        "question": "What is the jail term for money laundering?",
+        "options": [
+          "A. 3-4 years",
+          "B. 4-5 years",
+          "C. 5-6 years",
+          "D. 6-7 years"
+        ]
+      }
+    ],
+    "quizResult": {
+      "title": "Quiz Result",
+      "score": "You scored {{score}} out of {{total}}!",
+      "tryAgain": "Try Again",
+      "correct": "Correct! Well done.",
+      "incorrect": "Incorrect. The correct answer is: {{answer}}",
+      "prev": "← Previous",
+      "next": "Next →",
+      "finish": "Finish"
+    }
+  },
+  "rights": {
+    "title": "Understanding Your Rights When Arrested",
+    "author": "Adv. Priya Sinha",
+    "date": "August 1, 2025",
+    "intro1": "Being arrested can be overwhelming. It’s crucial to understand the fundamental rights you have to protect yourself legally and ensure fair treatment.",
+    "intro2": "Every citizen has the right to remain silent to avoid self-incrimination, the right to legal counsel before any interrogation, and protection from unlawful searches and seizures.",
+    "silentTitle": "Right to Remain Silent",
+    "silentText": "You are not obligated to answer questions from police officers without an attorney present. Anything you say can be used against you in court.",
+    "counselTitle": "Right to Legal Counsel",
+    "counselText": "Ask for a lawyer immediately upon detention or arrest. If you cannot afford one, the court must provide an attorney for you free of cost.",
+    "searchTitle": "Protection from Unlawful Searches",
+    "searchText": "Police generally need a warrant to search your property or person. Be aware that certain exceptions apply, but understanding your rights here can prevent illegal evidence from being used against you.",
+    "otherTitle": "Other Important Considerations",
+    "other1": "Do not resist arrest, even if you believe it is unlawful.",
+    "other2": "Memorize or write down the officers’ badge numbers and names.",
+    "other3": "Request medical attention if needed without delay.",
+    "outro": "If you or a loved one is arrested, contact our legal team immediately for trustworthy and expert assistance. Quick action can safeguard your rights and improve outcomes.",
+    "back": "Back"
+  },
+  "bail": {
+    "pageTitle": "The Bail Application Process: What to Expect | Verdict Law",
+    "title": "The Bail Application Process: What to Expect",
+    "author": "Adv. Rahul Mohanty",
+    "date": "July 24, 2025",
+    "intro": "Navigating the bail application process can be stressful and confusing. Understanding each step, your rights, and what to expect can help you secure the best possible outcome.",
+    "whatIsTitle": "What is Bail?",
+    "whatIsText": "Bail is a legal mechanism allowing a detained individual to be released from custody, usually under certain conditions, until their trial date. Bail amounts and conditions vary based on the offense and other factors.",
+    "hearingTitle": "The Bail Hearing",
+    "hearingText": "Soon after arrest, a bail hearing is conducted where the court decides whether to grant bail and under what conditions. Your legal representative will advocate for your release by presenting arguments and evidence.",
+    "factorsTitle": "Factors Courts Consider",
+    "factors": [
+      "Severity and nature of the offense",
+      "Likelihood of fleeing or tampering with evidence",
+      "Criminal history and community ties",
+      "Risk to public safety"
+    ],
+    "conditionsTitle": "Bail Conditions",
+    "conditionsText": "If granted, bail may include conditions like regular check-ins, travel restrictions, or surrendering passports. Non-compliance can lead to revocation of bail and re-arrest.",
+    "tipsTitle": "Tips for a Successful Bail Application",
+    "tips": [
+      "Engage experienced legal counsel immediately",
+      "Prepare strong arguments highlighting your ties to the community",
+      "Provide character references and proof of stable residence or employment",
+      "Be honest and cooperative during hearings"
+    ],
+    "outro": "Our skilled legal team is ready to guide you through the bail process with effective strategies and dedicated representation. Contact us promptly to discuss your case.",
+    "back": "Back"
+  },
+  "whiteCollar": {
+    "title": "White-Collar Crime: Common Defenses Explained",
+    "author": "Adv. Sneha Nair",
+    "date": "July 15, 2025",
+    "intro": "White-collar crime charges are complex and require expert legal defense strategies. Understanding common defenses can help protect your rights and freedom.",
+    "understandingTitle": "Understanding White-Collar Crimes",
+    "understandingText": "These offenses typically involve non-violent financial crimes such as fraud, embezzlement, money laundering, or regulatory violations. The stakes are often high, with significant penalties.",
+    "defensesTitle": "Common Defenses",
+    "defenses": [
+      {
+        "title": "Lack of Intent:",
+        "text": "Proving the accused did not knowingly or deliberately commit the offense."
+      },
+      {
+        "title": "Insufficient Evidence:",
+        "text": "Challenging the prosecution's proof and highlighting reasonable doubt."
+      },
+      {
+        "title": "Procedural Errors:",
+        "text": "Identifying violations in investigation or arrest that may invalidate evidence."
+      },
+      {
+        "title": "Reliance on Expert Advice:",
+        "text": "Demonstrating compliance based on advice from legal or financial experts."
+      },
+      {
+        "title": "Statute of Limitations:",
+        "text": "Arguing the case was filed after the legally allowed time frame."
+      }
+    ],
+    "importanceTitle": "Importance of Skilled Legal Representation",
+    "importanceText": "White-collar crime cases are often technically and legally nuanced. An experienced attorney will conduct a thorough investigation, identify weaknesses in the prosecution’s case, and craft a strategic defense tailored to your situation.",
+    "outro": "If you face allegations of white-collar crime, promptly consult with our legal team to ensure your rights are robustly protected throughout the legal process.",
+    "back": "Back"
+  },
+  "contactPage": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "We're here to help reach out for legal advice, appointments, or urgent support."
+    },
+    "reachTitle": "Ways to Reach Us",
+    "emailTitle": "Email",
+    "email": "mail@enkonix.com",
+    "phoneTitle": "Phone",
+    "phone": "+91-90000-12345",
+    "whatsappTitle": "WhatsApp",
+    "whatsapp": "+91-90001-45678",
+    "formTitle": "Send Us a Message",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "Your Name",
+      "email": "Mail",
+      "emailPlaceholder": "Your Email",
+      "phone": "Phone",
+      "phonePlaceholder": "Your Phone",
+      "message": "Message",
+      "messagePlaceholder": "Type your message",
+      "send": "Send Message",
+      "success": "Message sent successfully!"
+    },
+    "officesTitle": "Our Offices",
+    "officesPhone": "Phone",
+    "officesMap": "(Map & directions available upon request)",
+    "locations": [
+      {
+        "city": "Mumbai",
+        "address": "12 Justice Lane, Fort, Mumbai 400001",
+        "phone": "+91-22-5555-1212"
+      },
+      {
+        "city": "Delhi",
+        "address": "220A, Barakhamba Road, Connaught Place, New Delhi 110001",
+        "phone": "+91-11-4433-2211"
+      },
+      {
+        "city": "Bengaluru",
+        "address": "7 Law Street, Indiranagar, Bengaluru 560038",
+        "phone": "+91-80-5577-8899"
+      }
+    ],
+    "faqTitle": "Frequently Asked Questions",
+    "faq": [
+      {
+        "question": "What wellness programs do you offer?",
+        "answer": "We offer comprehensive wellness programs including nutrition coaching, fitness training, mindfulness sessions, stress management, and sleep optimization. Each program is personalized to meet your specific health goals and lifestyle needs."
+      },
+      {
+        "question": "How long does it take to see results?",
+        "answer": "Results vary by individual and program, but most clients begin to notice improvements within a few weeks of consistent participation."
+      },
+      {
+        "question": "What is included in a wellness consultation?",
+        "answer": "A wellness consultation includes a comprehensive assessment of your health, lifestyle, and goals, followed by a personalized plan and recommendations."
+      },
+      {
+        "question": "Do you offer virtual wellness sessions?",
+        "answer": "Yes, we offer both in-person and virtual sessions to accommodate your preferences and schedule."
+      }
+    ]
+  },
+  "adminDashboard": {
+    "userLoginActivity": "User Login Activity",
+    "totalRegisteredUsers": "Total Registered Users",
+    "table": {
+      "email": "Email",
+      "name": "Name",
+      "role": "Role",
+      "time": "Time",
+      "date": "Date",
+      "event": "Event"
+    },
+    "noUserLogins": "No user logins or signups yet.",
+    "signup": "Signup",
+    "login": "Login",
+    "financial": {
+      "draftBills": "Draft Bills",
+      "totalInDraft": "Total in Draft",
+      "unpaidBills": "Unpaid Bills",
+      "overdueBills": "Overdue Bills",
+      "totalInOverdue": "Total in Overdue"
+    },
+    "firmOverview": "Firm Overview",
+    "currentTime": "Current Time: {{percent}}",
+    "firmOverviewTotal": "{{total}} total | {{billable}} Billable",
+    "clientsLocations": "Clients Locations",
+    "active": "Active",
+    "nonActive": "Non-active",
+    "billableByCountry": "Billable by Country",
+    "billableDiscounted": "{{amount}} billable discounted",
+    "recentInvoices": "Recent Invoices",
+    "invoiceTable": {
+      "clientName": "Client Name",
+      "status": "Status",
+      "paid": "Paid",
+      "pending": "Pending",
+      "unpaid": "Unpaid"
+    },
+    "stats": {
+      "totalMatters": "Total Matters",
+      "closedMatters": "Closed Matters",
+      "clientsInvolved": "Clients Involved"
+    }
+  },
+  "home": "Home",
+  "family.heroTitle": "Compassionate Family Law Services",
+  "family.heroSubtitle": "Navigating Family Challenges with Care and Expertise",
+  "family.featuresTitle": "Key Features of Our Family Law Services",
+  "family.features": [
+    "Personalized legal strategies for every family situation",
+    "Confidential and compassionate client support",
+    "Expertise in complex family law matters",
+    "Clear communication and regular updates"
+  ],
+  "family.benefitsTitle": "Why Choose Us for Family Law?",
+  "family.benefits": [
+    "Experienced family law attorneys",
+    "Holistic approach to dispute resolution",
+    "Support through every step of the legal process",
+    "Proven track record in family law cases",
+    "Child-centric focus in custody and support cases",
+    "Skilled mediation to resolve disputes"
+  ],
+  "family.priorityDesc": "Our family law practice is built on a foundation of empathy, integrity, and a commitment to achieving the best outcomes for our clients. We prioritize open communication, personalized attention, and a thorough understanding of each client's unique needs.",
+  "family.servicesTitle": "Our Family Law Services",
+  "family.services": [
+    {
+      "title": "Divorce and Separation",
+      "description": "Compassionate support and expert guidance through the divorce process."
+    },
+    {
+      "title": "Child Custody and Visitation",
+      "description": "Protecting your parental rights and ensuring the best interests of your child."
+    },
+    {
+      "title": "Adoption and Guardianship",
+      "description": "Navigating the legal complexities of adoption and guardianship with care."
+    },
+    {
+      "title": "Domestic Violence Cases",
+      "description": "Providing legal protection and support for victims of domestic violence."
+    },
+    {
+      "title": "Spousal and Child Maintenance",
+      "description": "Ensuring fair and adequate support arrangements for your family."
+    },
+    {
+      "title": "Prenuptial and Postnuptial Agreements",
+      "description": "Drafting agreements to protect your assets and clarify expectations."
+    }
+  ],
+  "family.featuresDesc": "Our family law services are designed to address the unique challenges faced by families. We offer compassionate support, expert guidance, and a commitment to achieving the best possible outcomes for our clients.",
+  "family.features.0desc": "Personalized legal strategies for every family situation.",
+  "family.features.1desc": "Confidential and compassionate client support.",
+  "family.features.2desc": "Expertise in complex family law matters.",
+  "family.features.3desc": "Clear communication and regular updates.",
+  "family.priorityTitle": "Our Family Law Priorities",
+  "family.howItWorksTitle": "How Our Family Law Process Works",
+  "family.howItWorksDesc": "A step-by-step guide to our approach for resolving your family law matters with care and expertise.",
+  "family.howItWorks.0.title": "Initial Consultation",
+  "family.howItWorks.0.desc": "Meet with our family law experts to discuss your unique situation and goals.",
+  "family.howItWorks.1.title": "Document Review",
+  "family.howItWorks.1.desc": "We analyze all relevant documents and information to build your case.",
+  "family.howItWorks.2.title": "Strategy Planning",
+  "family.howItWorks.2.desc": "Develop a personalized legal strategy tailored to your needs.",
+  "family.howItWorks.3.title": "Filing & Communication",
+  "family.howItWorks.3.desc": "We handle all filings and keep you informed at every stage.",
+  "family.howItWorks.4.title": "Negotiation",
+  "family.howItWorks.4.desc": "Pursue amicable solutions through negotiation and mediation.",
+  "family.howItWorks.5.title": "Court Representation",
+  "family.howItWorks.5.desc": "Strong advocacy and representation in court if needed.",
+  "family.howItWorks.6.title": "Resolution & Support",
+  "family.howItWorks.6.desc": "Achieve resolution and ongoing support for your family’s future.",
+  "family.pricing.0.title": "Transparent Pricing",
+  "family.pricing.0.price": "$200/hour",
+  "family.pricing.0.priceNote": "No hidden fees or surprises — just straightforward legal support.",
+  "family.pricing.0.features.0": "Initial consultation included.",
+  "family.pricing.0.features.1": "Flexible payment plans available.",
+  "family.pricing.0.features.2": "Regular updates on billing and expenses.",
+  "family.pricing.0.buttonText": "Get Started",
+  "family.pricing.1.title": "Flexible Pricing",
+  "family.pricing.1.price": "$150/hour",
+  "family.pricing.1.priceNote": "Ideal for clients seeking more budget-friendly options.",
+  "family.pricing.1.features.0": "Initial consultation included.",
+  "family.pricing.1.features.1": "Flexible payment plans available.",
+  "family.pricing.1.features.2": "Regular updates on billing and expenses.",
+  "family.pricing.1.features.3": "Personalized legal support throughout your case.",
+  "family.pricing.1.badge": "Most Popular",
+  "family.pricing.2.title": "Occasional Support",
+  "family.pricing.2.price": "$100/hour",
+  "family.pricing.2.priceNote": "Best for clients needing occasional legal assistance.",
+  "family.pricing.2.features.0": "Initial consultation included.",
+  "family.pricing.2.features.1": "Flexible payment plans available.",
+  "family.pricing.2.features.2": "Regular updates on billing and expenses.",
+  "family.pricing.2.features.3": "Personalized legal support throughout your case.",
+  "family.ctaTitle": "Ready to Protect Your Rights?",
+  "family.ctaDesc": "Contact Veridict Law Firm today to schedule a consultation.",
+  "about": "About Us",
+  "services": "Services",
+  "services.heroTitle": "Our Services",
+  "services.heroSubtitle": "Comprehensive legal solutions for individuals, families, and businesses — delivered with dedication, expertise, and professionalism.",
+  "services.practiceAreasTitle": "Practice Areas",
+  "services.practiceAreas.family.title": "Family Law",
+  "services.practiceAreas.family.desc": "Compassionate and strategic legal support for divorce, child custody, maintenance, adoption, and related family matters.",
+  "services.practiceAreas.family.highlights.0": "Divorce and separation",
+  "services.practiceAreas.family.highlights.1": "Child custody and visitation",
+  "services.practiceAreas.family.highlights.2": "Adoption and guardianship",
+  "services.practiceAreas.family.highlights.3": "Domestic violence cases",
+  "services.practiceAreas.criminal.title": "Criminal Law",
+  "services.practiceAreas.criminal.desc": "Robust defense against criminal charges, from bail to trial to appeals, protecting your rights at every stage.",
+  "services.practiceAreas.criminal.highlights.0": "Bail and anticipatory bail applications",
+  "services.practiceAreas.criminal.highlights.1": "Trial and appeal representation",
+  "services.practiceAreas.criminal.highlights.2": "White-collar crimes",
+  "services.practiceAreas.criminal.highlights.3": "Juvenile offenses",
+  "services.practiceAreas.civil.title": "Civil Law",
+  "services.practiceAreas.civil.desc": "End-to-end civil litigation including contract disputes, property issues, and enforcement of legal rights.",
+  "services.practiceAreas.civil.highlights.0": "Contract enforcement/disputes",
+  "services.practiceAreas.civil.highlights.1": "Property and real estate litigation",
+  "services.practiceAreas.civil.highlights.2": "Injunctions and recoveries",
+  "services.practiceAreas.civil.highlights.3": "Consumer protection",
+  "services.practiceAreas.corporate.title": "Corporate Law",
+  "services.practiceAreas.corporate.desc": "Advisory and litigation services for companies, covering compliance, M&A, commercial contracts, and regulatory matters.",
+  "services.practiceAreas.corporate.highlights.0": "Business formation and advisory",
+  "services.practiceAreas.corporate.highlights.1": "Mergers & acquisitions",
+  "services.practiceAreas.corporate.highlights.2": "Contract drafting and disputes",
+  "services.practiceAreas.corporate.highlights.3": "Corporate compliance",
+  "services.practiceAreas.immigration.title": "Immigration Law",
+  "services.practiceAreas.immigration.desc": "Expert assistance for visas, residency, citizenship, employment authorization, and immigration appeals.",
+  "services.practiceAreas.immigration.highlights.0": "Visa applications and renewals",
+  "services.practiceAreas.immigration.highlights.1": "Residency and work permits",
+  "services.practiceAreas.immigration.highlights.2": "Citizenship and naturalization",
+  "services.practiceAreas.immigration.highlights.3": "Immigration litigation",
+  "services.practiceAreas.real-estate.title": "Real Estate Law",
+  "services.practiceAreas.real-estate.desc": "Full-spectrum legal services for property transactions, leasing, due diligence, and resolving disputes.",
+  "services.practiceAreas.real-estate.highlights.0": "Sale, lease & purchase agreements",
+  "services.practiceAreas.real-estate.highlights.1": "Title verification and due diligence",
+  "services.practiceAreas.real-estate.highlights.2": "RERA compliance",
+  "services.practiceAreas.real-estate.highlights.3": "Property dispute resolution",
+  "services.whyChooseTitle": "Why Choose Verdict",
+  "services.whyChoose.cards.0.title": "Less Time in the Chair",
+  "services.whyChoose.cards.0.desc": "Efficient, streamlined legal processes to save you time and stress.",
+  "services.whyChoose.cards.1.title": "More Efficient",
+  "services.whyChoose.cards.1.desc": "Modern technology and expert teams for faster, more effective results.",
+  "services.whyChoose.cards.2.title": "Longer Lasting",
+  "services.whyChoose.cards.2.desc": "Sustainable legal solutions that protect your interests for the long term.",
+  "services.whyChoose.imageAlt": "Why Choose Verdict",
+  "services.expertiseTitle": "Our Expertise in Detail",
+  "services.testimonialsTitle": "Client Success Stories",
+  "services.testimonials.0.quote": "The platform has completely transformed the way we manage cases. It's intuitive, powerful, and has significantly boosted our productivity.",
+  "services.testimonials.0.name": "Sarah Thompson",
+  "services.testimonials.0.title": "Partner @ LegalTech Associates",
+  "services.testimonials.1.quote": "The automation features alone have saved us countless hours. We're able to focus more on our clients and less on administrative tasks.",
+  "services.testimonials.1.name": "Emily Davis",
+  "services.testimonials.1.title": "Managing Partner @ ABC Legal Group",
+  "services.testimonials.2.quote": "The Client Portal is a game-changer. Our clients love the transparency and access it provides.",
+  "services.testimonials.2.name": "John Harris",
+  "services.testimonials.2.title": "CEO @ LawFirm Solutions",
+  "services.testimonials.3.quote": "We've seen a marked improvement in our communication since switching to Verdict.",
+  "services.testimonials.3.name": "Michael Lee",
+  "services.testimonials.3.title": "Partner",
+  "services.testimonials.4.quote": "The real-time updates and notifications ensure we never miss a deadline. It's like having an extra team member on board.",
+  "services.testimonials.4.name": "Sophia Martinez",
+  "services.testimonials.4.title": "Director @ Martinez & Co. Legal Services",
+  "services.testimonials.5.quote": "The customization options allowed us to tailor the platform exactly to our needs. It feels like it was built just for us.",
+  "services.testimonials.5.name": "Rachel Green",
+  "services.testimonials.5.title": "Head of Operations @ Smith Law Firm",
+  "services.ctaTitle": "Ready for Expert Legal Support?",
+  "services.ctaDesc": "Contact us today to schedule your confidential consultation and take the first step toward resolution.",
+  "services.ctaButton": "Book Consultation",
+
+  "viewAllServices": "View All Services",
+  "familyLaw": "Family Law",
+  "civilLaw": "Civil Law",
+  "corporateLaw": "Corporate Law",
+  "realEstateLaw": "Real-Estate Law",
+  "criminalLaw": "Criminal Law",
+  "immigrationLaw": "Immigration Law",
+  "blog": "Blog",
+  "contact": "Contact Us",
+  "languages": "Languages",
+  "english": "English",
+  "arabic": "Arabic",
+  "hebrew": "Hebrew",
+  "userProfile": "User Profile",
+  "logout": "Logout",
+  "quickLinks": "Quick Links",
+  "practiceAreas": "Practice Areas",
+  "address": "Address",
+  "phone": "Phone",
+  "email": "Email",
+  "hours": "Hours",
+  "workingHours": "Mon–Fri, 9 AM – 6 PM",
+  "newsletter": "Newsletter",
+  "newsletterDesc": "Stay updated with legal tips and news.",
+  "yourEmail": "Your email",
+  "subscribe": "Subscribe",
+  "subscribed": "Subscribed!",
+  "allRightsReserved": "All rights reserved.",
+  "privacyPolicy": "Privacy Policy",
+  "termsConditions": "Terms & Conditions",
+  "disclaimer": "Disclaimer",
+  "home.heroTitle": "Welcome to Verdict Law Firm",
+  "home.heroSubtitle": "Your trusted legal partner committed to protecting your rights and guiding you to justice. Committed to ensuring justice is served with integrity and dedication.",
+  "home.exploreButton": "Explore our firm",
+  "home.practiceAreasTitle": "Practice Areas",
+  "home.practiceAreas.criminal.title": "Criminal Law",
+  "home.practiceAreas.criminal.desc": "Expert legal services tailored to your needs in criminal law.",
+  "home.practiceAreas.family.title": "Family Law",
+  "home.practiceAreas.family.desc": "Expert legal services tailored to your needs in family law.",
+  "home.practiceAreas.corporate.title": "Corporate Law",
+  "home.practiceAreas.corporate.desc": "Expert legal services tailored to your needs in corporate law.",
+  "home.practiceAreas.civil.title": "Civil Law",
+  "home.practiceAreas.civil.desc": "Expert legal services tailored to your needs in civil law.",
+  "home.practiceAreas.real-estate.title": "Real-Estate Law",
+  "home.practiceAreas.real-estate.desc": "Expert legal services tailored to your needs in real-estate law.",
+  "home.practiceAreas.immigration.title": "Immigration Law",
+  "home.practiceAreas.immigration.desc": "Expert legal services tailored to your needs in immigration law.",
+  "home.aboutTitle": "About Verdict Law Firm",
+  "home.aboutList.0": "Founded in 1997, serving 3,000+ clients.",
+  "home.aboutList.1": "Multi-disciplinary team awarded for excellence.",
+  "home.aboutList.2": "300+ high-profile cases won in last decade.",
+  "home.aboutList.3": "Clients range from individuals to Fortune 500 companies.",
+  "home.aboutList.4": "Diverse outreach & pro bono work in the community.",
+  "home.learnMoreButton": "Learn More About Us",
+  "home.teamTitle": "Meet Our Attorneys",
+  "home.team.0.name": "Jane Doe",
+  "home.team.0.title": "Senior Criminal Lawyer",
+  "home.team.1.name": "John Smith",
+  "home.team.1.title": "Family Law Specialist",
+  "home.team.2.name": "Emily Davis",
+  "home.team.2.title": "Corporate Law Expert",
+  "home.team.3.name": "Kevin Spacey",
+  "home.team.3.title": "Real Estate Law Specialist",
+  "home.reliabilityTitle": "A Law Firm You Can Rely On",
+  "home.reliabilityDesc": "Our commitment to reliability goes beyond legal expertise. At Verdict Law Firm, we prioritize transparent communication, strict confidentiality, and a results-driven approach tailored for every client. Our values and statistics demonstrate why clients trust us—again and again.",
+  "home.stats.0": "Client satisfaction rate, one of the highest in the industry.",
+  "home.stats.1": "Matters resolved within estimated timelines.",
+  "home.stats.2": "Availability for urgent legal inquiries and rapid responses.",
+  "home.stats.3": "Dedicated legal professionals with proven track records.",
+  "home.ctaTitle": "Ready to Protect Your Rights?",
+  "home.ctaDesc": "Contact Verdict today to schedule your confidential consultation.",
+  "home.ctaButton": "Book a consultation",
+  "home2.heroTitle": "Welcome to Verdict",
+  "home2.heroSubtitle": "Providing trusted legal counsel with unmatched dedication and integrity.",
+  "home2.philosophyTitle": "Our Philosophy",
+  "home2.philosophyDesc": "Integrity, advocacy, and unwavering commitment to justice anchor our practice. Every client benefits from our personalized guidance, transparency, and strategic excellence—delivering results that transform lives.",
+  "home2.philosophyCards.0.title": "Client-Centered Advocacy",
+  "home2.philosophyCards.0.desc": "Every matter is approached with empathy and diligence—your interests and rights are always at the forefront.",
+  "home2.philosophyCards.1.title": "Transparent Guidance",
+  "home2.philosophyCards.1.desc": "We keep you informed at every stage, ensuring clear communication and honest advice for confident decisions.",
+  "home2.philosophyCards.2.title": "Proven Results",
+  "home2.philosophyCards.2.desc": "Our strategic approach has secured favorable outcomes for thousands, from individuals to major corporations.",
+  "home2.approachTitle": "Our Approach",
+  "home2.approach.0": "At Verdict, we combine strategic insight with meticulous attention to detail. Every case is handled with personalized care, ensuring that your voice is heard and your goals are prioritized.",
+  "home2.approach.1": "We emphasize clear communication and transparency throughout the legal process, offering you consistent updates and honest assessments to guide your decisions.",
+  "home2.approach.2": "Our proactive legal strategies focus on both negotiation and litigation, aiming for solutions that minimize risk while maximizing your interests.",
+  "home2.caseStudiesTitle": "Case Studies",
+  "home2.caseStudies.0.title": "Successful Property Dispute Resolution",
+  "home2.caseStudies.0.summary": "Our expert team helped a client reclaim rightful ownership in a complex boundary dispute, achieving a favorable settlement through mediation.",
+  "home2.caseStudies.1.title": "Winning Contractual Claim",
+  "home2.caseStudies.1.summary": "Represented a business client in breach of contract litigation, securing significant damages and reinforcement of contractual rights.",
+  "home2.caseYear": "Year",
+  "home2.insightsTitle": "Latest Legal Insights",
+  "home2.insights.0.title": "Understanding Civil Litigation",
+  "home2.insights.0.excerpt": "A comprehensive overview of steps involved in civil litigation.",
+  "home2.insights.1.title": "Your Rights in Property Disputes",
+  "home2.insights.1.excerpt": "Key points every property owner should know to safeguard their interests legally.",
+  "home2.insights.2.title": "Effective Contract Drafting Tips",
+  "home2.insights.2.excerpt": "Tips for creating airtight contracts to avoid future legal complications.",
+  "home2.readMore": "Read More",
+  "home2.consultTitle": "Schedule a Consultation",
+  "home2.form.name": "Name",
+  "home2.form.namePlaceholder": "Your full name",
+  "home2.form.email": "Email",
+  "home2.form.emailPlaceholder": "Your email address",
+  "home2.form.message": "Message",
+  "home2.form.messagePlaceholder": "Briefly describe your legal matter",
+  "home2.form.submit": "Book Appointment",
+  "home2.form.success": "Appointment is booked successfully!",
+  "about.heroTitle": "About Verdict Law Firm",
+  "about.heroSubtitle": "Committed to justice, integrity, and personalized legal solutions for every client.",
+  "about.missionVisionTitle": "Our Mission & Vision",
+  "about.missionVisionDesc": "We are committed to empowering individuals to achieve their optimal well-being—protecting your rights, delivering personalized legal solutions, and fostering a supportive, client-first community.",
+  "about.missionTitle": "Our Mission",
+  "about.missionDesc": "To provide accessible, comprehensive legal solutions that transform lives and create lasting positive change for everyone we serve.",
+  "about.visionTitle": "Our Vision",
+  "about.visionDesc": "To be recognized as the leading law firm—where individuals and businesses discover their path to justice, well-being, and peace of mind.",
+  "about.valuesTitle": "Our Core Values",
+  "about.values.integrity.title": "Integrity",
+  "about.values.integrity.desc": "We adhere to the highest ethical standards and honesty in all client dealings.",
+  "about.values.excellence.title": "Excellence",
+  "about.values.excellence.desc": "Delivering outstanding results through expert knowledge and meticulous preparation.",
+  "about.values.clientFocus.title": "Client Focus",
+  "about.values.clientFocus.desc": "Prioritizing client needs with personalized service and open communication.",
+  "about.values.respect.title": "Respect",
+  "about.values.respect.desc": "Fostering mutual respect within our team and with clients and opposing parties.",
+  "about.values.innovation.title": "Innovation",
+  "about.values.innovation.desc": "Employing creative legal strategies to achieve favorable outcomes.",
+  "about.values.community.title": "Community",
+  "about.values.community.desc": "Committed to giving back and supporting access to justice for all.",
+  "about.timelineTitle": "Our Growth Through Years",
+  "about.timelineDesc": "A journey of continuous growth, innovation, and commitment to transforming lives through justice.",
+  "about.timeline.0.title": "Foundation",
+  "about.timeline.0.desc": "Started Verdict Law Firm with a vision to protect clients’ rights through personalized care and evidence-based legal practice. First office established, 2016.",
+  "about.timeline.1.title": "Expansion",
+  "about.timeline.1.desc": "Expanded service offerings to include corporate and family law. Opened second office, increased team to 20+ legal professionals, 2019.",
+  "about.timeline.2.title": "National Recognition",
+  "about.timeline.2.desc": "Achieved national recognition for landmark victories in high-profile cases. Team awarded for excellence in advocacy and client service, 2022.",
+  "about.timeline.3.title": "Technology & Innovation",
+  "about.timeline.3.desc": "Adopted digital case management, remote consultations, and online legal resources for better client access and streamlined operations, 2024.",
+  "about.commitmentTitle": "Our Commitment to You",
+  "about.commitmentDesc": "We dedicate ourselves to offering transparent, accessible, and proactive legal services. From the first consultation to the final resolution, your goals are at the heart of our approach.",
+  "about.commitmentTestimonial": "\u201cVerdict Law Firm gave me personalized support and achieved results I thought weren’t possible. Truly a partner you can count on.\u201d — Client Testimonial",
+  "about.ctaTitle": "Ready to Connect with Us?",
+  "about.ctaDesc": "Contact Verdict Law Firm today to schedule your consultation and discuss how we can serve your legal needs.",
+  "about.ctaButton": "Connect with us"
+}

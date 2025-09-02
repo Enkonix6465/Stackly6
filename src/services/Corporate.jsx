@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext";
 import Footer from "../components/Footer.jsx";
 import AOS from "aos";
+import { useTranslation } from "react-i18next";
 import {
   UserIcon,
   DocumentDuplicateIcon,
@@ -15,9 +17,9 @@ import {
 } from "@heroicons/react/24/solid";
 import corporate from "../assets/corporateHero.mp4";
 import corporatePhoto from "../assets/corporateSection.jpg";
-const COLOR_1 = '#002346'; // deep blue
-const COLOR_2 = '#F8F4E3'; // off-white
-const COLOR_3 = '#333333'; // dark gray
+const COLOR_1 = "#002346"; // deep blue
+const COLOR_2 = "#F8F4E3"; // off-white
+const COLOR_3 = "#333333"; // dark gray
 const Corporate = ({ user, onLogout }) => {
   const { darkMode, setDarkMode } = useDarkMode();
   // Prevent horizontal scroll on the whole page
@@ -30,49 +32,46 @@ const Corporate = ({ user, onLogout }) => {
       document.head.removeChild(style);
     };
   }, []);
+
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
+  const { t } = useTranslation();
+
   const benefits = [
-    "End-to-end legal support for all stages of corporate growth",
-    "Meticulous contract review and drafting to protect your interests",
-    "Confidential guidance on mergers, acquisitions, and restructuring",
-    "Comprehensive compliance and governance advice",
-    "Risk management for directors, officers, and stakeholders",
-    "Proactive representation in regulatory and commercial disputes",
+    t("corporate.benefit1"),
+    t("corporate.benefit2"),
+    t("corporate.benefit3"),
+    t("corporate.benefit4"),
+    t("corporate.benefit5"),
+    t("corporate.benefit6"),
   ];
 
   const services = [
     {
-      title: "Business Formation & Structuring",
-      description:
-        "Strategic guidance for incorporating companies, startups, partnerships, and joint ventures",
+      title: t("corporate.service1.title"),
+      description: t("corporate.service1.desc"),
     },
     {
-      title: "Contracts & Agreements",
-      description:
-        "Drafting, negotiation, and review of commercial contracts, NDAs, employment agreements, and more",
+      title: t("corporate.service2.title"),
+      description: t("corporate.service2.desc"),
     },
     {
-      title: "Mergers & Acquisitions",
-      description:
-        "Legal due diligence, transaction structuring, and regulatory filings for M&A deals",
+      title: t("corporate.service3.title"),
+      description: t("corporate.service3.desc"),
     },
     {
-      title: "Regulatory Compliance",
-      description:
-        "Advice on company law, sectoral regulations, and ongoing compliance audits",
+      title: t("corporate.service4.title"),
+      description: t("corporate.service4.desc"),
     },
     {
-      title: "Shareholder Disputes",
-      description:
-        "Expert representation and mediation in internal company or partnership disputes",
+      title: t("corporate.service5.title"),
+      description: t("corporate.service5.desc"),
     },
     {
-      title: "Corporate Governance",
-      description:
-        "Board advisory, risk management, policy development, and compliance with listing rules",
+      title: t("corporate.service6.title"),
+      description: t("corporate.service6.desc"),
     },
   ];
 
@@ -85,25 +84,25 @@ const Corporate = ({ user, onLogout }) => {
   ];
 
   const features = [
-    "Direct access to corporate law specialists",
-    "Timely document review and turnaround",
-    "Custom compliance checklists",
-    "On-demand updates via our client portal",
+    t("corporate.feature1"),
+    t("corporate.feature2"),
+    t("corporate.feature3"),
+    t("corporate.feature4"),
   ];
 
   const pricingTiers = [
     {
-      title: "Consult",
-      price: "$299",
-      priceNote: "/session",
+      title: t("corporate.pricing1.title"),
+      price: t("corporate.pricing1.price"),
+      priceNote: t("corporate.pricing1.priceNote"),
       features: [
-        "Consultation with a law expert",
-        "Document review (up to 20 pages)",
-        "Initial business appraisal & options",
-        "Strategic recommendations",
-        "Follow-up email support",
+        t("corporate.pricing1.feature1"),
+        t("corporate.pricing1.feature2"),
+        t("corporate.pricing1.feature3"),
+        t("corporate.pricing1.feature4"),
+        t("corporate.pricing1.feature5"),
       ],
-      buttonText: "Book Consult",
+      buttonText: t("corporate.pricing1.buttonText"),
       buttonClass:
         "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
       boxStyle: { background: "#AABF91", color: "#002346" },
@@ -111,33 +110,33 @@ const Corporate = ({ user, onLogout }) => {
         "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
     },
     {
-      title: "Annual Retainer",
-      price: "$4,999",
-      priceNote: "/year",
+      title: t("corporate.pricing2.title"),
+      price: t("corporate.pricing2.price"),
+      priceNote: t("corporate.pricing2.priceNote"),
       features: [
-        "All Consult services",
-        "Unlimited contract drafting & review",
-        "Compliance audits & filings",
-        "Board advisory & risk management",
+        t("corporate.pricing2.feature1"),
+        t("corporate.pricing2.feature2"),
+        t("corporate.pricing2.feature3"),
+        t("corporate.pricing2.feature4"),
       ],
-      buttonText: "Contact Us",
+      buttonText: t("corporate.pricing2.buttonText"),
+      badge: t("corporate.pricing2.badge"),
       buttonClass:
         "w-full bg-[#AABF91] text-[#002346] font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] hover:text-white transition-colors duration-300 transform hover:scale-105",
-      badge: "MOST POPULAR",
       boxStyle: { background: "#002346", color: "#AABF91" },
       className: "rounded-2xl p-6 border-2 border-[#AABF91] scale-105",
     },
     {
-      title: "Full Corporate Support",
-      price: "$9,999",
-      priceNote: "/year",
+      title: t("corporate.pricing3.title"),
+      price: t("corporate.pricing3.price"),
+      priceNote: t("corporate.pricing3.priceNote"),
       features: [
-        "End-to-end representation for all corporate matters",
-        "M&A, restructuring, and dispute resolution",
-        "Dedicated legal team & priority support",
-        "Monthly strategy calls & reports",
+        t("corporate.pricing3.feature1"),
+        t("corporate.pricing3.feature2"),
+        t("corporate.pricing3.feature3"),
+        t("corporate.pricing3.feature4"),
       ],
-      buttonText: "Start Now",
+      buttonText: t("corporate.pricing3.buttonText"),
       buttonClass:
         "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
       boxStyle: { background: "#AABF91", color: "#002346" },
@@ -177,65 +176,125 @@ const Corporate = ({ user, onLogout }) => {
           style={{ minHeight: "100vh", minWidth: "100vw", objectFit: "cover" }}
         >
           <source src={corporate} type="video/mp4" />
-          Your browser does not support the video tag.
+          {t("corporate.hero.noVideoSupport")}
         </video>
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
           <h1
             className="font-bold text-5xl mb-6 text-white drop-shadow-lg"
             data-aos="fade-down"
           >
-            Corporate Law
+            {t("corporate.hero.title")}
           </h1>
           <p
             className="max-w-2xl mx-auto text-lg text-white drop-shadow-lg"
             data-aos="fade-up"
           >
-            End-to-end legal support for all stages of corporate growth.
+            {t("corporate.hero.subtitle")}
           </p>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section id="key-benefits" className="w-full py-16 px-4 transition-colors duration-300"
+      <section
+        id="key-benefits"
+        className="w-full py-16 px-4 transition-colors duration-300"
         style={{ backgroundColor: darkMode ? COLOR_1 : COLOR_2 }}
-        data-aos="fade-up" data-aos-duration="1000" data-aos-once="false">
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-once="false"
+      >
         <div className="max-w-7xl mx-auto w-full">
-          <div className="text-center mb-16" data-aos="fade-up" data-aos-delay="200">
-            <h2 className="text-5xl font-bold mb-4" style={{ color: darkMode ? "#F8F4E3" : "#002346" }}>
-              Key Advantages
+          <div
+            className="text-center mb-16"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h2
+              className="text-5xl font-bold mb-4"
+              style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+            >
+              {t("corporate.benefits.title")}
             </h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
-              Mediation, arbitration, or litigation to resolve conflicts effectively
+            <p
+              className="text-lg max-w-2xl mx-auto"
+              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+            >
+              {t("corporate.benefits.subtitle")}
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="space-y-8" data-aos="fade-right" data-aos-delay="300">
+            <div
+              className="space-y-8"
+              data-aos="fade-right"
+              data-aos-delay="300"
+            >
               {benefits.slice(0, 3).map((b, idx) => (
-                <div key={idx} className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}>
-                  <h3 className="text-2xl font-bold mb-2" style={{ color: "#F8F4E3" }}>{b.split(':')[0]}</h3>
-                  <p className="text-base" style={{ color: "#F8F4E3" }}>{b}</p>
+                <div
+                  key={idx}
+                  className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
+                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}
+                >
+                  <h3
+                    className="text-2xl font-bold mb-2"
+                    style={{ color: "#F8F4E3" }}
+                  >
+                    {b.split(":")[0]}
+                  </h3>
+                  <p className="text-base" style={{ color: "#F8F4E3" }}>
+                    {b}
+                  </p>
                 </div>
               ))}
             </div>
-            <div className="flex flex-col items-center lg:items-start justify-start h-full" data-aos="zoom-in" data-aos-delay="600">
+            <div
+              className="flex flex-col items-center lg:items-start justify-start h-full"
+              data-aos="zoom-in"
+              data-aos-delay="600"
+            >
               <img
                 src={corporatePhoto}
                 alt="Corporate Law"
                 className="rounded-2xl shadow-xl mb-6 w-[420px] h-[420px] object-fill border-4 border-[#F8F4E3] dark:border-[#002346]"
-                style={{ maxWidth: '100%', background: darkMode ? '#333333' : '#fff', marginTop: 0, alignSelf: 'flex-start' }}
+                style={{
+                  maxWidth: "100%",
+                  background: darkMode ? "#333333" : "#fff",
+                  marginTop: 0,
+                  alignSelf: "flex-start",
+                }}
               />
-              <h3 className="text-2xl font-bold mb-4 self-center lg:self-start" style={{ color: darkMode ? "#F8F4E3" : "#002346" }}>Arbitration and Litigation.</h3>
-              <p className="text-lg max-w-md self-center lg:self-start" style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
-                Get compassionate, effective solutions for even the most delicate matters.
+              <h3
+                className="text-2xl font-bold mb-4 self-center lg:self-start"
+                style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+              >
+                {t("corporate.benefits.imageTitle")}
+              </h3>
+              <p
+                className="text-lg max-w-md self-center lg:self-start"
+                style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+              >
+                {t("corporate.benefits.imageSubtitle")}
               </p>
             </div>
-            <div className="space-y-8" data-aos="fade-left" data-aos-delay="300">
+            <div
+              className="space-y-8"
+              data-aos="fade-left"
+              data-aos-delay="300"
+            >
               {benefits.slice(3, 6).map((b, idx) => (
-                <div key={idx} className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}>
-                  <h3 className="text-2xl font-bold mb-2" style={{ color: "#F8F4E3" }}>{b.split(':')[0]}</h3>
-                  <p className="text-base" style={{ color: "#F8F4E3" }}>{b}</p>
+                <div
+                  key={idx}
+                  className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
+                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}
+                >
+                  <h3
+                    className="text-2xl font-bold mb-2"
+                    style={{ color: "#F8F4E3" }}
+                  >
+                    {b.split(":")[0]}
+                  </h3>
+                  <p className="text-base" style={{ color: "#F8F4E3" }}>
+                    {b}
+                  </p>
                 </div>
               ))}
             </div>
@@ -244,12 +303,14 @@ const Corporate = ({ user, onLogout }) => {
       </section>
 
       {/* Corporate Services Overview Section (reference image style) */}
-      <section className="w-full py-16 px-4 relative transition-colors duration-300"
-        style={{ background: COLOR_1 }}>
+      <section
+        className="w-full py-16 px-4 relative transition-colors duration-300"
+        style={{ background: COLOR_1 }}
+      >
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="mb-12" data-aos="fade-up">
             <h2 className="text-5xl text-center font-bold text-white">
-              Corporate Services
+              {t("corporate.services.title")}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -263,12 +324,22 @@ const Corporate = ({ user, onLogout }) => {
                 data-aos-once="false"
               >
                 <div className="mb-4">
-                  <span className="text-2xl font-bold" style={{ color: COLOR_1 }}>
-                    {String(index + 1).padStart(2, '0')}
+                  <span
+                    className="text-2xl font-bold"
+                    style={{ color: COLOR_1 }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold mb-4" style={{color: COLOR_1}}>{service.title}</h3>
-                <p className="text-base" style={{color: COLOR_3}}>{service.description}</p>
+                <h3
+                  className="text-xl font-bold mb-4"
+                  style={{ color: COLOR_1 }}
+                >
+                  {service.title}
+                </h3>
+                <p className="text-base" style={{ color: COLOR_3 }}>
+                  {service.description}
+                </p>
               </div>
             ))}
           </div>
@@ -276,14 +347,20 @@ const Corporate = ({ user, onLogout }) => {
       </section>
 
       {/* How It Works */}
-      <section className="w-full py-16 px-2" style={{ background: darkMode ? '#002346' : '#F8F4E3' }}>
+      <section
+        className="w-full py-16 px-2"
+        style={{ background: darkMode ? "#002346" : "#F8F4E3" }}
+      >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-semibold text-[#002346] text-center mb-4">
-            <span style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>How We Work</span>
+            <span style={{ color: darkMode ? "#F8F4E3" : "#002346" }}>
+              {t("corporate.howWeWork.title")}
+            </span>
           </h2>
           <p className="text-center text-[#002346] mb-12 max-w-2xl mx-auto">
-            <span style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>Our 7-step process for handling your corporate legal needs with
-            precision and expertise.</span>
+            <span style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
+              {t("corporate.howWeWork.subtitle")}
+            </span>
           </p>
           <div className="flex flex-wrap justify-center items-start gap-y-12 gap-x-2">
             {/* STEP 1 */}
@@ -298,19 +375,24 @@ const Corporate = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <UserIcon className="w-7 h-7" style={{color: COLOR_2}} />
+                  <UserIcon className="w-7 h-7" style={{ color: COLOR_2 }} />
                   <span className="mt-1 text-base font-bold tracking-widest">
                     01
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Initial Consultation
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("corporate.howWeWork.step1.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Discuss your corporate goals, challenges, and legal
-                  requirements.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("corporate.howWeWork.step1.desc")}
                 </p>
               </div>
             </div>
@@ -327,19 +409,30 @@ const Corporate = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <DocumentDuplicateIcon className="w-7 h-7" style={{color: COLOR_2}} />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
+                  <DocumentDuplicateIcon
+                    className="w-7 h-7"
+                    style={{ color: COLOR_2 }}
+                  />
+                  <span
+                    className="mt-1 text-base font-bold text-[#002346] tracking-widest"
+                    style={{ color: COLOR_2 }}
+                  >
                     02
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Document Review
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("corporate.howWeWork.step2.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Analyze contracts, company policies, compliance documents, and
-                  filings.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("corporate.howWeWork.step2.desc")}
                 </p>
               </div>
             </div>
@@ -355,19 +448,27 @@ const Corporate = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <ClipboardDocumentCheckIcon className="w-7 h-7" style={{color: COLOR_2}} />
+                  <ClipboardDocumentCheckIcon
+                    className="w-7 h-7"
+                    style={{ color: COLOR_2 }}
+                  />
                   <span className="mt-1 text-base font-bold tracking-widest">
                     03
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Legal Strategy
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("corporate.howWeWork.step3.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Develop a custom plan for transactions, compliance, or dispute
-                  resolution.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("corporate.howWeWork.step3.desc")}
                 </p>
               </div>
             </div>
@@ -383,19 +484,27 @@ const Corporate = ({ user, onLogout }) => {
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <PaperAirplaneIcon className="w-7 h-7" style={{color: COLOR_2}} />
+                  <PaperAirplaneIcon
+                    className="w-7 h-7"
+                    style={{ color: COLOR_2 }}
+                  />
                   <span className="mt-1 text-base font-bold tracking-widest">
                     04
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Drafting & Filings
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("corporate.howWeWork.step4.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Prepare, file, and serve corporate documents, agreements, and
-                  notices.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("corporate.howWeWork.step4.desc")}
                 </p>
               </div>
             </div>
@@ -408,23 +517,34 @@ const Corporate = ({ user, onLogout }) => {
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
                   height: "80px",
-                  background: COLOR_3
+                  background: COLOR_3,
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <BriefcaseIcon className="w-7 h-7" style={{color: COLOR_2}} />
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
+                  <BriefcaseIcon
+                    className="w-7 h-7"
+                    style={{ color: COLOR_2 }}
+                  />
+                  <span
+                    className="mt-1 text-base font-bold text-[#002346] tracking-widest"
+                    style={{ color: COLOR_2 }}
+                  >
                     05
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Negotiation & Representation
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("corporate.howWeWork.step5.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Advocate for your interests in negotiations, meetings, and
-                  regulatory hearings.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("corporate.howWeWork.step5.desc")}
                 </p>
               </div>
             </div>
@@ -447,12 +567,17 @@ const Corporate = ({ user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Ongoing Support
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("corporate.howWeWork.step6.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Regular updates and legal guidance throughout your corporate
-                  matter.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("corporate.howWeWork.step6.desc")}
                 </p>
               </div>
             </div>
@@ -475,12 +600,17 @@ const Corporate = ({ user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Completion & Next Steps
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("corporate.howWeWork.step7.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Finalize transactions, compliance, or dispute resolution and
-                  advise on future needs.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("corporate.howWeWork.step7.desc")}
                 </p>
               </div>
             </div>
@@ -502,10 +632,10 @@ const Corporate = ({ user, onLogout }) => {
                   className="text-5xl font-bold mb-6"
                   style={{ color: "#F8F4E3" }}
                 >
-                  Why Choose Us for Corporate Law
+                  {t("corporate.features.title")}
                 </h2>
                 <p className="text-xl mb-8" style={{ color: "#F8F4E3" }}>
-                  Empowering your business with expert legal solutions tailored for the corporate world.
+                  {t("corporate.features.subtitle")}
                 </p>
               </div>
               <div className="space-y-6">
@@ -513,19 +643,19 @@ const Corporate = ({ user, onLogout }) => {
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  <b>Specialized Corporate Law Expertise:</b> Our team brings years of experience advising companies on formation, governance, restructuring, and compliance with evolving regulations.
+                  {t("corporate.features.desc1")}
                 </p>
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  <b>Comprehensive Compliance Support:</b> Stay ahead of legal obligations with proactive audits, risk assessments, and ongoing regulatory guidance for your business.
+                  {t("corporate.features.desc2")}
                 </p>
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  <b>Contract & Transactional Excellence:</b> We draft, review, and negotiate contracts to protect your interests in every deal, merger, or acquisition.
+                  {t("corporate.features.desc3")}
                 </p>
               </div>
             </div>
@@ -542,8 +672,7 @@ const Corporate = ({ user, onLogout }) => {
                 >
                   <h3 className="text-xl font-bold mb-2">{feature}</h3>
                   <p className="text-base">
-                    Benefit from {feature.toLowerCase()} as our corporate
-                    client.
+                    {t("corporate.features.benefit", { feature })}
                   </p>
                 </div>
               ))}
@@ -561,11 +690,11 @@ const Corporate = ({ user, onLogout }) => {
         <div className="max-w-6xl mx-auto text-center w-full">
           <h2
             className="text-5xl font-bold mb-4"
-           style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+            style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
             data-aos="fade-down"
             data-aos-delay="50"
           >
-            Secure Your Corporate Advantage
+            {t("corporate.pricing.title")}
           </h2>
           <p
             className="text-xl mb-12 max-w-2xl mx-auto"
@@ -573,46 +702,78 @@ const Corporate = ({ user, onLogout }) => {
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            Build and grow your company with expert legal partners by your side.
+            {t("corporate.pricing.subtitle")}
           </p>
           {/* Pricing Tiers */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {pricingTiers.map((tier, i) => (
-              <div key={i} style={{background: COLOR_2, color: COLOR_3, border: `2px solid ${COLOR_1}`}} className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300">
-                {tier.badge &&
+              <div
+                key={i}
+                style={{
+                  background: COLOR_2,
+                  color: COLOR_3,
+                  border: `2px solid ${COLOR_1}`,
+                }}
+                className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300"
+              >
+                {tier.badge && (
                   <div className="bg-white text-[#002346] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
                     {tier.badge}
-                  </div>}
-                <h3 className="text-2xl font-bold mb-2" style={{color: COLOR_1}}>{tier.title}</h3>
-                <div className="text-4xl font-bold mb-4" style={{color: COLOR_3}}>{tier.price}<span className="text-lg">{tier.priceNote}</span></div>
+                  </div>
+                )}
+                <h3
+                  className="text-2xl font-bold mb-2"
+                  style={{ color: COLOR_1 }}
+                >
+                  {tier.title}
+                </h3>
+                <div
+                  className="text-4xl font-bold mb-4"
+                  style={{ color: COLOR_3 }}
+                >
+                  {tier.price}
+                  <span className="text-lg">{tier.priceNote}</span>
+                </div>
                 <ul className="text-left space-y-3 mb-6">
                   {tier.features.map((feat, j) => (
                     <li key={j}>{feat}</li>
                   ))}
                 </ul>
-                {tier.buttonText === 'Book Consult' && (
+                {tier.buttonText === t("corporate.pricing1.buttonText") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/home2#consultation-form')}
+                    style={{
+                      background: COLOR_1,
+                      color: COLOR_2,
+                      border: `2px solid ${COLOR_1}`,
+                    }}
+                    onClick={() => navigate("/home2#consultation-form")}
                   >
                     {tier.buttonText}
                   </button>
                 )}
-                {tier.buttonText === 'Contact Us' && (
+                {tier.buttonText === t("corporate.pricing2.buttonText") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/contact')}
+                    style={{
+                      background: COLOR_1,
+                      color: COLOR_2,
+                      border: `2px solid ${COLOR_1}`,
+                    }}
+                    onClick={() => navigate("/contact")}
                   >
                     {tier.buttonText}
                   </button>
                 )}
-                {tier.buttonText === 'Start Now' && (
+                {tier.buttonText === t("corporate.pricing3.buttonText") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/home')}
+                    style={{
+                      background: COLOR_1,
+                      color: COLOR_2,
+                      border: `2px solid ${COLOR_1}`,
+                    }}
+                    onClick={() => navigate("/home")}
                   >
                     {tier.buttonText}
                   </button>
@@ -622,7 +783,7 @@ const Corporate = ({ user, onLogout }) => {
           </div>
         </div>
       </section>
-  <Footer darkMode={darkMode} setDarkMode={setDarkMode} bgColor="#F8F4E3" />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode} bgColor="#F8F4E3" />
     </div>
   );
 };

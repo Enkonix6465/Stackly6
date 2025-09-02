@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import philosophy from "../assets/philosophy.jpg";
 import Header from "../components/Header.jsx";
@@ -9,6 +11,7 @@ import home2Hero from "../assets/home2Hero.mp4";
 import { useState, useRef, useEffect } from "react";
 
 export default function Home2({ user, onLogout }) {
+  const { t } = useTranslation();
   const { darkMode, setDarkMode } = useDarkMode();
   function useSyncHeight(leftRef, rightRef) {
     useEffect(() => {
@@ -29,15 +32,13 @@ export default function Home2({ user, onLogout }) {
   const COLOR_3 = "#333333"; // dark gray
   const caseStudies = [
     {
-      title: "Successful Property Dispute Resolution",
-      summary:
-        "Our expert team helped a client reclaim rightful ownership in a complex boundary dispute, achieving a favorable settlement through mediation.",
+      title: t("home2.caseStudies.0.title"),
+      summary: t("home2.caseStudies.0.summary"),
       year: 2024,
     },
     {
-      title: "Winning Contractual Claim",
-      summary:
-        "Represented a business client in breach of contract litigation, securing significant damages and reinforcement of contractual rights.",
+      title: t("home2.caseStudies.1.title"),
+      summary: t("home2.caseStudies.1.summary"),
       year: 2023,
     },
   ];
@@ -66,10 +67,7 @@ export default function Home2({ user, onLogout }) {
           boxShadow: "0 2px 8px 0 rgba(51,51,51,0.08)",
         }}
       >
-        <Header
-          user={user}
-          onLogout={onLogout}
-        />
+        <Header user={user} onLogout={onLogout} />
       </div>
 
       {/* Section 1: Hero Section with Video */}
@@ -94,14 +92,13 @@ export default function Home2({ user, onLogout }) {
             className="text-5xl font-extrabold mb-6 drop-shadow-lg"
             style={{ color: COLOR_2 }}
           >
-            Welcome to Verdict
+            {t("home2.heroTitle")}
           </h1>
           <p
             className="text-xl max-w-3xl mx-auto mb-8 drop-shadow-lg"
             style={{ color: COLOR_2 }}
           >
-            Providing trusted legal counsel with unmatched dedication and
-            integrity.
+            {t("home2.heroSubtitle")}
           </p>
         </div>
       </section>
@@ -149,22 +146,19 @@ export default function Home2({ user, onLogout }) {
                 <div
                   ref={rightRef}
                   className="md:w-3/5 w-full flex flex-col justify-center px-8 py-10"
-                  style={{ backgroundColor: darkMode? "#002346" : "#F8F4E3" }}
+                  style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
                 >
                   <h2
                     className="text-4xl font-extrabold mb-4"
                     style={{ color: darkMode ? "#fff" : "#002346" }}
                   >
-                    Our Philosophy
+                    {t("home2.philosophyTitle")}
                   </h2>
                   <p
                     className="text-lg leading-relaxed mb-6"
                     style={{ color: darkMode ? "#fff" : "#002346" }}
                   >
-                    Integrity, advocacy, and unwavering commitment to justice
-                    anchor our practice. Every client benefits from our
-                    personalized guidance, transparency, and strategic
-                    excellence—delivering results that transform lives.
+                    {t("home2.philosophyDesc")}
                   </p>
                   <div className="flex flex-col space-y-4">
                     {/* Card 1 */}
@@ -177,13 +171,9 @@ export default function Home2({ user, onLogout }) {
                       }}
                     >
                       <h3 className="text-xl font-bold mb-1">
-                        Client-Centered Advocacy
+                        {t("home2.philosophyCards.0.title")}
                       </h3>
-                      <p>
-                        Every matter is approached with empathy and
-                        diligence—your interests and rights are always at the
-                        forefront.
-                      </p>
+                      <p>{t("home2.philosophyCards.0.desc")}</p>
                     </div>
                     {/* Card 2 */}
                     <div
@@ -198,12 +188,9 @@ export default function Home2({ user, onLogout }) {
                         className="text-xl font-bold mb-1"
                         style={{ color: "#002346" }}
                       >
-                        Transparent Guidance
+                        {t("home2.philosophyCards.1.title")}
                       </h3>
-                      <p>
-                        We keep you informed at every stage, ensuring clear
-                        communication and honest advice for confident decisions.
-                      </p>
+                      <p>{t("home2.philosophyCards.1.desc")}</p>
                     </div>
                     {/* Card 3 */}
                     <div
@@ -214,11 +201,10 @@ export default function Home2({ user, onLogout }) {
                         borderLeft: "6px solid #333333",
                       }}
                     >
-                      <h3 className="text-xl font-bold mb-1">Proven Results</h3>
-                      <p>
-                        Our strategic approach has secured favorable outcomes
-                        for thousands, from individuals to major corporations.
-                      </p>
+                      <h3 className="text-xl font-bold mb-1">
+                        {t("home2.philosophyCards.2.title")}
+                      </h3>
+                      <p>{t("home2.philosophyCards.2.desc")}</p>
                     </div>
                   </div>
                 </div>
@@ -243,25 +229,12 @@ export default function Home2({ user, onLogout }) {
             className="text-4xl font-extrabold mb-10 text-center"
             style={{ color: COLOR_2 }}
           >
-            Our Approach
+            {t("home2.approachTitle")}
           </h2>
           <div className="space-y-8 max-w-4xl mx-auto text-lg leading-relaxed">
-            <p>
-              At <span className="font-semibold">Verdict</span>, we combine
-              strategic insight with meticulous attention to detail. Every case
-              is handled with personalized care, ensuring that your voice is
-              heard and your goals are prioritized.
-            </p>
-            <p>
-              We emphasize clear communication
-              and transparency throughout the legal process, offering you
-              consistent updates and honest assessments to guide your decisions.
-            </p>
-            <p>
-              Our proactive legal strategies focus on both negotiation and
-              litigation, aiming for solutions that minimize risk while
-              maximizing your interests.
-            </p>
+            <p>{t("home2.approach.0")}</p>
+            <p>{t("home2.approach.1")}</p>
+            <p>{t("home2.approach.2")}</p>
           </div>
         </section>
 
@@ -281,7 +254,7 @@ export default function Home2({ user, onLogout }) {
             className="text-4xl font-extrabold mb-12 text-center"
             style={{ color: COLOR_3 }}
           >
-            Case Studies
+            {t("home2.caseStudiesTitle")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {caseStudies.map(({ title, summary, year }, idx) => (
@@ -308,7 +281,7 @@ export default function Home2({ user, onLogout }) {
                     boxShadow: "0 2px 8px rgba(54,117,136,0.6)",
                   }}
                 >
-                  Year: {year}
+                  {t("home2.caseYear")}: {year}
                 </div>
               </article>
             ))}
@@ -324,24 +297,21 @@ export default function Home2({ user, onLogout }) {
             className="text-3xl font-semibold mb-8 text-center"
             style={{ color: COLOR_2 }}
           >
-            Latest Legal Insights
+            {t("home2.insightsTitle")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               {
-                title: "Understanding Civil Litigation",
-                excerpt:
-                  "A comprehensive overview of steps involved in civil litigation.",
+                title: t("home2.insights.0.title"),
+                excerpt: t("home2.insights.0.excerpt"),
               },
               {
-                title: "Your Rights in Property Disputes",
-                excerpt:
-                  "Key points every property owner should know to safeguard their interests legally.",
+                title: t("home2.insights.1.title"),
+                excerpt: t("home2.insights.1.excerpt"),
               },
               {
-                title: "Effective Contract Drafting Tips",
-                excerpt:
-                  "Tips for creating airtight contracts to avoid future legal complications.",
+                title: t("home2.insights.2.title"),
+                excerpt: t("home2.insights.2.excerpt"),
               },
             ].map(({ title, excerpt }, idx) => (
               <article
@@ -365,7 +335,7 @@ export default function Home2({ user, onLogout }) {
                   style={{ background: COLOR_3, color: COLOR_2 }}
                   onClick={() => navigate("/blog")}
                 >
-                  Read More
+                  {t("home2.readMore")}
                 </button>
               </article>
             ))}
@@ -382,7 +352,7 @@ export default function Home2({ user, onLogout }) {
             className="text-3xl font-semibold mb-6 text-center"
             style={{ color: COLOR_3 }}
           >
-            Schedule a Consultation
+            {t("home2.consultTitle")}
           </h2>
           <form className="space-y-6" onSubmit={handleConsultSubmit}>
             <div>
@@ -391,12 +361,12 @@ export default function Home2({ user, onLogout }) {
                 htmlFor="name"
                 style={{ color: COLOR_3 }}
               >
-                Name
+                {t("home2.form.name")}
               </label>
               <input
                 id="name"
                 type="text"
-                placeholder="Your full name"
+                placeholder={t("home2.form.namePlaceholder")}
                 required
                 className="w-full p-3 rounded border"
                 style={{
@@ -412,12 +382,12 @@ export default function Home2({ user, onLogout }) {
                 htmlFor="email"
                 style={{ color: COLOR_3 }}
               >
-                Email
+                {t("home2.form.email")}
               </label>
               <input
                 id="email"
                 type="email"
-                placeholder="Your email address"
+                placeholder={t("home2.form.emailPlaceholder")}
                 required
                 className="w-full p-3 rounded border"
                 style={{
@@ -433,12 +403,12 @@ export default function Home2({ user, onLogout }) {
                 htmlFor="message"
                 style={{ color: COLOR_3 }}
               >
-                Message
+                {t("home2.form.message")}
               </label>
               <textarea
                 id="message"
                 rows={4}
-                placeholder="Briefly describe your legal matter"
+                placeholder={t("home2.form.messagePlaceholder")}
                 required
                 className="w-full p-3 rounded border"
                 style={{
@@ -453,7 +423,7 @@ export default function Home2({ user, onLogout }) {
               className="w-full py-3 rounded transition-colors"
               style={{ background: COLOR_3, color: COLOR_2 }}
             >
-              Book Appointment
+              {t("home2.form.submit")}
             </button>
           </form>
           {consultSent && (
@@ -461,7 +431,7 @@ export default function Home2({ user, onLogout }) {
               className="mt-4 text-center text-green-700 font-semibold"
               style={{ color: "#002346" }}
             >
-              Appointment is booked successfully!
+              {t("home2.form.success")}
             </div>
           )}
         </section>

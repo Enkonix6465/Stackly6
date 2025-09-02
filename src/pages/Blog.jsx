@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 
 // Utility to sync left image height with right content
@@ -19,6 +20,7 @@ import supremeCourt from "../assets/supremeCourt.png";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import AOS from "aos";
+import { useTranslation } from "react-i18next";
 
 import blog from "../assets/blogHero.mp4";
 
@@ -31,140 +33,141 @@ function ScrollToTop() {
   return null;
 }
 
-const blogPosts = [
+const useBlogPosts = (t) => [
   {
-    title: "Understanding Your Rights When Arrested",
-    date: "August 1, 2025",
-    excerpt:
-      "Being arrested can be overwhelming. Learn the crucial rights every citizen should know and how to protect yourself legally...",
+    title: t("blogPage.posts.0.title"),
+    date: t("blogPage.posts.0.date"),
+    excerpt: t("blogPage.posts.0.excerpt"),
     slug: "understanding-your-rights",
-    author: "Adv. Priya Sinha",
+    author: t("blogPage.posts.0.author"),
   },
   {
-    title: "The Bail Application Process: What to Expect",
-    date: "July 24, 2025",
-    excerpt:
-      "Need help with bail? We break down the step-by-step process and offer tips for best outcomes at your first hearing...",
+    title: t("blogPage.posts.1.title"),
+    date: t("blogPage.posts.1.date"),
+    excerpt: t("blogPage.posts.1.excerpt"),
     slug: "bail-application-process",
-    author: "Adv. Rahul Mohanty",
+    author: t("blogPage.posts.1.author"),
   },
   {
-    title: "White-Collar Crime: Common Defenses Explained",
-    date: "July 15, 2025",
-    excerpt:
-      "White-collar charges are complex. Explore the most effective legal defenses for fraud, embezzlement, and regulatory offences.",
+    title: t("blogPage.posts.2.title"),
+    date: t("blogPage.posts.2.date"),
+    excerpt: t("blogPage.posts.2.excerpt"),
     slug: "white-collar-crime-defenses",
-    author: "Adv. Sneha Nair",
+    author: t("blogPage.posts.2.author"),
   },
 ];
 
-const suggestions = [
+const useSuggestions = (t) => [
   {
-    title: "Prepare for Arrest",
-    description:
-      "Know your rights clearly: remain silent, ask for a lawyer, and avoid signing anything without legal advice.",
+    title: t("blogPage.suggestions.0.title"),
+    description: t("blogPage.suggestions.0.description"),
     icon: "🛑",
   },
   {
-    title: "Bail Application",
-    description:
-      "Gather all case-related documents in advance and maintain communication with your attorney to streamline the bail process.",
+    title: t("blogPage.suggestions.1.title"),
+    description: t("blogPage.suggestions.1.description"),
     icon: "⚖️",
   },
   {
-    title: "White-Collar Crime Defense",
-    description:
-      "Collect evidence and financial records meticulously to build a strong defense against allegations like fraud or embezzlement.",
+    title: t("blogPage.suggestions.2.title"),
+    description: t("blogPage.suggestions.2.description"),
     icon: "💼",
   },
   {
-    title: "Dealing with Domestic Violence",
-    description:
-      "Reach out to legal help immediately and document incidents properly for stronger protection and legal action.",
+    title: t("blogPage.suggestions.3.title"),
+    description: t("blogPage.suggestions.3.description"),
     icon: "🏠",
   },
   {
-    title: "Cybercrime Preparedness",
-    description:
-      "Secure digital accounts, keep backups of important data, and report suspicious activity promptly for timely legal intervention.",
+    title: t("blogPage.suggestions.4.title"),
+    description: t("blogPage.suggestions.4.description"),
     icon: "💻",
   },
   {
-    title: "Handling Cyberbullying",
-    description:
-      "Document incidents thoroughly, avoid direct confrontation, and consult legal professionals for protection and remedies.",
+    title: t("blogPage.suggestions.5.title"),
+    description: t("blogPage.suggestions.5.description"),
     icon: "📱",
   },
 ];
 
-const precautions = {
+const usePrecautions = (t) => ({
   below18: [
-    "Inform parents or guardians about suspicious situations.",
-    "Avoid sharing personal information online.",
-    "Be cautious of strangers both online and offline.",
-    "Know emergency contact numbers.",
+    t("blogPage.precautions.below18.0"),
+    t("blogPage.precautions.below18.1"),
+    t("blogPage.precautions.below18.2"),
+    t("blogPage.precautions.below18.3"),
   ],
   adults: [
-    "Use secure passwords and two-factor authentication online.",
-    "Always carry identification documents when outside.",
-    "Be aware of your surroundings and avoid risky areas.",
-    "Seek legal advice immediately if suspected of crime involvement.",
+    t("blogPage.precautions.adults.0"),
+    t("blogPage.precautions.adults.1"),
+    t("blogPage.precautions.adults.2"),
+    t("blogPage.precautions.adults.3"),
   ],
   seniorCitizens: [
-    "Avoid sharing financial information with unknown persons.",
-    "Use trusted contacts for errands and travels.",
-    "Install home security systems or alarms.",
-    "Report scams or suspicious calls to authorities promptly.",
+    t("blogPage.precautions.seniorCitizens.0"),
+    t("blogPage.precautions.seniorCitizens.1"),
+    t("blogPage.precautions.seniorCitizens.2"),
+    t("blogPage.precautions.seniorCitizens.3"),
   ],
-};
+});
 
 // Law Quiz Data and Component
-const QUIZ_QUESTIONS = [
+const useQuizQuestions = (t) => [
   {
-    question:
-      "Which article of the Indian Constitution guarantees the right to equality?",
+    question: t("blogPage.quiz.0.question"),
     options: [
-      "A. Article 14",
-      "B. Article 19",
-      "C. Article 21",
-      "D. Article 32",
+      t("blogPage.quiz.0.options.0"),
+      t("blogPage.quiz.0.options.1"),
+      t("blogPage.quiz.0.options.2"),
+      t("blogPage.quiz.0.options.3"),
     ],
     answer: 0,
   },
   {
-    question: "What is the minimum age for marriage for women in India?",
-    options: ["A. 16 years", "B. 18 years", "C. 21 years", "D. 25 years"],
+    question: t("blogPage.quiz.1.question"),
+    options: [
+      t("blogPage.quiz.1.options.0"),
+      t("blogPage.quiz.1.options.1"),
+      t("blogPage.quiz.1.options.2"),
+      t("blogPage.quiz.1.options.3"),
+    ],
     answer: 1,
   },
   {
-    question:
-      "Which law deals with the punishment of criminal offences in India?",
+    question: t("blogPage.quiz.2.question"),
     options: [
-      "A. Indian Penal Code",
-      "B. Code of Civil Procedure",
-      "C. Indian Evidence Act",
-      "D. Companies Act",
+      t("blogPage.quiz.2.options.0"),
+      t("blogPage.quiz.2.options.1"),
+      t("blogPage.quiz.2.options.2"),
+      t("blogPage.quiz.2.options.3"),
     ],
     answer: 0,
   },
   {
-    question: "Who is the head of the judiciary in India?",
+    question: t("blogPage.quiz.3.question"),
     options: [
-      "A. President of India",
-      "B. Chief Justice of India",
-      "C. Prime Minister",
-      "D. Attorney General",
+      t("blogPage.quiz.3.options.0"),
+      t("blogPage.quiz.3.options.1"),
+      t("blogPage.quiz.3.options.2"),
+      t("blogPage.quiz.3.options.3"),
     ],
     answer: 1,
   },
   {
-    question: "What is the jail term for money laundering?",
-    options: ["A. 3-4 years", "B. 4-5 years", "C. 5-6 years", "D. 6-7 years"],
+    question: t("blogPage.quiz.4.question"),
+    options: [
+      t("blogPage.quiz.4.options.0"),
+      t("blogPage.quiz.4.options.1"),
+      t("blogPage.quiz.4.options.2"),
+      t("blogPage.quiz.4.options.3"),
+    ],
     answer: 3,
   },
 ];
 
 function LawQuiz() {
+  const { t } = useTranslation();
+  const QUIZ_QUESTIONS = useQuizQuestions(t);
   const COLOR_1 = "#002346"; // Deep Blue
   const COLOR_2 = "#F8F4E3"; // Soft Ivory
   const COLOR_3 = "#333333"; // Charcoal Black
@@ -205,7 +208,7 @@ function LawQuiz() {
 
   const correctCount = selected.reduce(
     (acc, val, idx) => acc + (val === QUIZ_QUESTIONS[idx].answer ? 1 : 0),
-    0
+    0,
   );
 
   if (showResult) {
@@ -219,14 +222,13 @@ function LawQuiz() {
         }}
       >
         <h3 className="text-2xl font-bold mb-4" style={{ color: COLOR_1 }}>
-          Quiz Result
+          {t("blogPage.quizResult.title")}
         </h3>
         <p className="text-lg mb-2">
-          You scored{" "}
-          <span style={{ color: COLOR_1, fontWeight: 700 }}>
-            {correctCount}
-          </span>{" "}
-          out of {QUIZ_QUESTIONS.length}!
+          {t("blogPage.quizResult.score", {
+            score: correctCount,
+            total: QUIZ_QUESTIONS.length,
+          })}
         </p>
         <button
           className="mt-6 py-2 px-6 font-semibold rounded-full"
@@ -242,7 +244,7 @@ function LawQuiz() {
             setFeedback(null);
           }}
         >
-          Try Again
+          {t("blogPage.quizResult.tryAgain")}
         </button>
       </div>
     );
@@ -306,8 +308,10 @@ function LawQuiz() {
           aria-live="polite"
         >
           {feedback
-            ? "Correct! Well done."
-            : `Incorrect. The correct answer is: ${q.options[q.answer]}`}
+            ? t("blogPage.quizResult.correct")
+            : t("blogPage.quizResult.incorrect", {
+                answer: q.options[q.answer],
+              })}
         </p>
       )}
       <div className="flex justify-between mt-6">
@@ -321,7 +325,7 @@ function LawQuiz() {
           onClick={handlePrev}
           disabled={step === 0}
         >
-          ← Previous
+          {t("blogPage.quizResult.prev")}
         </button>
         <button
           className="px-6 py-3 rounded font-semibold"
@@ -334,7 +338,9 @@ function LawQuiz() {
           onClick={handleNext}
           disabled={selected[step] == null}
         >
-          {step === QUIZ_QUESTIONS.length - 1 ? "Finish" : "Next →"}
+          {step === QUIZ_QUESTIONS.length - 1
+            ? t("blogPage.quizResult.finish")
+            : t("blogPage.quizResult.next")}
         </button>
       </div>
     </div>
@@ -463,6 +469,7 @@ function JudiciaryFlowchart() {
 
 const Blog = ({ user, onLogout }) => {
   const { darkMode, setDarkMode } = useDarkMode();
+  const { t } = useTranslation();
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
@@ -470,6 +477,10 @@ const Blog = ({ user, onLogout }) => {
   const COLOR_1 = "#002346"; // Deep Blue
   const COLOR_2 = "#F8F4E3"; // Soft Ivory
   const COLOR_3 = "#333333"; // Charcoal Black
+
+  const blogPosts = useBlogPosts(t);
+  const suggestions = useSuggestions(t);
+  const precautions = usePrecautions(t);
 
   return (
     <>
@@ -531,15 +542,14 @@ const Blog = ({ user, onLogout }) => {
               style={{ color: COLOR_2 }}
               data-aos="fade-down"
             >
-              Legal Insights & Updates
+              {t("blogPage.hero.title")}
             </h1>
             <p
               className="max-w-2xl mx-auto text-lg drop-shadow-lg"
               style={{ color: COLOR_2 }}
               data-aos="fade-up"
             >
-              News, legal guides, and expert tips from our attorneys helping you
-              stay informed and empowered.
+              {t("blogPage.hero.subtitle")}
             </p>
           </div>
         </section>
@@ -566,10 +576,7 @@ const Blog = ({ user, onLogout }) => {
               >
                 <div>
                   <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-                  <p
-                    className="text-base mb-3"
-                    style={{ color: COLOR_3 }}
-                  >
+                  <p className="text-base mb-3" style={{ color: COLOR_3 }}>
                     {post.excerpt}
                   </p>
                 </div>
@@ -595,7 +602,7 @@ const Blog = ({ user, onLogout }) => {
                     }}
                     aria-label={`Read more about ${post.title}`}
                   >
-                    Read More
+                    {t("blogPage.readMore")}
                   </button>
                 </div>
               </Link>
@@ -613,7 +620,7 @@ const Blog = ({ user, onLogout }) => {
             className="text-4xl text-center font-bold mb-12"
             style={{ color: COLOR_2 }}
           >
-            How to Prepare if You Face a Crime Situation
+            {t("blogPage.suggestionsTitle")}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {suggestions.map(({ title, description, icon }, idx) => (
@@ -629,8 +636,12 @@ const Blog = ({ user, onLogout }) => {
                 <div className="text-6xl mb-5" aria-hidden="true">
                   {icon}
                 </div>
-                <h3 className="text-xl text-[#002346] font-semibold mb-4">{title}</h3>
-                <p className="text-sm text-[#333333] leading-relaxed">{description}</p>
+                <h3 className="text-xl text-[#002346] font-semibold mb-4">
+                  {title}
+                </h3>
+                <p className="text-sm text-[#333333] leading-relaxed">
+                  {description}
+                </p>
               </div>
             ))}
           </div>
@@ -646,13 +657,17 @@ const Blog = ({ user, onLogout }) => {
             className="text-4xl text-center font-bold mb-12"
             style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
           >
-            Precautions by Age Group
+            {t("blogPage.precautionsTitle")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto text-left">
             {/* Below 18 Age */}
             <div
               className="rounded-3xl p-8 shadow-lg"
-              style={{ border: `3px solid ${COLOR_1}`, color: "#002346", backgroundColor: "#F8F4E3" }}
+              style={{
+                border: `3px solid ${COLOR_1}`,
+                color: "#002346",
+                backgroundColor: "#F8F4E3",
+              }}
               role="region"
               aria-label="Precautions for Below 18 Age"
             >
@@ -660,7 +675,7 @@ const Blog = ({ user, onLogout }) => {
                 className="text-2xl font-semibold mb-4"
                 style={{ color: COLOR_1 }}
               >
-                Below 18 Age
+                {t("blogPage.precautions.below18Title")}
               </h3>
               <ul className="list-disc list-inside space-y-2 text-sm">
                 {precautions.below18.map((item, idx) => (
@@ -671,7 +686,11 @@ const Blog = ({ user, onLogout }) => {
             {/* Adults */}
             <div
               className="rounded-3xl p-8 shadow-lg"
-              style={{ border: `3px solid ${COLOR_1}`, color: COLOR_3, backgroundColor: "#F8F4E3" }}
+              style={{
+                border: `3px solid ${COLOR_1}`,
+                color: COLOR_3,
+                backgroundColor: "#F8F4E3",
+              }}
               role="region"
               aria-label="Precautions for Adults"
             >
@@ -679,7 +698,7 @@ const Blog = ({ user, onLogout }) => {
                 className="text-2xl font-semibold mb-4"
                 style={{ color: COLOR_1 }}
               >
-                Adults
+                {t("blogPage.precautions.adultsTitle")}
               </h3>
               <ul className="list-disc list-inside space-y-2 text-sm">
                 {precautions.adults.map((item, idx) => (
@@ -690,7 +709,11 @@ const Blog = ({ user, onLogout }) => {
             {/* Senior Citizens */}
             <div
               className="rounded-3xl p-8 shadow-lg"
-              style={{ border: `3px solid ${COLOR_1}`, color: COLOR_3, backgroundColor: "#F8F4E3" }}
+              style={{
+                border: `3px solid ${COLOR_1}`,
+                color: COLOR_3,
+                backgroundColor: "#F8F4E3",
+              }}
               role="region"
               aria-label="Precautions for Senior Citizens"
             >
@@ -698,7 +721,7 @@ const Blog = ({ user, onLogout }) => {
                 className="text-2xl font-semibold mb-4"
                 style={{ color: COLOR_1 }}
               >
-                Senior Citizens
+                {t("blogPage.precautions.seniorCitizensTitle")}
               </h3>
               <ul className="list-disc list-inside space-y-2 text-sm">
                 {precautions.seniorCitizens.map((item, idx) => (
@@ -755,7 +778,7 @@ const Blog = ({ user, onLogout }) => {
                     className="text-3xl font-bold mb-6"
                     style={{ color: "#F8F4E3" }}
                   >
-                    Supreme Court of India: Know the Facts
+                    {t("blogPage.supremeCourt.title")}
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-lg">
                     <div>
@@ -763,16 +786,8 @@ const Blog = ({ user, onLogout }) => {
                         className="list-disc list-inside space-y-3"
                         style={{ color: "#F8F4E3" }}
                       >
-                        <li>
-                          The Supreme Court of India is the highest judicial
-                          authority and was established on{" "}
-                          <b>January 28, 1950</b>.
-                        </li>
-                        <li>
-                          It is located at <b>Tilak Marg, New Delhi</b>, and its
-                          iconic building features a distinctive dome inspired
-                          by the Temple of the Vedic gods.
-                        </li>
+                        <li>{t("blogPage.supremeCourt.fact1")}</li>
+                        <li>{t("blogPage.supremeCourt.fact2")}</li>
                       </ul>
                     </div>
                     <div>
@@ -780,13 +795,8 @@ const Blog = ({ user, onLogout }) => {
                         className="list-disc list-inside space-y-3"
                         style={{ color: "#F8F4E3" }}
                       >
-                        <li>
-                          As of August 2025, <b>Justice D.Y. Chandrachud</b> is
-                          the Chief Justice of India.
-                        </li>
-                        <li>The Court comprises the Chief Justice and up to{" "}
-                <b>33 other judges</b>; appointments are made by the President
-                of India.</li>
+                        <li>{t("blogPage.supremeCourt.fact3")}</li>
+                        <li>{t("blogPage.supremeCourt.fact4")}</li>
                       </ul>
                     </div>
                   </div>
@@ -803,8 +813,11 @@ const Blog = ({ user, onLogout }) => {
           data-aos="fade-up"
         >
           <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-12" style={{ color: darkMode ? "#F8F4E3" : "#002346" }}>
-              Test Your Legal Knowledge
+            <h2
+              className="text-3xl font-bold mb-12"
+              style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+            >
+              {t("blogPage.quizTitle")}
             </h2>
             <LawQuiz />
           </div>

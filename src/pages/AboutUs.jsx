@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDarkMode } from "../context/DarkModeContext";
 // Utility to sync left image height with right content
 function useSyncHeight(leftRef, rightRef) {
@@ -21,6 +23,7 @@ import missionVision from "../assets/missionVision.jpg"; // Change this to a sui
 
 const AboutUs = ({ user, onLogout }) => {
   const { darkMode, setDarkMode } = useDarkMode();
+  const { t } = useTranslation();
   // Strict color palette
   const COLOR_1 = "#002346"; // deep blue
   const COLOR_2 = "#F8F4E3"; // off-white
@@ -77,11 +80,10 @@ const AboutUs = ({ user, onLogout }) => {
             className="text-5xl font-extrabold mb-6"
             style={{ color: COLOR_2 }}
           >
-            About Verdict Law Firm
+            {t("about.heroTitle")}
           </h1>
           <p className="text-xl max-w-3xl mx-auto" style={{ color: COLOR_2 }}>
-            Committed to justice, integrity, and personalized legal solutions
-            for every client.
+            {t("about.heroSubtitle")}
           </p>
         </div>
       </section>
@@ -128,18 +130,15 @@ const AboutUs = ({ user, onLogout }) => {
               >
                 <h2
                   className="text-3xl font-bold mb-3"
-                  style={{ color: darkMode ? "#F8F4E3" : "#002346"  }}
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
                 >
-                  Our Mission & Vision
+                  {t("about.missionVisionTitle")}
                 </h2>
                 <p
                   className="mb-6 text-base md:text-lg"
                   style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
                 >
-                  We are committed to empowering individuals to achieve their
-                  optimal well-being—protecting your rights, delivering
-                  personalized legal solutions, and fostering a supportive,
-                  client-first community.
+                  {t("about.missionVisionDesc")}
                 </p>
                 {/* Mission card */}
                 <div
@@ -153,13 +152,9 @@ const AboutUs = ({ user, onLogout }) => {
                     className="font-bold text-lg mb-2"
                     style={{ color: "#333333" }}
                   >
-                    Our Mission
+                    {t("about.missionTitle")}
                   </h3>
-                  <p style={{ color: "#333333" }}>
-                    To provide accessible, comprehensive legal solutions that
-                    transform lives and create lasting positive change for
-                    everyone we serve.
-                  </p>
+                  <p style={{ color: "#333333" }}>{t("about.missionDesc")}</p>
                 </div>
                 {/* Vision card */}
                 <div
@@ -173,13 +168,9 @@ const AboutUs = ({ user, onLogout }) => {
                     className="font-bold text-lg mb-2"
                     style={{ color: "#002346" }}
                   >
-                    Our Vision
+                    {t("about.visionTitle")}
                   </h3>
-                  <p style={{ color: "#333333" }}>
-                    To be recognized as the leading law firm—where individuals
-                    and businesses discover their path to justice, well-being,
-                    and peace of mind.
-                  </p>
+                  <p style={{ color: "#333333" }}>{t("about.visionDesc")}</p>
                 </div>
               </div>
             </>
@@ -194,19 +185,19 @@ const AboutUs = ({ user, onLogout }) => {
             className="text-3xl font-bold mb-10 text-center"
             style={{ color: COLOR_2 }}
           >
-            Our Core Values
+            {t("about.valuesTitle")}
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-8 font-medium text-lg">
             {[
-              "Integrity",
-              "Excellence",
-              "Client Focus",
-              "Respect",
-              "Innovation",
-              "Community",
-            ].map((value, idx) => (
+              "integrity",
+              "excellence",
+              "clientFocus",
+              "respect",
+              "innovation",
+              "community",
+            ].map((key, idx) => (
               <li
-                key={value}
+                key={key}
                 className="rounded-lg p-6 shadow-md"
                 style={{
                   background: idx % 2 === 0 ? COLOR_2 : COLOR_3,
@@ -214,20 +205,10 @@ const AboutUs = ({ user, onLogout }) => {
                   border: `2px solid ${COLOR_1}`,
                 }}
               >
-                <h3 className="font-semibold mb-2">{value}</h3>
-                <p>
-                  {value === "Integrity"
-                    ? "We adhere to the highest ethical standards and honesty in all client dealings."
-                    : value === "Excellence"
-                    ? "Delivering outstanding results through expert knowledge and meticulous preparation."
-                    : value === "Client Focus"
-                    ? "Prioritizing client needs with personalized service and open communication."
-                    : value === "Respect"
-                    ? "Fostering mutual respect within our team and with clients and opposing parties."
-                    : value === "Innovation"
-                    ? "Employing creative legal strategies to achieve favorable outcomes."
-                    : "Committed to giving back and supporting access to justice for all."}
-                </p>
+                <h3 className="font-semibold mb-2">
+                  {t(`about.values.${key}.title`)}
+                </h3>
+                <p>{t(`about.values.${key}.desc`)}</p>
               </li>
             ))}
           </ul>
@@ -240,14 +221,13 @@ const AboutUs = ({ user, onLogout }) => {
           className="text-3xl font-bold mb-12 text-center"
           style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
         >
-          Our Growth Through Years
+          {t("about.timelineTitle")}
         </h2>
         <p
           className="text-center mb-14 text-lg font-medium"
-          style={{ color: darkMode ? "#F8F4E3" : "#333333"}}
+          style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
         >
-          A journey of continuous growth, innovation, and commitment to
-          transforming lives through justice.
+          {t("about.timelineDesc")}
         </p>
         <div className="relative flex flex-col gap-16">
           {/* Timeline Card: Foundation */}
@@ -256,11 +236,14 @@ const AboutUs = ({ user, onLogout }) => {
               className="flex-1 rounded-xl shadow-lg p-8"
               style={{ backgroundColor: darkMode ? "#F8F4E3" : "#002346" }}
             >
-              <h3 className="text-xl font-bold mb-2" style={{color:darkMode ? "#002346" : "white"}}>Foundation</h3>
-              <p style={{color:darkMode ? "#002346" : "white"}}>
-                Started Verdict Law Firm with a vision to protect clients’
-                rights through personalized care and evidence-based legal
-                practice. First office established, 2016.
+              <h3
+                className="text-xl font-bold mb-2"
+                style={{ color: darkMode ? "#002346" : "white" }}
+              >
+                {t("about.timeline.0.title")}
+              </h3>
+              <p style={{ color: darkMode ? "#002346" : "white" }}>
+                {t("about.timeline.0.desc")}
               </p>
             </div>
             <div
@@ -281,16 +264,17 @@ const AboutUs = ({ user, onLogout }) => {
                 border: "2px solid #002346",
               }}
             >
-              <h3 className="text-xl font-bold mb-2">Expansion</h3>
-              <p>
-                Expanded service offerings to include corporate and family law.
-                Opened second office, increased team to 20+ legal professionals,
-                2019.
-              </p>
+              <h3 className="text-xl font-bold mb-2">
+                {t("about.timeline.1.title")}
+              </h3>
+              <p>{t("about.timeline.1.desc")}</p>
             </div>
             <div
               className="flex-shrink-0 z-10 w-16 h-16 flex items-center justify-center rounded-full shadow-lg"
-              style={{ background: darkMode ? "#333333" : "#002346", color: "#F8F4E3" }}
+              style={{
+                background: darkMode ? "#333333" : "#002346",
+                color: "#F8F4E3",
+              }}
             >
               <span className="font-semibold text-lg">2019</span>
             </div>
@@ -302,11 +286,14 @@ const AboutUs = ({ user, onLogout }) => {
               className="flex-1 rounded-xl shadow-lg p-8"
               style={{ backgroundColor: darkMode ? "#F8F4E3" : "#002346" }}
             >
-              <h3 className="text-xl font-bold mb-2" style={{color:darkMode ? "#002346" : "white"}}>National Recognition</h3>
-              <p style={{color:darkMode ? "#002346" : "white"}}>
-                Achieved national recognition for landmark victories in
-                high-profile cases. Team awarded for excellence in advocacy and
-                client service, 2022.
+              <h3
+                className="text-xl font-bold mb-2"
+                style={{ color: darkMode ? "#002346" : "white" }}
+              >
+                {t("about.timeline.2.title")}
+              </h3>
+              <p style={{ color: darkMode ? "#002346" : "white" }}>
+                {t("about.timeline.2.desc")}
               </p>
             </div>
             <div
@@ -328,17 +315,16 @@ const AboutUs = ({ user, onLogout }) => {
               }}
             >
               <h3 className="text-xl font-bold mb-2">
-                Technology & Innovation
+                {t("about.timeline.3.title")}
               </h3>
-              <p>
-                Adopted digital case management, remote consultations, and
-                online legal resources for better client access and streamlined
-                operations, 2024.
-              </p>
+              <p>{t("about.timeline.3.desc")}</p>
             </div>
             <div
               className="flex-shrink-0 z-10 w-16 h-16 flex items-center justify-center rounded-full shadow-lg"
-              style={{ background: darkMode ? "#333333" : "#002346", color: "#F8F4E3" }}
+              style={{
+                background: darkMode ? "#333333" : "#002346",
+                color: "#F8F4E3",
+              }}
             >
               <span className="font-semibold text-lg">2024</span>
             </div>
@@ -352,16 +338,14 @@ const AboutUs = ({ user, onLogout }) => {
           className="max-w-4xl mx-auto text-center"
           style={{ color: COLOR_2 }}
         >
-          <h2 className="text-3xl font-bold mb-6">Our Commitment to You</h2>
+          <h2 className="text-3xl font-bold mb-6">
+            {t("about.commitmentTitle")}
+          </h2>
           <p className="text-lg leading-relaxed mb-6">
-            We dedicate ourselves to offering transparent, accessible, and
-            proactive legal services. From the first consultation to the final
-            resolution, your goals are at the heart of our approach.
+            {t("about.commitmentDesc")}
           </p>
           <p className="italic text-base max-w-2xl mx-auto">
-            “Verdict Law Firm gave me personalized support and achieved results
-            I thought weren’t possible. Truly a partner you can count on.” —
-            Client Testimonial
+            {t("about.commitmentTestimonial")}
           </p>
         </div>
       </section>
@@ -375,14 +359,13 @@ const AboutUs = ({ user, onLogout }) => {
           className="text-4xl font-bold mb-6"
           style={{ color: darkMode ? "#fff" : COLOR_1 }}
         >
-          Ready to Connect with Us?
+          {t("about.ctaTitle")}
         </h2>
         <p
           className="mb-8 text-lg max-w-xl mx-auto"
           style={{ color: darkMode ? "#fff" : COLOR_3 }}
         >
-          Contact Verdict Law Firm today to schedule your consultation and
-          discuss how we can serve your legal needs.
+          {t("about.ctaDesc")}
         </p>
         <button
           className="font-bold px-8 py-4 rounded-full transition"
@@ -392,11 +375,11 @@ const AboutUs = ({ user, onLogout }) => {
           }}
           onClick={handleBookConsultation}
         >
-          Connect with us
+          {t("about.ctaButton")}
         </button>
       </section>
 
-  <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
   );
 };

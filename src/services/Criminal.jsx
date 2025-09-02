@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext";
 import AOS from "aos";
 import Footer from "../components/Footer.jsx";
+import { useTranslation } from "react-i18next";
 //import '../aos-custom.css';
 import {
   UserIcon,
@@ -14,22 +16,24 @@ import {
   SparklesIcon,
   Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
-import criminal from '../assets/criminalHero.mp4';
-import criminalPhoto from '../assets/criminalPhoto.jpg';
+import criminal from "../assets/criminalHero.mp4";
+import criminalPhoto from "../assets/criminalPhoto.jpg";
 
-const COLOR_1 = '#002346'; // deep blue
-const COLOR_2 = '#F8F4E3'; // off-white
-const COLOR_3 = '#333333';
+const COLOR_1 = "#002346"; // deep blue
+const COLOR_2 = "#F8F4E3"; // off-white
+const COLOR_3 = "#333333";
 
 const Criminal = ({ user, onLogout }) => {
   const { darkMode, setDarkMode } = useDarkMode();
   const navigate = useNavigate();
   // Prevent horizontal scroll on the whole page
   useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = 'html, body { overflow-x: hidden !important; }';
+    const style = document.createElement("style");
+    style.innerHTML = "html, body { overflow-x: hidden !important; }";
     document.head.appendChild(style);
-    return () => { document.head.removeChild(style); };
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
   // Smooth scroll methods
   const scrollToBenefits = () => {
@@ -45,49 +49,47 @@ const Criminal = ({ user, onLogout }) => {
     }
   };
 
-
   // Initialize AOS
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
+  const { t } = useTranslation();
+
   // Page Content
   const benefits = [
-    "Expert representation at every stage of criminal proceedings",
-    "Thorough case analysis and evidence gathering",
-    "Confidential and strategic legal advice",
-    "Aggressive defense against prosecution",
-    "Guidance on plea bargains and settlement options",
-    "Support and advocacy in bail hearings",
+    t("criminal.benefit1"),
+    t("criminal.benefit2"),
+    t("criminal.benefit3"),
+    t("criminal.benefit4"),
+    t("criminal.benefit5"),
+    t("criminal.benefit6"),
   ];
 
   const services = [
     {
-      title: "Bail & Remand Hearings",
-      description:
-        "Swift intervention for bail applications, minimizing custody time and protecting your rights",
+      title: t("criminal.service1.title"),
+      description: t("criminal.service1.desc"),
     },
     {
-      title: "Pre-Charge Consultations",
-      description: "Early legal guidance for individuals under investigation",
+      title: t("criminal.service2.title"),
+      description: t("criminal.service2.desc"),
     },
     {
-      title: "Trial Defense",
-      description: "Meticulous trial preparation and robust advocacy in court",
+      title: t("criminal.service3.title"),
+      description: t("criminal.service3.desc"),
     },
     {
-      title: "Appeals & Post-Conviction",
-      description:
-        "Challenging verdicts and sentences, seeking justice through the appellate courts",
+      title: t("criminal.service4.title"),
+      description: t("criminal.service4.desc"),
     },
     {
-      title: "White-Collar Crime",
-      description:
-        "Specialized defense for fraud, embezzlement, and regulatory offenses",
+      title: t("criminal.service5.title"),
+      description: t("criminal.service5.desc"),
     },
     {
-      title: "Juvenile Criminal Defense",
-      description: "Protection and advocacy for minors facing criminal charges",
+      title: t("criminal.service6.title"),
+      description: t("criminal.service6.desc"),
     },
   ];
 
@@ -100,64 +102,64 @@ const Criminal = ({ user, onLogout }) => {
   ];
 
   const features = [
-    "Direct access to senior attorneys",
-    "24/7 client helpline",
-    "Case status updates on our secure portal",
-    "Comprehensive case documentation",
+    t("criminal.feature1"),
+    t("criminal.feature2"),
+    t("criminal.feature3"),
+    t("criminal.feature4"),
   ];
 
   const pricingTiers = [
     {
-      title: "Consult",
-      price: "$199",
-      priceNote: "/session",
+      title: t("criminal.pricing1.title"),
+      price: t("criminal.pricing1.price"),
+      priceNote: t("criminal.pricing1.priceNote"),
       features: [
-        "Single consultation with a senior lawyer",
-        "Case review & legal road-map",
-        "Actionable advice for next steps",
-        "Monthly reports and full online access",
+        t("criminal.pricing1.feature1"),
+        t("criminal.pricing1.feature2"),
+        t("criminal.pricing1.feature3"),
+        t("criminal.pricing1.feature4"),
       ],
-      buttonText: "Book Consult",
+      buttonText: t("criminal.pricing1.buttonText"),
       buttonClass:
         "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
       boxStyle: { background: "#AABF91", color: "#002346" },
       className:
         "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
-    },{
-      title: "Standard Defense",
-      price: "$1,299",
-      priceNote: "/case (initial)",
+    },
+    {
+      title: t("criminal.pricing2.title"),
+      price: t("criminal.pricing2.price"),
+      priceNote: t("criminal.pricing2.priceNote"),
       features: [
-        "All features from Consult",
-        "Representation at investigation & bail",
-        "Detailed evidence review & strategy",
-        "Preparation for trial (up to 2 hearings)",
+        t("criminal.pricing2.feature1"),
+        t("criminal.pricing2.feature2"),
+        t("criminal.pricing2.feature3"),
+        t("criminal.pricing2.feature4"),
       ],
-      buttonText: "Contact Us",
+      buttonText: t("criminal.pricing2.buttonText"),
+      badge: t("criminal.pricing2.badge"),
       buttonClass:
         "w-full bg-[#AABF91] text-[#002346] font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] hover:text-white transition-colors duration-300 transform hover:scale-105",
-      badge: "MOST POPULAR",
       boxStyle: { background: "#002346", color: "#AABF91" },
       className: "rounded-2xl p-6 border-2 border-[#AABF91] scale-105",
     },
     {
-      title: "Comprehensive Defense",
-      price: "$2,999",
-      priceNote: "/case",
+      title: t("criminal.pricing3.title"),
+      price: t("criminal.pricing3.price"),
+      priceNote: t("criminal.pricing3.priceNote"),
       features: [
-        "Full representation through trial",
-        "Post-conviction motions & appeals",
-        "24/7 access to legal team",
-        "Weekly case status reports",
+        t("criminal.pricing3.feature1"),
+        t("criminal.pricing3.feature2"),
+        t("criminal.pricing3.feature3"),
+        t("criminal.pricing3.feature4"),
       ],
-      buttonText: "Start Now",
+      buttonText: t("criminal.pricing3.buttonText"),
       buttonClass:
         "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
       boxStyle: { background: "#AABF91", color: "#002346" },
       className:
         "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
-    }
-    // Add more pricing tiers here if needed
+    },
   ];
 
   return (
@@ -167,18 +169,14 @@ const Criminal = ({ user, onLogout }) => {
       }`}
     >
       <div className="fixed top-0 left-0 w-full z-[100] bg-white dark:bg-[#002346] shadow-lg">
-        <Header
-          user={user}
-          onLogout={onLogout}
-        />
-        <Header
-          user={user}
-          onLogout={onLogout}
-        />
+        <Header user={user} onLogout={onLogout} />
       </div>
 
       {/* Hero Section */}
-      <section className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0" style={{ minHeight: '100vh', maxWidth: '100vw' }}>
+      <section
+        className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0"
+        style={{ minHeight: "100vh", maxWidth: "100vw" }}
+      >
         <video
           autoPlay
           loop
@@ -186,17 +184,23 @@ const Criminal = ({ user, onLogout }) => {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ minHeight: '100vh', minWidth: '100vw', objectFit: 'cover' }}
+          style={{ minHeight: "100vh", minWidth: "100vw", objectFit: "cover" }}
         >
           <source src={criminal} type="video/mp4" />
-          Your browser does not support the video tag.
+          {t("criminal.hero.noVideoSupport")}
         </video>
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
-          <h1 className="font-bold text-5xl mb-6 text-white drop-shadow-lg" data-aos="fade-down">
-            Criminal Law
+          <h1
+            className="font-bold text-5xl mb-6 text-white drop-shadow-lg"
+            data-aos="fade-down"
+          >
+            {t("criminal.hero.title")}
           </h1>
-          <p className="max-w-2xl mx-auto text-lg text-white drop-shadow-lg" data-aos="fade-up">
-            Expert representation at every stage of criminal proceedings.
+          <p
+            className="max-w-2xl mx-auto text-lg text-white drop-shadow-lg"
+            data-aos="fade-up"
+          >
+            {t("criminal.hero.subtitle")}
           </p>
         </div>
       </section>
@@ -205,7 +209,7 @@ const Criminal = ({ user, onLogout }) => {
       <section
         id="key-benefits"
         className="w-full py-16 px-4 transition-colors duration-300"
-  style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
+        style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-once="false"
@@ -220,14 +224,13 @@ const Criminal = ({ user, onLogout }) => {
               className="text-5xl font-bold mb-4"
               style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
             >
-              Key Advantages
+              {t("criminal.benefits.title")}
             </h2>
             <p
               className="text-lg max-w-2xl mx-auto"
               style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
             >
-              Committed to upholding your rights and delivering justice at every
-              turn.
+              {t("criminal.benefits.subtitle")}
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 justify-items-center">
@@ -255,17 +258,33 @@ const Criminal = ({ user, onLogout }) => {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col items-center lg:items-start justify-start h-full" data-aos="zoom-in" data-aos-delay="600">
+            <div
+              className="flex flex-col items-center lg:items-start justify-start h-full"
+              data-aos="zoom-in"
+              data-aos-delay="600"
+            >
               <img
                 src={criminalPhoto}
                 alt="Criminal Law"
                 className="rounded-2xl shadow-xl mb-6 w-[420px] h-[420px] object-fill border-4 border-[#F8F4E3] dark:border-[#002346]"
-                style={{ maxWidth: '100%', background: darkMode ? '#333333' : '#fff', marginTop: 0, alignSelf: 'flex-start' }}
+                style={{
+                  maxWidth: "100%",
+                  background: darkMode ? "#333333" : "#fff",
+                  marginTop: 0,
+                  alignSelf: "flex-start",
+                }}
               />
-              <h3 className="text-2xl font-bold mb-4 self-center lg:self-start" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>Your Defense. Our Priority.</h3>
-              <p className="text-lg max-w-md self-center lg:self-start" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                Experience client-first criminal law representation designed to
-                achieve the best results for your case.
+              <h3
+                className="text-2xl font-bold mb-4 self-center lg:self-start"
+                style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+              >
+                {t("criminal.benefits.imageTitle")}
+              </h3>
+              <p
+                className="text-lg max-w-md self-center lg:self-start"
+                style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+              >
+                {t("criminal.benefits.imageSubtitle")}
               </p>
             </div>
             {/* More Benefits */}
@@ -306,7 +325,7 @@ const Criminal = ({ user, onLogout }) => {
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="mb-12" data-aos="fade-up">
             <h2 className="text-5xl text-center font-bold text-white">
-              Criminal Law Services
+              {t("criminal.services.title")}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -327,7 +346,9 @@ const Criminal = ({ user, onLogout }) => {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="text-xl text-[#002346] font-bold mb-4">{service.title}</h3>
+                <h3 className="text-xl text-[#002346] font-bold mb-4">
+                  {service.title}
+                </h3>
                 <p className="text-base">{service.description}</p>
               </div>
             ))}
@@ -336,14 +357,20 @@ const Criminal = ({ user, onLogout }) => {
       </section>
 
       {/* How It Works Section */}
-      <section className="w-full py-16 px-2" style={{ background: darkMode ? '#002346' : '#F8F4E3' }}>
+      <section
+        className="w-full py-16 px-2"
+        style={{ background: darkMode ? "#002346" : "#F8F4E3" }}
+      >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#002346] text-center mb-4" >
-            <span style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>How We Work</span>
+          <h2 className="text-4xl md:text-5xl font-semibold text-[#002346] text-center mb-4">
+            <span style={{ color: darkMode ? "#F8F4E3" : "#002346" }}>
+              {t("criminal.howWeWork.title")}
+            </span>
           </h2>
           <p className="text-center text-[#002346] mb-12 max-w-2xl mx-auto">
-            <span style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>Our streamlined 7-step process ensures a strong and proactive
-            criminal defense.</span>
+            <span style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
+              {t("criminal.howWeWork.subtitle")}
+            </span>
           </p>
           <div className="flex flex-wrap justify-center items-start gap-y-12 gap-x-2">
             {/* STEP 1 */}
@@ -365,12 +392,17 @@ const Criminal = ({ user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Initial Consultation
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("criminal.howWeWork.step1.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Private session to discuss the alleged offense, your rights,
-                  and initial concerns.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("criminal.howWeWork.step1.desc")}
                 </p>
               </div>
             </div>
@@ -383,23 +415,34 @@ const Criminal = ({ user, onLogout }) => {
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
                   height: "80px",
-                  background: COLOR_3
+                  background: COLOR_3,
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <DocumentDuplicateIcon className="w-7 h-7 text-[#002346]" style={{color: COLOR_2}}/>
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
+                  <DocumentDuplicateIcon
+                    className="w-7 h-7 text-[#002346]"
+                    style={{ color: COLOR_2 }}
+                  />
+                  <span
+                    className="mt-1 text-base font-bold text-[#002346] tracking-widest"
+                    style={{ color: COLOR_2 }}
+                  >
                     02
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Case Assessment
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("criminal.howWeWork.step2.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Thoroughly review FIRs, police reports, witness statements,
-                  and all prosecution evidence.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("criminal.howWeWork.step2.desc")}
                 </p>
               </div>
             </div>
@@ -422,12 +465,17 @@ const Criminal = ({ user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Defense Strategy
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("criminal.howWeWork.step3.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Develop a defense plan—anticipate prosecution steps, identify
-                  weaknesses, and prepare motions.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("criminal.howWeWork.step3.desc")}
                 </p>
               </div>
             </div>
@@ -450,12 +498,17 @@ const Criminal = ({ user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Filing & Representation
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("criminal.howWeWork.step4.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  File necessary applications: bail, anticipatory bail, or
-                  discharge, and begin court representation.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("criminal.howWeWork.step4.desc")}
                 </p>
               </div>
             </div>
@@ -468,23 +521,34 @@ const Criminal = ({ user, onLogout }) => {
                     "polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0% 50%)",
                   width: "72px",
                   height: "80px",
-                  background: COLOR_3
+                  background: COLOR_3,
                 }}
               >
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <BriefcaseIcon className="w-7 h-7 text-[#002346]" style={{color: COLOR_2}}/>
-                  <span className="mt-1 text-base font-bold text-[#002346] tracking-widest" style={{color: COLOR_2}}>
+                  <BriefcaseIcon
+                    className="w-7 h-7 text-[#002346]"
+                    style={{ color: COLOR_2 }}
+                  />
+                  <span
+                    className="mt-1 text-base font-bold text-[#002346] tracking-widest"
+                    style={{ color: COLOR_2 }}
+                  >
                     05
                   </span>
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Hearings & Trial
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("criminal.howWeWork.step5.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Advocate in court—cross-examine witnesses, present evidence,
-                  and challenge prosecution claims.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("criminal.howWeWork.step5.desc")}
                 </p>
               </div>
             </div>
@@ -507,12 +571,17 @@ const Criminal = ({ user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Updates & Guidance
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("criminal.howWeWork.step6.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Provide regular updates, explain legal proceedings, and offer
-                  counsel at every stage.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("criminal.howWeWork.step6.desc")}
                 </p>
               </div>
             </div>
@@ -535,12 +604,17 @@ const Criminal = ({ user, onLogout }) => {
                 </div>
               </div>
               <div className="flex flex-col items-center mt-2">
-                <h3 className="text-[#002346] font-semibold text-center text-base" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>
-                  Resolution & Appeals
+                <h3
+                  className="text-[#002346] font-semibold text-center text-base"
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                >
+                  {t("criminal.howWeWork.step7.title")}
                 </h3>
-                <p className="text-[#333333] text-center text-xs mt-1" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                  Court decision—assist with bail, sentencing, appeals, or
-                  expungement where necessary.
+                <p
+                  className="text-[#333333] text-center text-xs mt-1"
+                  style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                >
+                  {t("criminal.howWeWork.step7.desc")}
                 </p>
               </div>
             </div>
@@ -562,10 +636,10 @@ const Criminal = ({ user, onLogout }) => {
                   className="text-5xl font-bold mb-6"
                   style={{ color: "#F8F4E3" }}
                 >
-                  Our Client Features
+                  {t("criminal.features.title")}
                 </h2>
                 <p className="text-xl mb-8" style={{ color: "#F8F4E3" }}>
-                  Empowering clients at every stage.
+                  {t("criminal.features.subtitle")}
                 </p>
               </div>
               <div className="space-y-6">
@@ -573,30 +647,25 @@ const Criminal = ({ user, onLogout }) => {
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  Our practice delivers tailored criminal defense backed by
-                  in-depth legal knowledge, courtroom experience, and
-                  personalized attention.
+                  {t("criminal.features.desc1")}
                 </p>
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  Receive regular updates and have your questions answered
-                  promptly, so you're never left in the dark about your case.
+                  {t("criminal.features.desc2")}
                 </p>
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  Access our secure client portal for all your documents, case
-                  calendars, and direct attorney messaging.
+                  {t("criminal.features.desc3")}
                 </p>
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  We stand by you, whether you need an immediate bail
-                  application or representation in a complex trial.
+                  {t("criminal.features.desc4")}
                 </p>
               </div>
             </div>
@@ -609,11 +678,11 @@ const Criminal = ({ user, onLogout }) => {
                 <div
                   key={index}
                   className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                style={{ background: "#F8F4E3", color: "#333333" }}
+                  style={{ background: "#F8F4E3", color: "#333333" }}
                 >
                   <h3 className="text-xl font-bold mb-2">{feature}</h3>
                   <p className="text-base">
-                    Benefit from {feature.toLowerCase()} as a valued client.
+                    {t("criminal.features.benefit", { feature })}
                   </p>
                 </div>
               ))}
@@ -624,9 +693,9 @@ const Criminal = ({ user, onLogout }) => {
 
       {/* Final CTA/Pricing Section */}
       <section
-  id="pricing-section"
-  className="w-full py-16 px-4 transition-colors duration-300"
-  style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
+        id="pricing-section"
+        className="w-full py-16 px-4 transition-colors duration-300"
+        style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
       >
         <div className="max-w-6xl mx-auto text-center w-full">
           <h2
@@ -635,7 +704,7 @@ const Criminal = ({ user, onLogout }) => {
             data-aos="fade-down"
             data-aos-delay="50"
           >
-            Secure Your Defense Now
+            {t("criminal.pricing.title")}
           </h2>
           <p
             className="text-xl mb-12 max-w-2xl mx-auto"
@@ -643,46 +712,78 @@ const Criminal = ({ user, onLogout }) => {
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            No matter the charge, our team is ready to protect your future.
+            {t("criminal.pricing.subtitle")}
           </p>
           {/* Service Tiers */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {pricingTiers.map((tier, i) => (
-              <div key={i} style={{background: COLOR_2, color: COLOR_3, border: `2px solid ${COLOR_1}`}} className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300">
-                {tier.badge &&
+              <div
+                key={i}
+                style={{
+                  background: COLOR_2,
+                  color: COLOR_3,
+                  border: `2px solid ${COLOR_1}`,
+                }}
+                className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300"
+              >
+                {tier.badge && (
                   <div className="bg-white text-[#002346] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
                     {tier.badge}
-                  </div>}
-                <h3 className="text-2xl font-bold mb-2" style={{color: COLOR_1}}>{tier.title}</h3>
-                <div className="text-4xl font-bold mb-4" style={{color: COLOR_3}}>{tier.price}<span className="text-lg">{tier.priceNote}</span></div>
+                  </div>
+                )}
+                <h3
+                  className="text-2xl font-bold mb-2"
+                  style={{ color: COLOR_1 }}
+                >
+                  {tier.title}
+                </h3>
+                <div
+                  className="text-4xl font-bold mb-4"
+                  style={{ color: COLOR_3 }}
+                >
+                  {tier.price}
+                  <span className="text-lg">{tier.priceNote}</span>
+                </div>
                 <ul className="text-left space-y-3 mb-6">
                   {tier.features.map((feat, j) => (
                     <li key={j}>{feat}</li>
                   ))}
                 </ul>
-                {tier.buttonText === 'Book Consult' && (
+                {tier.buttonText === t("criminal.pricing1.buttonText") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/home2#consultation-form')}
+                    style={{
+                      background: COLOR_1,
+                      color: COLOR_2,
+                      border: `2px solid ${COLOR_1}`,
+                    }}
+                    onClick={() => navigate("/home2#consultation-form")}
                   >
                     {tier.buttonText}
                   </button>
                 )}
-                {tier.buttonText === 'Contact Us' && (
+                {tier.buttonText === t("criminal.pricing2.buttonText") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/contact')}
+                    style={{
+                      background: COLOR_1,
+                      color: COLOR_2,
+                      border: `2px solid ${COLOR_1}`,
+                    }}
+                    onClick={() => navigate("/contact")}
                   >
                     {tier.buttonText}
                   </button>
                 )}
-                {tier.buttonText === 'Start Now' && (
+                {tier.buttonText === t("criminal.pricing3.buttonText") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/home')}
+                    style={{
+                      background: COLOR_1,
+                      color: COLOR_2,
+                      border: `2px solid ${COLOR_1}`,
+                    }}
+                    onClick={() => navigate("/home")}
                   >
                     {tier.buttonText}
                   </button>
@@ -692,7 +793,11 @@ const Criminal = ({ user, onLogout }) => {
           </div>
         </div>
       </section>
-  <Footer darkMode={darkMode} setDarkMode={setDarkMode} bgColor={darkMode ? undefined : "#F8F4E3"} />
+      <Footer
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        bgColor={darkMode ? undefined : "#F8F4E3"}
+      />
     </div>
   );
 };

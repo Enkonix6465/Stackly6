@@ -51,7 +51,7 @@ const Login = ({ onLogin }) => {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
     const found = users.find(
-      (u) => u.email === formData.email && u.password === formData.password,
+      (u) => u.email === formData.email && u.password === formData.password
     );
 
     if (
@@ -75,7 +75,7 @@ const Login = ({ onLogin }) => {
         firstName: found.firstName,
         lastName: found.lastName,
         email: found.email,
-      }),
+      })
     );
 
     onLogin({
@@ -118,7 +118,7 @@ const Login = ({ onLogin }) => {
     logUserEvent(
       userData.email,
       `${userData.firstName} ${userData.lastName}`,
-      "signup",
+      "signup"
     );
 
     localStorage.setItem(
@@ -127,7 +127,7 @@ const Login = ({ onLogin }) => {
         firstName: userData.firstName,
         lastName: userData.lastName,
         email: userData.email,
-      }),
+      })
     );
 
     const { password, ...loginUser } = userData;
@@ -150,7 +150,7 @@ const Login = ({ onLogin }) => {
           firstName: "Admin",
           lastName: "",
           email: ADMIN_EMAIL,
-        }),
+        })
       );
 
       onLogin({ email: ADMIN_EMAIL, isAdmin: true });
@@ -171,21 +171,27 @@ const Login = ({ onLogin }) => {
       }}
     >
       <div
-        className={`bg-[#f3f4f6] ${darkMode ? "dark:bg-[#1e293b]" : ""} p-8 rounded-lg shadow-md w-full max-w-md mx-auto relative z-10`}
+        className={`bg-[#f3f4f6] ${
+          darkMode ? "dark:bg-[#1e293b]" : ""
+        } p-8 rounded-lg shadow-md w-full max-w-md mx-auto relative z-10`}
       >
         <div className="flex justify-between items-center mb-6">
           <h2
-            className={`text-2xl font-semibold ${darkMode ? "text-white" : "text-[#002346]"}`}
+            className={`text-2xl font-semibold ${
+              darkMode ? "text-white" : "text-[#002346]"
+            }`}
           >
             {isAdmin
               ? "Admin Login - Verdict"
               : isSignup
-                ? "Sign Up for Verdict"
-                : "Login to Verdict"}
+              ? "Sign Up for Verdict"
+              : "Login to Verdict"}
           </h2>
           <button
             onClick={() => setDarkMode((prev) => !prev)}
-            className={`flex items-center rounded-full px-3 py-1 ${darkMode ? "bg-[#AABF91]" : "bg-[#B57560]"}`}
+            className={`flex items-center rounded-full px-3 py-1 ${
+              darkMode ? "bg-[#AABF91]" : "bg-[#B57560]"
+            }`}
           >
             <Sun size={16} className="mr-1" /> /{" "}
             <Moon size={16} className="ml-1" />
@@ -195,14 +201,18 @@ const Login = ({ onLogin }) => {
         {/* User/Admin TOGGLE */}
         <div className="flex items-center justify-center mb-6">
           <span
-            className={`${!isAdmin ? "font-bold underline" : "text-gray-500"} cursor-pointer px-2`}
+            className={`${
+              !isAdmin ? "font-bold underline" : "text-gray-500"
+            } cursor-pointer px-2`}
             onClick={() => setIsAdmin(false)}
           >
             User
           </span>
           <span className="mx-2 text-gray-400">|</span>
           <span
-            className={`${isAdmin ? "font-bold underline" : "text-gray-500"} cursor-pointer px-2`}
+            className={`${
+              isAdmin ? "font-bold underline" : "text-gray-500"
+            } cursor-pointer px-2`}
             onClick={() => setIsAdmin(true)}
           >
             Admin
@@ -234,7 +244,7 @@ const Login = ({ onLogin }) => {
             />
             <button
               type="submit"
-              className="w-full bg-[#002346] text-white py-2 rounded hover:bg-[#1a3b6f] transition-colors"
+              className="w-full bg-[#002346]   py-2 rounded hover:bg-[#1a3b6f] transition-colors"
             >
               Login as Admin
             </button>
@@ -264,7 +274,7 @@ const Login = ({ onLogin }) => {
             />
             <button
               type="submit"
-              className="w-full bg-[#002346] text-white py-2 rounded hover:bg-[#1a3b6f] transition-colors"
+              className="w-full   py-2 rounded hover:bg-blue-700 transition-colors"
             >
               Login
             </button>

@@ -24,15 +24,14 @@ const Footer = ({ darkMode, bgColor }) => {
   };
   return (
     <footer
-      className={` ${
-        darkMode ? "bg-[#002346] text-[#F8F4E3]" : "text-[#333333]"
-      } px-6 py-10 border-t-1 border-black font-sans transition-colors duration-300 overflow-x-hidden w-full`}
+      className={` ${darkMode ? "bg-[#002346] text-[#F8F4E3]" : "text-[#333333]"
+        } px-4 sm:px-8 py-10 border-t-1 border-black font-sans transition-colors duration-300 overflow-x-hidden w-full`}
       style={!darkMode && bgColor ? { background: bgColor } : undefined}
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
         {/* Logo Only */}
-        <div className="col-span-1 flex items-start">
-          <div className="w-28 h-28 flex items-center justify-center overflow-hidden">
+        <div className="col-span-1 flex items-center justify-center lg:justify-start">
+          <div className=" ">
             <img
               src={logo1}
               alt="Logo"
@@ -46,11 +45,10 @@ const Footer = ({ darkMode, bgColor }) => {
         </div>
 
         {/* Quick Links */}
-        <div>
+        <div className="flex flex-col">
           <h4
-            className={`text-lg font-semibold mb-3 ${
-              darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
-            }`}
+            className={`text-lg font-semibold mb-3 ${darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
+              }`}
           >
             {t("quickLinks")}
           </h4>
@@ -58,11 +56,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/home"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("home")}
               </Link>
@@ -70,11 +67,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/about"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("about")}
               </Link>
@@ -82,11 +78,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/blog"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("blog")}
               </Link>
@@ -94,11 +89,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/contact"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("contact")}
               </Link>
@@ -106,11 +100,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/services"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("services")}
               </Link>
@@ -119,11 +112,10 @@ const Footer = ({ darkMode, bgColor }) => {
         </div>
 
         {/* Practice Areas */}
-        <div>
+        <div className="flex flex-col">
           <h4
-            className={`text-lg font-semibold mb-3 ${
-              darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
-            }`}
+            className={`text-lg font-semibold mb-3 ${darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
+              }`}
           >
             {t("practiceAreas")}
           </h4>
@@ -131,11 +123,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/services/criminal"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("criminalLaw")}
               </Link>
@@ -143,11 +134,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/services/family"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("familyLaw")}
               </Link>
@@ -155,11 +145,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/services/corporate"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("corporateLaw")}
               </Link>
@@ -167,11 +156,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/services/civil"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("civilLaw")}
               </Link>
@@ -179,11 +167,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/services/real-estate"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("realEstateLaw")}
               </Link>
@@ -191,11 +178,10 @@ const Footer = ({ darkMode, bgColor }) => {
             <li>
               <Link
                 to="/services/immigration"
-                className={`hover:underline ${
-                  darkMode
-                    ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                    : "text-[#333333] hover:text-[#002346]"
-                }`}
+                className={`hover:underline ${darkMode
+                  ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
+                  : "text-[#333333] hover:text-[#002346]"
+                  }`}
               >
                 {t("immigrationLaw")}
               </Link>
@@ -204,128 +190,97 @@ const Footer = ({ darkMode, bgColor }) => {
         </div>
 
         {/* Contact Info */}
-        <div>
+        <div className="flex flex-col">
           <h4
-            className={`text-lg font-semibold mb-3 ${
-              darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
-            }`}
+            className={`text-lg font-semibold mb-3 ${darkMode ? "text-[#F8F4E3]" : "text-[#002346]"}`}
           >
             {t("contact")}
           </h4>
-          <p className="text-sm">
-            <span
-              className={`font-semibold ${
-                darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
-              }`}
-            >
-              {t("address")}:
-            </span>{" "}
-            <span className={darkMode ? "text-[#F8F4E3]" : "text-[#333333]"}>
-              456 Justice Street, Lawville
-            </span>
-            <br />
-            <span
-              className={`font-semibold ${
-                darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
-              }`}
-            >
-              {t("phone")}:
-            </span>{" "}
-            <span className={darkMode ? "text-[#F8F4E3]" : "text-[#333333]"}>
-              (987) 654-3210
-            </span>
-            <br />
-            <span
-              className={`font-semibold ${
-                darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
-              }`}
-            >
-              {t("email")}:
-            </span>{" "}
-            <span className={darkMode ? "text-[#F8F4E3]" : "text-[#333333]"}>
-              info@bluejusticelaw.com
-            </span>
-            <br />
-            <span
-              className={`font-semibold ${
-                darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
-              }`}
-            >
-              {t("hours")}:
-            </span>{" "}
-            <span className={darkMode ? "text-[#F8F4E3]" : "text-[#333333]"}>
-              {t("workingHours")}
-            </span>
-          </p>
-          <div className="flex space-x-3 mt-2 md:mt-0">
+          <div className="gap-2 flex flex-col mb-2" >
+            <p className="text-sm leading-relaxed">
+              <span className={`font-semibold ${darkMode ? "text-[#F8F4E3]" : "text-[#002346]"}`}>{t("address")}:</span>
+              <span className={darkMode ? "text-[#F8F4E3]" : "text-[#333333]"}> 456 Justice Street, Lawville</span></p>
+            <p><span className={`font-semibold ${darkMode ? "text-[#F8F4E3]" : "text-[#002346]"}`}>{t("phone")}:</span>
+              <span className={darkMode ? "text-[#F8F4E3]" : "text-[#333333]"}> (987) 654-3210</span></p>
+            <p><span className={`font-semibold ${darkMode ? "text-[#F8F4E3]" : "text-[#002346]"}`}>{t("email")}:</span>
+              <span className={darkMode ? "text-[#F8F4E3]" : "text-[#333333]"}> info@bluejusticelaw.com</span></p>
+            <p> <span className={`font-semibold ${darkMode ? "text-[#F8F4E3]" : "text-[#002346]"}`}>{t("hours")}:</span>
+              <span className={darkMode ? "text-[#F8F4E3]" : "text-[#333333]"}> {t("workingHours")}</span></p>
+          </div>
+          <div className="flex flex-wrap gap-3 mt-4 md:mt-2">
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
+              className="hover:scale-110 transition-transform rounded-full p-2 shadow bg-opacity-80"
+              style={{ background: darkMode ? "#002346" : "#F8F4E3" }}
             >
-              <FaFacebookF color="#002346" />
+              <FaFacebookF color={darkMode ? "#F8F4E3" : "#002346"} size={22} />
             </a>
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
+              className="hover:scale-110 transition-transform rounded-full p-2 shadow bg-opacity-80"
+              style={{ background: darkMode ? "#002346" : "#F8F4E3" }}
             >
-              <FaLinkedinIn color="#002346" />
+              <FaLinkedinIn color={darkMode ? "#F8F4E3" : "#002346"} size={22} />
             </a>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
+              className="hover:scale-110 transition-transform rounded-full p-2 shadow bg-opacity-80"
+              style={{ background: darkMode ? "#002346" : "#F8F4E3" }}
             >
-              <FaInstagram color="#002346" />
+              <FaInstagram color={darkMode ? "#F8F4E3" : "#002346"} size={22} />
             </a>
             <a
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Twitter"
+              className="hover:scale-110 transition-transform rounded-full p-2 shadow bg-opacity-80"
+              style={{ background: darkMode ? "#002346" : "#F8F4E3" }}
             >
-              <FaTwitter color="#002346" />
+              <FaTwitter color={darkMode ? "#F8F4E3" : "#002346"} size={22} />
             </a>
           </div>
         </div>
 
         {/* Newsletter */}
-        <div>
+        <div className="flex flex-col">
           <h4
-            className={`text-lg font-semibold mb-3 ${
-              darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
-            }`}
+            className={`text-lg font-semibold mb-3 ${darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
+              }`}
           >
             {t("newsletter")}
           </h4>
           <p
-            className={`text-sm mb-2 ${
-              darkMode ? "text-[#F8F4E3]" : "text-[#333333]"
-            }`}
+            className={`text-sm mb-2 ${darkMode ? "text-[#F8F4E3]" : "text-[#333333]"
+              }`}
           >
             {t("newsletterDesc")}
           </p>
           <form className="flex flex-col" onSubmit={handleSubscribe}>
-            <div className="flex">
+            <div className="flex flex-col sm:flex-row">
               <input
                 type="email"
                 placeholder={t("yourEmail")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className={`w-full px-3 py-2 rounded-l border text-sm ${
-                  darkMode
-                    ? "border-[#F8F4E3] bg-[#002346] text-[#F8F4E3]"
-                    : "border-[#002346] bg-[#F8F4E3] text-[#333333]"
-                }`}
+                className={`w-full px-3 py-2 rounded-t sm:rounded-l sm:rounded-t-none border text-sm focus:outline-none focus:ring-2 focus:ring-[#26A0A2] ${darkMode
+                  ? "border-[#F8F4E3] bg-[#002346] text-[#F8F4E3]"
+                  : "border-[#002346] bg-[#F8F4E3] text-[#333333]"
+                  }`}
                 required
               />
               <button
                 type="submit"
-                className={`px-4 py-2 rounded-r text-sm transition-colors      `}
+                className={`px-4 py-2 rounded-b sm:rounded-r sm:rounded-b-none text-sm transition-colors font-semibold shadow focus:outline-none focus:ring-2 focus:ring-[#26A0A2]`}
                 style={{
                   backgroundColor: darkMode ? "#F8F4E3" : "#002346",
                   color: darkMode ? "#002346" : "#F8F4E3",
@@ -336,9 +291,8 @@ const Footer = ({ darkMode, bgColor }) => {
             </div>
             {subscribed && (
               <span
-                className={`mt-2 text-xs font-semibold ${
-                  darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
-                }`}
+                className={`mt-2 text-xs font-semibold ${darkMode ? "text-[#F8F4E3]" : "text-[#002346]"
+                  }`}
               >
                 {t("subscribed")}
               </span>
@@ -348,45 +302,13 @@ const Footer = ({ darkMode, bgColor }) => {
       </div>
       {/* Bottom Bar */}
       <div
-        className={`border-t mt-10 pt-4 text-center text-sm ${
-          darkMode
-            ? "border-[#F8F4E3] text-[#F8F4E3]"
-            : "border-[#002346] text-[#333333]"
-        }`}
+        className={`border-t mt-10 pt-4 text-center text-sm ${darkMode
+          ? "border-[#F8F4E3] text-[#F8F4E3]"
+          : "border-[#002346] text-[#333333]"
+          }`}
       >
-        <p>© 2025 Blue Justice Law. {t("allRightsReserved")}</p>
-        <div className="mt-2 space-x-4">
-          <Link
-            to="/privacy"
-            className={`hover:underline ${
-              darkMode
-                ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                : "text-[#333333] hover:text-[#002346]"
-            }`}
-          >
-            {t("privacyPolicy")}
-          </Link>
-          <Link
-            to="/terms"
-            className={`hover:underline ${
-              darkMode
-                ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                : "text-[#333333] hover:text-[#002346]"
-            }`}
-          >
-            {t("termsConditions")}
-          </Link>
-          <Link
-            to="/disclaimer"
-            className={`hover:underline ${
-              darkMode
-                ? "text-[#F8F4E3] hover:text-[#F8F4E3]"
-                : "text-[#333333] hover:text-[#002346]"
-            }`}
-          >
-            {t("disclaimer")}
-          </Link>
-        </div>
+        <p className="mb-2">© 2025 Blue Justice Law. {t("allRightsReserved")}</p>
+
       </div>
     </footer>
   );

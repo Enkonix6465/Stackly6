@@ -142,11 +142,13 @@ export default function Header() {
           {/* Logo - Left Side */}
           <div className="flex items-center">
             <div className="flex items-center space-x-2">
-              <img
-                src={logo}
-                alt="LIFE Logo"
-                className="w-36 h-36 sm:w-44 sm:h-44 object-contain"
-              />
+              <a href="/home">
+                <img
+                  src={logo}
+                  alt="LIFE Logo"
+                  className="w-36 h-36 sm:w-44 sm:h-44 object-contain"
+                />
+              </a>
             </div>
           </div>
           <div className="hidden lg:flex items-center gap-2  ">

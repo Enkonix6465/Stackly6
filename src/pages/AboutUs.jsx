@@ -344,7 +344,7 @@ const AboutUs = ({ user, onLogout }) => {
           <p className="text-lg leading-relaxed mb-6">
             {t("about.commitmentDesc")}
           </p>
-          <p className="italic text-base max-w-2xl mx-auto">
+          <p className="italic text-base font-semibold max-w-2xl mx-auto">
             {t("about.commitmentTestimonial")}
           </p>
         </div>

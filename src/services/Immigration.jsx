@@ -144,10 +144,10 @@ const Immigration = ({ user, onLogout }) => {
   ];
 
   const features = [
-    t("immigration.feature1"),
-    t("immigration.feature2"),
-    t("immigration.feature3"),
-    t("immigration.feature4"),
+    t("immigration.features.feature1"),
+    t("immigration.features.feature2"),
+    t("immigration.features.feature3"),
+    t("immigration.features.feature4"),
   ];
 
   return (

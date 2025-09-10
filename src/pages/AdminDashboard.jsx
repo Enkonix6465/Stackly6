@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { useDarkMode } from "../context/DarkModeContext";
 import { Pie, Bar } from "react-chartjs-2";
@@ -14,15 +13,19 @@ import {
 } from "chart.js";
 
 import {
-  PieChart,
-  Users,
   FileText,
+  Users,
   Calendar,
   TrendingUp,
   FolderOpen,
   ArrowRight,
   Upload,
   PlusCircle,
+  BarChart2,
+  PieChart,
+  DollarSign,
+  Briefcase,
+  UserCheck,
 } from "lucide-react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
@@ -38,17 +41,41 @@ ChartJS.register(
   Title,
 );
 
+// New Color Palette
+const DARK_BG = "#1A1A2E"; // A deep, rich blue/purple for dark mode
+const DARK_TEXT = "#EAEAEA"; // Light grey for text in dark mode
+const DARK_CARD = "#2C2C4A"; // A slightly lighter shade for cards in dark mode
+const DARK_ACCENT = "#FFD700"; // A bright gold for accents
+
+const LIGHT_BG = "#F5F7FA"; // A soft off-white for light mode
+const LIGHT_TEXT = "#2D3748"; // A dark charcoal for text in light mode
+const LIGHT_CARD = "#FFFFFF"; // Pure white for cards in light mode
+const LIGHT_ACCENT = "#004080"; // A professional deep blue for accents
+
+const getColors = (darkMode) => {
+  return {
+    bg: darkMode ? DARK_BG : LIGHT_BG,
+    text: darkMode ? DARK_TEXT : LIGHT_TEXT,
+    card: darkMode ? DARK_CARD : LIGHT_CARD,
+    accent: darkMode ? DARK_ACCENT : LIGHT_ACCENT,
+    secondary: darkMode ? "#4A4A6F" : "#E2E8F0",
+    success: "#22C55E",
+    warning: "#F59E0B",
+    danger: "#EF4444",
+  };
+};
+
 // eslint-disable-next-line no-empty-pattern
-export default function AdminDashboard({}) {
+export default function AdminDashboard({ }) {
   const { t } = useTranslation();
-  // Always get latest user logins and registered users from localStorage
   const [userLogins, setUserLogins] = React.useState([]);
   const [registeredUsers, setRegisteredUsers] = React.useState([]);
+  const { darkMode, setDarkMode } = useDarkMode();
+  const colors = getColors(darkMode);
 
   useEffect(() => {
     const fetchUserData = () => {
       let logins = JSON.parse(localStorage.getItem("userLogins") || "[]");
-      // Remove duplicate admin entries (optional)
       logins = logins.map((l) => ({
         ...l,
         role:
@@ -56,7 +83,6 @@ export default function AdminDashboard({}) {
             ? "Admin"
             : "User",
       }));
-      // Optionally filter out duplicate logins for the same user on the same event/time
       const uniqueLogins = [];
       const seen = new Set();
       for (const entry of logins) {
@@ -72,45 +98,28 @@ export default function AdminDashboard({}) {
       );
     };
     fetchUserData();
-    // Listen for storage changes (other tabs/windows)
     window.addEventListener("storage", fetchUserData);
-    // Refresh when page regains focus
     window.addEventListener("focus", fetchUserData);
     return () => {
       window.removeEventListener("storage", fetchUserData);
       window.removeEventListener("focus", fetchUserData);
     };
   }, []);
-  const { darkMode, setDarkMode } = useDarkMode();
-  // Strict palette
-  const COLOR_1 = "#002346"; // Deep Blue
-  const COLOR_2 = "#F8F4E3"; // Soft Ivory
-  const COLOR_3 = "#333333"; // Charcoal Black
 
-  // Conditional text color
-  const textPrimary = darkMode ? COLOR_2 : COLOR_3;
-  const cardBg = darkMode ? COLOR_3 : COLOR_2;
-
-  // Example chart data
   const firmOverviewData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        label: "Billable",
+        label: t("adminDashboard.billable"),
         data: [27, 51, 72, 38, 94, 102],
-        borderColor: COLOR_1,
-        backgroundColor: darkMode ? "#fff" : "rgba(0,35,70,0.08)",
-        tension: 0.4,
-        pointRadius: 3,
+        backgroundColor: colors.accent,
+        borderRadius: 5,
       },
       {
-        label: "Non-Billable",
+        label: t("adminDashboard.nonBillable"),
         data: [13, 26, 38, 16, 29, 42],
-        borderColor: COLOR_3,
-        backgroundColor: darkMode ? "#fff" : "rgba(51,51,51,0.04)",
-        borderDash: [3, 2],
-        tension: 0.4,
-        pointRadius: 2,
+        backgroundColor: colors.secondary,
+        borderRadius: 5,
       },
     ],
   };
@@ -119,27 +128,32 @@ export default function AdminDashboard({}) {
     {
       label: t("adminDashboard.financial.draftBills"),
       value: 16,
-      color: COLOR_3,
+      icon: Briefcase,
+      color: colors.accent,
     },
     {
       label: t("adminDashboard.financial.totalInDraft"),
       value: 4,
-      color: COLOR_3,
+      icon: DollarSign,
+      color: colors.success,
     },
     {
       label: t("adminDashboard.financial.unpaidBills"),
       value: 0,
-      color: COLOR_3,
+      icon: FileText,
+      color: colors.danger,
     },
     {
       label: t("adminDashboard.financial.overdueBills"),
       value: 2,
-      color: COLOR_3,
+      icon: Calendar,
+      color: colors.warning,
     },
     {
       label: t("adminDashboard.financial.totalInOverdue"),
       value: 0,
-      color: COLOR_3,
+      icon: TrendingUp,
+      color: colors.danger,
     },
   ];
 
@@ -147,89 +161,89 @@ export default function AdminDashboard({}) {
     labels: ["UK", "CANADA", "USA", "AUS", "BD"],
     datasets: [
       {
-        label: "Billable Discounted",
+        label: t("adminDashboard.billableDiscounted"),
         data: [182, 240, 320, 210, 78],
-        backgroundColor: darkMode ? "#fff" : COLOR_1,
-        borderWidth: 2,
+        backgroundColor: colors.accent,
+        borderRadius: 8,
       },
     ],
   };
 
-  // Pie chart for utilization, realization, collection
-
-  const usagePieData = (value, label, color) => ({
-    labels: [label, "Remaining"],
-    datasets: [
-      {
-        data: [value, 100 - value],
-        backgroundColor: [color, COLOR_2],
-        borderWidth: 0,
-      },
-    ],
-  });
-
-  // Sample recent invoice list
   const recentInvoices = [
     { client: "Courtney Henry", status: "Paid" },
     { client: "Courtney Henry", status: "Pending" },
     { client: "Courtney Henry", status: "Paid" },
     { client: "Courtney Henry", status: "Unpaid" },
   ];
+   // Strict palette
+  const COLOR_1 = "#002346"; // Deep Blue
+  const COLOR_2 = "#F8F4E3"; // Soft Ivory
+  const COLOR_3 = "#333333"; // Charcoal Black
 
-  // App
+  // Conditional text color
+  const textPrimary = darkMode ? COLOR_2 : COLOR_3;
+  const cardBg = darkMode ? COLOR_3 : COLOR_2;
+
   return (
     <div
-      style={{ background: darkMode ? COLOR_1 : COLOR_2, minHeight: "100vh" }}
+      className="min-h-screen"
+      style={{ backgroundColor: colors.bg, color: colors.text }}
     >
-      {/* Header */}
       <div
+        className="sticky top-0 z-10 w-full shadow-lg"
         style={{
-          background: darkMode ? COLOR_3 : COLOR_2,
-          boxShadow: "0 2px 8px 0 #00234611",
+          backgroundColor: colors.card,
         }}
-        className="fixed top-0 left-0 w-full z-10"
       >
         <Header setDarkMode={setDarkMode} darkMode={darkMode} />
       </div>
 
-      <main className="pt-28 max-w-7xl mx-auto px-2 md:px-6">
-        {/* User Login Info Section */}
-        <section className="mb-8">
+      <main className="mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-12">
+        {/* Header and User Activity */}
+        <section className="mb-10">
           <div
-            className="rounded-2xl shadow-md p-6 mb-4"
-            style={{ background: cardBg }}
+            className="rounded-3xl p-6 shadow-xl transition-all duration-300 hover:shadow-2xl"
+            style={{ backgroundColor: colors.card }}
           >
-            <h2
-              className="font-bold text-md mb-2 "
-              style={{ color: textPrimary }}
-            >
-              {t("adminDashboard.userLoginActivity")}
-            </h2>
-            <div className="flex flex-wrap gap-8 items-center mb-2">
-              <div className=" font-semibold" style={{ color: textPrimary }}>
-                {t("adminDashboard.totalRegisteredUsers")}
-                <span className="pl-2">{registeredUsers.length}</span>
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-xl font-bold">
+                {t("adminDashboard.userLoginActivity")}
+              </h2>
+              <div
+                className="rounded-full px-4 py-1 text-sm font-semibold"
+                style={{
+                  backgroundColor: colors.secondary,
+                  color: colors.text,
+                }}
+              >
+                {t("adminDashboard.totalRegisteredUsers")}:
+                <span className="ml-2 font-bold">
+                  {registeredUsers.length}
+                </span>
               </div>
             </div>
             <div className="overflow-x-auto">
-              <table
-                className="w-full table table-auto text-left text-sm"
-                style={{ color: textPrimary }}
-              >
-                <thead className=" ">
-                  <tr>
-                    <th className="py-2">{t("adminDashboard.table.email")}</th>
-                    <th className="py-2">{t("adminDashboard.table.name")}</th>
-                    <th className="py-2">{t("adminDashboard.table.role")}</th>
-                    <th className="py-2">{t("adminDashboard.table.time")}</th>
-                    <th className="py-2">{t("adminDashboard.table.date")}</th>
-                    <th className="py-2">{t("adminDashboard.table.event")}</th>
+              <table className="w-full text-sm">
+                <thead
+                  className="whitespace-nowrap rounded-lg"
+                  style={{
+                    backgroundColor: colors.secondary,
+                    color: colors.text,
+                  }}
+                >
+                  <tr className="[&>*]:px-3 [&>*]:py-3">
+                    <th>{t("adminDashboard.table.email")}</th>
+                    <th>{t("adminDashboard.table.name")}</th>
+                    <th>{t("adminDashboard.table.role")}</th>
+                    <th>{t("adminDashboard.table.time")}</th>
+                    <th>{t("adminDashboard.table.date")}</th>
+                    <th>{t("adminDashboard.table.event")}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {userLogins.length === 0 ? (
                     <tr>
-                      <td colSpan="6" className="py-4 text-center">
+                      <td colSpan="6" className="py-8 text-center">
                         {t("adminDashboard.noUserLogins")}
                       </td>
                     </tr>
@@ -240,18 +254,39 @@ export default function AdminDashboard({}) {
                       .map((login, idx) => (
                         <tr
                           key={idx}
-                          className="border-t"
-                          style={{ borderColor: "#EEE" }}
+                          className="border-b transition-colors duration-200 last:border-b-0 hover:bg-gray-100 dark:hover:bg-gray-700"
+                          style={{ borderColor: colors.secondary }}
                         >
-                          <td className="py-2">{login.email}</td>
-                          <td className="py-2">{login.name}</td>
-                          <td className="py-2">{login.role}</td>
-                          <td className="py-2">{login.loginTime}</td>
-                          <td className="py-2">{login.loginDate}</td>
-                          <td className="py-2">
-                            {login.event === "signup"
-                              ? t("adminDashboard.signup")
-                              : t("adminDashboard.login")}
+                          <td className="whitespace-nowrap px-3 py-3">
+                            {login.email}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-3">
+                            {login.name}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-3">
+                            {login.role}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-3">
+                            {login.loginTime}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-3">
+                            {login.loginDate}
+                          </td>
+                          <td className="whitespace-nowrap px-3 py-3">
+                            <span
+                              className="rounded-full px-2 py-1 text-xs font-semibold"
+                              style={{
+                                color: colors.card,
+                                backgroundColor:
+                                  login.event === "signup"
+                                    ? colors.accent
+                                    : colors.accent,
+                              }}
+                            >
+                              {login.event === "signup"
+                                ? t("adminDashboard.signup")
+                                : t("adminDashboard.login")}
+                            </span>
                           </td>
                         </tr>
                       ))
@@ -261,34 +296,27 @@ export default function AdminDashboard({}) {
             </div>
           </div>
         </section>
-        {/* Top Grid - Utilization Stats */}
-        <section className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-8">
+
+        {/* Financial Overview Cards */}
+        <section className="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
           {financialCardData.map((card, idx) => (
             <div
-              key={card.label}
-              className="rounded-xl shadow p-4 flex flex-col items-center"
+              key={idx}
+              className="group flex cursor-pointer flex-col items-center justify-center rounded-2xl p-4 text-center shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl"
               style={{
-                background: darkMode ? "#333333" : "#F8F4E3",
-                border: `2px solid ${card.color}`,
-                minHeight: 110,
+                backgroundColor: colors.card,
+                borderBottom: `4px solid ${card.color}`,
               }}
             >
-              <FileText
-                size={26}
-                style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+              <card.icon
+                size={36}
+                className="text-gray-500 transition-colors duration-300 group-hover:text-black"
+                style={{ color: card.color }}
               />
+              <span className="mt-3 text-3xl font-extrabold">{card.value}</span>
               <span
-                className="text-2xl font-extrabold mt-2"
-                style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
-              >
-                {card.value}
-              </span>
-              <span
-                className="text-xs font-semibold mt-1 text-center"
-                style={{
-                  color: darkMode ? "#F8F4E3" : "#333333",
-                  opacity: 0.85,
-                }}
+                className="mt-1 text-sm font-semibold opacity-85"
+                style={{ color: colors.text }}
               >
                 {card.label}
               </span>
@@ -296,50 +324,47 @@ export default function AdminDashboard({}) {
           ))}
         </section>
 
-        {/* Firm Overview Row */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {/* Firm Overview Line Chart */}
+        {/* Firm Overview and Client Map */}
+        <section className="mb-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {/* Firm Overview Bar Chart */}
           <div
-            className="rounded-2xl shadow-md p-4 col-span-2"
-            style={{ background: cardBg }}
+            className="rounded-3xl p-6 shadow-xl md:col-span-2"
+            style={{ backgroundColor: colors.card }}
           >
-            <div className="flex justify-between items-center mb-3">
-              <span
-                className="font-bold text-lg"
-                style={{ color: textPrimary }}
-              >
+            <div className="mb-4 flex flex-col justify-between md:flex-row">
+              <h3 className="text-lg font-bold">
                 {t("adminDashboard.firmOverview")}
-              </span>
-              <span
-                className="text-xs font-semibold"
-                style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
-              >
-                Current Time: 13.6%
+              </h3>
+              <span className="text-sm font-semibold opacity-75">
                 {t("adminDashboard.currentTime", { percent: "13.6%" })}
               </span>
             </div>
-            <Bar
-              data={firmOverviewData}
-              options={{
-                responsive: true,
-                plugins: {
-                  legend: {
-                    display: true,
-                    labels: { color: darkMode ? "#F8F4E3" : "#333333" },
+            <div className="h-[250px]">
+              <Bar
+                data={firmOverviewData}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: {
+                      display: true,
+                      labels: { color: colors.text },
+                    },
                   },
-                },
-                scales: {
-                  x: { ticks: { color: darkMode ? "#F8F4E3" : "#333333" } },
-                  y: { ticks: { color: darkMode ? "#F8F4E3" : "#333333" } },
-                },
-              }}
-              height={110}
-            />
-            <div
-              className="text-right text-xs mt-2"
-              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
-            >
-              $54,129.546 total | 235 Billable
+                  scales: {
+                    x: {
+                      grid: { display: false },
+                      ticks: { color: colors.text },
+                    },
+                    y: {
+                      ticks: { color: colors.text },
+                      grid: { color: colors.secondary },
+                    },
+                  },
+                }}
+              />
+            </div>
+            <div className="mt-4 text-right text-sm font-semibold opacity-75">
               {t("adminDashboard.firmOverviewTotal", {
                 total: "$54,129.546",
                 billable: 235,
@@ -380,7 +405,7 @@ export default function AdminDashboard({}) {
               </span>
               <span
                 className="flex items-center text-xs"
-                style={{ color: COLOR_3, opacity: 0.7 }}
+                style={{ color: darkMode ? COLOR_2 : COLOR_1, opacity: 0.7 }}
               >
                 <span
                   className="w-2 h-2 mr-1 rounded-full"
@@ -392,148 +417,145 @@ export default function AdminDashboard({}) {
                 {t("adminDashboard.nonActive")}
               </span>
             </div>
-          </div>
+            </div>
         </section>
 
-        {/* Country Statistics & Invoice Table */}
-        <section className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-14">
+        {/* Country Stats and Recent Invoices */}
+        <section className="mb-10 grid grid-cols-1 gap-6 xl:grid-cols-2">
           {/* By Country Bar Chart */}
           <div
-            className="rounded-2xl shadow-md p-4"
-            style={{ background: cardBg }}
+            className="rounded-3xl p-6 shadow-xl"
+            style={{ backgroundColor: colors.card }}
           >
-            <span
-              className="font-bold text-md mb-2 block"
-              style={{ color: textPrimary }}
-            >
+            <h3 className="mb-4 text-lg font-bold">
               {t("adminDashboard.billableByCountry")}
-            </span>
-            <Bar
-              data={statsByCountry}
-              options={{
-                responsive: true,
-                plugins: {
-                  legend: { display: false },
-                  title: { display: false },
-                },
-                scales: {
-                  x: { ticks: { color: darkMode ? "#F8F4E3" : "#333333" } },
-                  y: { ticks: { color: darkMode ? "#F8F4E3" : "#333333" } },
-                },
-              }}
-              height={110}
-            />
-            <div
-              className="text-right mt-3 text-xs font-semibold"
-              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
-            >
-              $1,129.546 billable discounted
-              {t("adminDashboard.billableDiscounted", { amount: "$1,129.546" })}
+            </h3>
+            <div className="h-[250px]">
+              <Bar
+                data={statsByCountry}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: { display: false },
+                  },
+                  scales: {
+                    x: {
+                      grid: { display: false },
+                      ticks: { color: colors.text },
+                    },
+                    y: {
+                      ticks: { color: colors.text },
+                      grid: { color: colors.secondary },
+                    },
+                  },
+                }}
+              />
+            </div>
+            <div className="mt-4 text-right text-sm font-semibold opacity-75">
+              {t("adminDashboard.billableDiscounted", {
+                amount: "$1,129.546",
+              })}
             </div>
           </div>
 
           {/* Recent Invoice Table */}
           <div
-            className="rounded-2xl shadow-md p-4"
-            style={{ background: cardBg }}
+            className="rounded-3xl p-6 shadow-xl"
+            style={{ backgroundColor: colors.card }}
           >
-            <span
-              className="font-bold text-md mb-2 block"
-              style={{ color: textPrimary }}
-            >
+            <h3 className="mb-4 text-lg font-bold">
               {t("adminDashboard.recentInvoices")}
-            </span>
-            <table
-              className="w-full text-left text-xs"
-              style={{ color: textPrimary }}
-            >
-              <thead>
-                <tr>
-                  <th>{t("adminDashboard.invoiceTable.clientName")}</th>
-                  <th>{t("adminDashboard.invoiceTable.status")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {recentInvoices.map((row, i) => (
-                  <tr
-                    key={i}
-                    className="border-t"
-                    style={{ borderColor: "#EEE" }}
-                  >
-                    <td className="py-2">{row.client}</td>
-                    <td className="text-sm font-semibold py-2">
-                      {row.status === "Paid" && (
-                        <span style={{ color: "green" }}>
-                          {t("adminDashboard.invoiceTable.paid")}
-                        </span>
-                      )}
-                      {row.status === "Pending" && (
-                        <span style={{ color: "orange" }}>
-                          {t("adminDashboard.invoiceTable.pending")}
-                        </span>
-                      )}
-                      {row.status === "Unpaid" && (
-                        <span style={{ color: "red" }}>
-                          {t("adminDashboard.invoiceTable.unpaid")}
-                        </span>
-                      )}
-                    </td>
+            </h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead
+                  className="rounded-lg"
+                  style={{
+                    backgroundColor: colors.secondary,
+                    color: colors.text,
+                  }}
+                >
+                  <tr className="[&>*]:px-3 [&>*]:py-3">
+                    <th className="text-left">
+                      {t("adminDashboard.invoiceTable.clientName")}
+                    </th>
+                    <th className="text-left">
+                      {t("adminDashboard.invoiceTable.status")}
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {recentInvoices.map((row, i) => (
+                    <tr
+                      key={i}
+                      className={`border-b transition-colors duration-200 last:border-b-0  dark: ${darkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"}`}
+                      style={{ borderColor: colors.secondary }}
+                    >
+                      <td className="py-3 font-medium">{row.client}</td>
+                      <td className="py-3">
+                        <span
+                          className="rounded-full px-3 py-1 text-xs font-semibold"
+                          style={{
+                            color: "white",
+                            backgroundColor:
+                              row.status === "Paid"
+                                ? colors.success
+                                : row.status === "Pending"
+                                  ? colors.warning
+                                  : colors.danger,
+                          }}
+                        >
+                          {row.status === "Paid"
+                            ? t("adminDashboard.invoiceTable.paid")
+                            : row.status === "Pending"
+                              ? t("adminDashboard.invoiceTable.pending")
+                              : t("adminDashboard.invoiceTable.unpaid")}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
-        {/* Matters Overview & Quick Actions - Horizontal Cards */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-          {/* Total Matters Card */}
+        {/* Matters Overview Cards */}
+        <section className="mb-20 grid grid-cols-1 gap-6 md:grid-cols-3">
           <div
-            className="rounded-2xl shadow-md p-6 flex flex-col items-center"
-            style={{
-              background: cardBg,
-              color: darkMode ? "#F8F4E3" : "#333333",
-            }}
+            className="flex transform cursor-pointer flex-col items-center justify-center rounded-3xl p-6 text-center shadow-xl transition-all duration-300 hover:scale-105"
+            style={{ backgroundColor: colors.card }}
           >
-            <FolderOpen size={36} />
-            <div className="font-bold text-2xl mt-2">13,183</div>
-            <div
-              className="uppercase font-semibold mt-1"
-              style={{ fontSize: 12, color: darkMode ? "#F8F4E3" : "#333333" }}
-            >
+            <Briefcase size={48} style={{ color: colors.accent }} />
+            <div className="mt-3 text-3xl font-bold">13,183</div>
+            <div className="mt-1 text-sm font-semibold uppercase opacity-85">
               {t("adminDashboard.stats.totalMatters")}
             </div>
           </div>
-          {/* Closed Matters Card */}
           <div
-            className="rounded-2xl shadow-md p-6 flex flex-col items-center"
-            style={{
-              background: cardBg,
-              color: darkMode ? "#F8F4E3" : "#333333",
-            }}
+            className="flex transform cursor-pointer flex-col items-center justify-center rounded-3xl p-6 text-center shadow-xl transition-all duration-300 hover:scale-105"
+            style={{ backgroundColor: colors.card }}
           >
-            <FileText size={36} />
-            <div className="font-bold text-2xl mt-2">3,410</div>
-            <div className="uppercase font-semibold" style={{ fontSize: 12 }}>
+            <FolderOpen size={48} style={{ color: colors.accent }} />
+            <div className="mt-3 text-3xl font-bold">3,410</div>
+            <div className="mt-1 text-sm font-semibold uppercase opacity-85">
               {t("adminDashboard.stats.closedMatters")}
             </div>
           </div>
-          {/* Clients Card */}
           <div
-            className="rounded-2xl shadow-md p-6 flex flex-col items-center"
-            style={{
-              background: cardBg,
-              color: darkMode ? "#F8F4E3" : "#333333",
-            }}
+            className="flex transform cursor-pointer flex-col items-center justify-center rounded-3xl p-6 text-center shadow-xl transition-all duration-300 hover:scale-105"
+            style={{ backgroundColor: colors.card }}
           >
-            <Users size={36} />
-            <div className="font-bold text-2xl mt-2">921</div>
-            <div className="uppercase font-semibold" style={{ fontSize: 12 }}>
+            <Users size={48} style={{ color: colors.accent }} />
+            <div className="mt-3 text-3xl font-bold">921</div>
+            <div className="mt-1 text-sm font-semibold uppercase opacity-85">
               {t("adminDashboard.stats.clientsInvolved")}
             </div>
           </div>
         </section>
       </main>
+
       <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
   );

@@ -6,6 +6,7 @@ import Footer from "../components/Footer.jsx";
 import { useTranslation } from "react-i18next";
 //import '../aos-custom.css';
 import contact from "../assets/contactUsHero.mp4";
+import { Phone } from "lucide-react";
 
 const useLocations = (t) => [
   {
@@ -341,17 +342,7 @@ const ContactUs = ({ user, onLogout }) => {
               </label>
               <div className="relative w-full">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xl text-[#002346]">
-                  <svg
-                    width="22"
-                    height="22"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <rect x="3" y="5" width="18" height="14" rx="2" />
-                    <path d="M7 9h.01M7 15h.01" />
-                  </svg>
+                  <Phone size={20} />
                 </span>
                 <input
                   id="phone"

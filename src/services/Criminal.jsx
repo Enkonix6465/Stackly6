@@ -102,10 +102,10 @@ const Criminal = ({ user, onLogout }) => {
   ];
 
   const features = [
-    t("criminal.feature1"),
-    t("criminal.feature2"),
-    t("criminal.feature3"),
-    t("criminal.feature4"),
+    t("criminal.features.feature1"),
+    t("criminal.features.feature2"),
+    t("criminal.features.feature3"),
+    t("criminal.features.feature4"),
   ];
 
   const pricingTiers = [

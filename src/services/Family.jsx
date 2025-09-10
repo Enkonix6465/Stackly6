@@ -175,7 +175,7 @@ const Family = ({ user, onLogout }) => {
 
       {/* Hero Section */}
       <section
-        className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0"
+        className="relative w-screen h-screen  "
         style={{ minHeight: "100vh", maxWidth: "100vw", background: COLOR_1 }}
       >
         <video
@@ -190,16 +190,16 @@ const Family = ({ user, onLogout }) => {
           <source src={family} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
+        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full ">
           <h1
-            className="font-bold text-5xl mb-6 drop-shadow-lg"
+            className="font-bold text-5xl text-center mb-6 drop-shadow-lg"
             style={{ color: COLOR_2 }}
             data-aos="fade-down"
           >
             {t("family.heroTitle")}
           </h1>
           <p
-            className="max-w-2xl mx-auto text-lg drop-shadow-lg"
+            className="max-w-2xl mx-auto text-center text-lg drop-shadow-lg"
             style={{ color: COLOR_2 }}
             data-aos="fade-up"
           >
@@ -229,12 +229,6 @@ const Family = ({ user, onLogout }) => {
             >
               {t("family.benefitsTitle")}
             </h2>
-            <p
-              className="text-lg max-w-2xl mx-auto"
-              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
-            >
-              {t("family.benefitsDesc")}
-            </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div
@@ -270,7 +264,6 @@ const Family = ({ user, onLogout }) => {
                   maxWidth: "100%",
                   background: darkMode ? "#333333" : "#fff",
                   marginTop: 0,
-                  alignSelf: "flex-start",
                 }}
               />
               <h3

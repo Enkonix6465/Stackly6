@@ -387,7 +387,7 @@ const ContactUs = ({ user, onLogout }) => {
             <div className="md:col-span-2 flex justify-center mt-4">
               <button
                 type="submit"
-                className="bg-[#002346] hover:bg-[#00172a] text-white font-semibold py-3 px-10 rounded-xl shadow-md transition-colors duration-300 text-lg"
+                className="    font-semibold py-3 px-10 rounded-xl shadow-md transition-colors duration-300 text-lg"
                 style={{ minWidth: "260px" }}
               >
                 {t("contactPage.form.send")}

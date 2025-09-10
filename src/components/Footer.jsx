@@ -26,7 +26,7 @@ const Footer = ({ darkMode, bgColor }) => {
     <footer
       className={` ${
         darkMode ? "bg-[#002346] text-[#F8F4E3]" : "text-[#333333]"
-      } px-6 py-10 font-sans transition-colors duration-300 overflow-x-hidden w-full`}
+      } px-6 py-10 border-t-1 border-black font-sans transition-colors duration-300 overflow-x-hidden w-full`}
       style={!darkMode && bgColor ? { background: bgColor } : undefined}
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10">
@@ -325,11 +325,11 @@ const Footer = ({ darkMode, bgColor }) => {
               />
               <button
                 type="submit"
-                className={`px-4 py-2 rounded-r text-sm transition-colors ${
-                  darkMode
-                    ? "bg-[#F8F4E3] text-[#002346] hover:bg-[#333333] hover:text-[#F8F4E3]"
-                    : "bg-[#002346] text-[#F8F4E3] hover:bg-[#333333] hover:text-[#F8F4E3]"
-                }`}
+                className={`px-4 py-2 rounded-r text-sm transition-colors      `}
+                style={{
+                  backgroundColor: darkMode ? "#F8F4E3" : "#002346",
+                  color: darkMode ? "#002346" : "#F8F4E3",
+                }}
               >
                 {t("subscribe")}
               </button>

@@ -262,7 +262,7 @@ const Immigration = ({ user, onLogout }) => {
                   maxWidth: "100%",
                   background: darkMode ? "#333333" : "#fff",
                   marginTop: 0,
-                  alignSelf: "flex-start",
+                  
                 }}
               />
               <h3

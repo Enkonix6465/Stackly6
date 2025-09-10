@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useDarkMode } from "../context/DarkModeContext";
 import { useNavigate } from "react-router-dom";
 import { Sun, Moon } from "lucide-react";
+import logo from "../assets/logo1.png";
 
 const ADMIN_EMAIL = "admin@enkonix.in";
 const ADMIN_PASSWORD = "admin123";
@@ -51,7 +52,7 @@ const Login = ({ onLogin }) => {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
     const found = users.find(
-      (u) => u.email === formData.email && u.password === formData.password
+      (u) => u.email === formData.email && u.password === formData.password,
     );
 
     if (
@@ -75,7 +76,7 @@ const Login = ({ onLogin }) => {
         firstName: found.firstName,
         lastName: found.lastName,
         email: found.email,
-      })
+      }),
     );
 
     onLogin({
@@ -118,7 +119,7 @@ const Login = ({ onLogin }) => {
     logUserEvent(
       userData.email,
       `${userData.firstName} ${userData.lastName}`,
-      "signup"
+      "signup",
     );
 
     localStorage.setItem(
@@ -127,7 +128,7 @@ const Login = ({ onLogin }) => {
         firstName: userData.firstName,
         lastName: userData.lastName,
         email: userData.email,
-      })
+      }),
     );
 
     const { password, ...loginUser } = userData;
@@ -150,7 +151,7 @@ const Login = ({ onLogin }) => {
           firstName: "Admin",
           lastName: "",
           email: ADMIN_EMAIL,
-        })
+        }),
       );
 
       onLogin({ email: ADMIN_EMAIL, isAdmin: true });
@@ -175,6 +176,7 @@ const Login = ({ onLogin }) => {
           darkMode ? "dark:bg-[#1e293b]" : ""
         } p-8 rounded-lg shadow-md w-full max-w-md mx-auto relative z-10`}
       >
+        {/* HEADER */}
         <div className="flex justify-between items-center mb-6">
           <h2
             className={`text-2xl font-semibold ${
@@ -184,8 +186,8 @@ const Login = ({ onLogin }) => {
             {isAdmin
               ? "Admin Login - Verdict"
               : isSignup
-              ? "Sign Up for Verdict"
-              : "Login to Verdict"}
+                ? "Sign Up for Verdict"
+                : "Login to Verdict"}
           </h2>
           <button
             onClick={() => setDarkMode((prev) => !prev)}
@@ -197,6 +199,11 @@ const Login = ({ onLogin }) => {
             <Moon size={16} className="ml-1" />
           </button>
         </div>
+        <img
+          src={logo}
+          alt="Enkonix Logo"
+          className="h-20 w-auto mb-4 mx-auto"
+        />
 
         {/* User/Admin TOGGLE */}
         <div className="flex items-center justify-center mb-6">
@@ -330,7 +337,7 @@ const Login = ({ onLogin }) => {
             />
             <button
               type="submit"
-              className="w-full bg-[#002346] text-white py-2 rounded hover:bg-[#1a3b6f] transition-colors"
+              className="w-full bg-[#002346]   py-2 rounded hover:bg-[#1a3b6f] transition-colors"
             >
               Sign Up
             </button>

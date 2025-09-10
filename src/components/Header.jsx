@@ -137,398 +137,410 @@ export default function Header() {
         className="  mx-auto px-4 sm:px-6 py-2 flex items-center justify-between"
         style={{ minHeight: "56px", height: "56px" }}
       >
-        {/* Logo - Left Side */}
-        <div className="flex items-center">
-          <div className="flex items-center space-x-2">
-            <img
-              src={logo}
-              alt="LIFE Logo"
-              className="w-36 h-36 sm:w-44 sm:h-44 object-contain"
-            />
-          </div>
-        </div>
-
         {/* Desktop Navigation - Right Side with Equal Gaps */}
-        <nav className="hidden lg:flex items-center space-x-12">
-          {/* Languages Dropdown */}
-          <div className="relative">
-            <button
-              className={`text-lg font-semibold hover:text-teal flex items-center gap-1 focus:outline-none transition-colors duration-200`}
-              style={
-                darkMode
-                  ? { color: "#fff", background: "#000" }
-                  : { color: "#000", background: "transparent" }
-              }
-              onClick={() => setLanguageDropdown((open) => !open)}
-            >
-              {t("languages")}
-              <svg
-                className="w-5 h-5 ml-1"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {languageDropdown && (
-              <div
-                className={`absolute left-0 mt-2 w-40 border rounded shadow-lg z-50 transition-colors duration-200 ${
-                  darkMode ? "bg-gray-800 border-gray-600" : "bg-white "
-                }`}
-              >
-                <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                  onClick={() => {
-                    i18n.changeLanguage("en");
-                    setLanguageDropdown(false);
-                  }}
-                >
-                  {t("english")}
-                </div>
-                <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                  onClick={() => {
-                    i18n.changeLanguage("ar");
-                    setLanguageDropdown(false);
-                  }}
-                >
-                  {t("arabic")}
-                </div>
-                <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                  onClick={() => {
-                    i18n.changeLanguage("he");
-                    setLanguageDropdown(false);
-                  }}
-                >
-                  {t("hebrew")}
-                </div>
-              </div>
-            )}
+        <nav className="flex items-center w-full justify-between  ">
+          {/* Logo - Left Side */}
+          <div className="flex items-center">
+            <div className="flex items-center space-x-2">
+              <img
+                src={logo}
+                alt="LIFE Logo"
+                className="w-36 h-36 sm:w-44 sm:h-44 object-contain"
+              />
+            </div>
           </div>
-          <div className="relative">
-            <button
-              className={`text-lg font-semibold hover:text-teal flex items-center gap-1 focus:outline-none transition-colors duration-200`}
-              style={
-                darkMode
-                  ? { color: "#fff", background: "#000" }
-                  : { color: "#000", background: "transparent" }
-              }
-              onClick={() => setHomeDropdown((open) => !open)}
-            >
-              {t("home")}
-              <svg
-                className="w-5 h-5 ml-1"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {homeDropdown && (
-              <div
-                className={`absolute left-0 mt-2 w-48 border rounded shadow-lg z-50 transition-colors duration-200 ${
-                  darkMode ? "bg-gray-800 border-gray-600" : "bg-white "
-                }`}
-              >
-                <Link
-                  to="/home"
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                  onClick={() => {
-                    setHomeDropdown(false);
-                    scrollToTop();
-                  }}
-                >
-                  {t("home")}1
-                </Link>
-                <Link
-                  to="/home2"
-                  className={`block px-4 py-3 text-base hover:bg-blue-100 transition-colors duration-200 ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                  onClick={() => {
-                    setHomeDropdown(false);
-                    scrollToTop();
-                  }}
-                >
-                  {t("home")}2
-                </Link>
-              </div>
-            )}
-          </div>
-          <Link
-            to="/about"
-            className={`text-lg font-semibold hover:text-teal transition-colors duration-200 ${
-              darkMode ? "text-white" : "text-black"
-            }`}
-            onClick={scrollToTop}
-          >
-            {t("about")}
-          </Link>
-          <div className="relative">
-            <button
-              className={`text-lg font-semibold hover:text-teal flex items-center gap-1 focus:outline-none transition-colors duration-200`}
-              style={
-                darkMode
-                  ? { color: "#fff", background: "#000" }
-                  : { color: "#000", background: "transparent" }
-              }
-              onClick={() => {
-                navigate("/services");
-                scrollToTop();
-              }}
-              onMouseEnter={handleServicesMouseEnter}
-              onMouseLeave={handleServicesMouseLeave}
-              onFocus={() => setServicesDropdown(true)}
-              onBlur={() => setServicesDropdown(false)}
-            >
-              {t("services")}
-              <svg
-                className="w-5 h-5 ml-1"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {servicesDropdown && (
-              <div
-                className={`absolute left-0 mt-2 w-56 border rounded shadow-lg z-50 transition-colors duration-200 ${
+          <div className="hidden lg:flex items-center gap-2  ">
+            {/* Languages Dropdown */}
+            <div className="relative">
+              <button
+                className={`text-lg font-semibold hover:text-teal flex items-center gap-1 focus:outline-none transition-colors duration-200`}
+                style={
                   darkMode
-                    ? "bg-gray-800 border-gray-600"
-                    : "bg-white border-gray-200"
-                }`}
+                    ? { color: "#fff", background: "#000" }
+                    : { color: "#000", background: "transparent" }
+                }
+                onClick={() => setLanguageDropdown((open) => !open)}
+              >
+                {t("languages")}
+                <svg
+                  className="w-5 h-5 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              {languageDropdown && (
+                <div
+                  className={`absolute left-0 mt-2 w-40 border rounded shadow-lg z-50 transition-colors duration-200 ${
+                    darkMode ? "bg-gray-800 border-gray-600" : "bg-white "
+                  }`}
+                >
+                  <div
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700"
+                        : "text-black hover:bg-gray-100"
+                    }`}
+                    onClick={() => {
+                      i18n.changeLanguage("en");
+                      setLanguageDropdown(false);
+                    }}
+                  >
+                    {t("english")}
+                  </div>
+                  <div
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700"
+                        : "text-black hover:bg-gray-100"
+                    }`}
+                    onClick={() => {
+                      i18n.changeLanguage("ar");
+                      setLanguageDropdown(false);
+                    }}
+                  >
+                    {t("arabic")}
+                  </div>
+                  <div
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700"
+                        : "text-black hover:bg-gray-100"
+                    }`}
+                    onClick={() => {
+                      i18n.changeLanguage("he");
+                      setLanguageDropdown(false);
+                    }}
+                  >
+                    {t("hebrew")}
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="relative">
+              <button
+                className={`text-lg hover:text-teal flex items-center  focus:outline-none transition-colors duration-200`}
+                style={
+                  darkMode
+                    ? { color: "#fff", background: "#000" }
+                    : { color: "#000", background: "transparent" }
+                }
+                onClick={() => setHomeDropdown((open) => !open)}
+              >
+                {t("home")}
+                <svg
+                  className="w-5 h-5 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              {homeDropdown && (
+                <div
+                  className={`absolute left-0 mt-2 w-48 border rounded shadow-lg z-50 transition-colors duration-200 ${
+                    darkMode ? "bg-gray-800 border-gray-600" : "bg-white "
+                  }`}
+                >
+                  <Link
+                    to="/home"
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700"
+                        : "text-black hover:bg-gray-100"
+                    }`}
+                    onClick={() => {
+                      setHomeDropdown(false);
+                      scrollToTop();
+                    }}
+                  >
+                    {t("home")}1
+                  </Link>
+                  <Link
+                    to="/home2"
+                    className={`block px-4 py-3 text-base hover:bg-blue-100 transition-colors duration-200 `}
+                    onClick={() => {
+                      setHomeDropdown(false);
+                      scrollToTop();
+                    }}
+                  >
+                    {t("home")}2
+                  </Link>
+                </div>
+              )}
+            </div>
+            <Link
+              to="/about"
+              className={`text-lg font-semibold hover:text-teal transition-colors duration-200  `}
+              style={
+                darkMode
+                  ? { color: "#fff", background: "#000" }
+                  : { color: "#000", background: "transparent" }
+              }
+              onClick={scrollToTop}
+            >
+              {t("about")}
+            </Link>
+            <div className="relative">
+              <button
+                className={`text-lg hover:text-teal flex items-center  focus:outline-none transition-colors duration-200`}
+                style={
+                  darkMode
+                    ? { color: "#fff", background: "#000" }
+                    : { color: "#000", background: "transparent" }
+                }
+                onClick={() => {
+                  navigate("/services");
+                  scrollToTop();
+                }}
                 onMouseEnter={handleServicesMouseEnter}
                 onMouseLeave={handleServicesMouseLeave}
+                onFocus={() => setServicesDropdown(true)}
+                onBlur={() => setServicesDropdown(false)}
               >
-                <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer border-b ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700 border-gray-600"
-                      : "text-black hover:bg-gray-100 border-gray-200"
-                  }`}
-                  onClick={() => {
-                    setServicesDropdown(false);
-                    navigate("/services");
-                    scrollToTop();
-                  }}
+                {t("services")}
+                <svg
+                  className="w-5 h-5 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
                 >
-                  {t("viewAllServices")}
-                </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              {servicesDropdown && (
                 <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                  className={`absolute left-0 mt-2 w-56 border rounded shadow-lg z-50 transition-colors duration-200 ${
                     darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
+                      ? "bg-gray-800 border-gray-600"
+                      : "bg-white border-gray-200"
                   }`}
-                  onClick={() => {
-                    setServicesDropdown(false);
-                    navigate("/services/family");
-                    scrollToTop();
-                  }}
+                  onMouseEnter={handleServicesMouseEnter}
+                  onMouseLeave={handleServicesMouseLeave}
                 >
-                  {t("familyLaw")}
-                </div>
-                <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                  onClick={() => {
-                    setServicesDropdown(false);
-                    navigate("/services/civil");
-                    scrollToTop();
-                  }}
-                >
-                  {t("civilLaw")}
-                </div>
-                <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                  onClick={() => {
-                    setServicesDropdown(false);
-                    navigate("/services/corporate");
-                    scrollToTop();
-                  }}
-                >
-                  {t("corporateLaw")}
-                </div>
-                <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                  onClick={() => {
-                    setServicesDropdown(false);
-                    navigate("/services/real-estate");
-                    scrollToTop();
-                  }}
-                >
-                  {t("realEstateLaw")}
-                </div>
-                <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                  onClick={() => {
-                    setServicesDropdown(false);
-                    navigate("/services/criminal");
-                    scrollToTop();
-                  }}
-                >
-                  {t("criminalLaw")}
-                </div>
-                <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
-                    darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                  onClick={() => {
-                    setServicesDropdown(false);
-                    navigate("/services/immigration");
-                    scrollToTop();
-                  }}
-                >
-                  {t("immigrationLaw")}
-                </div>
-              </div>
-            )}
-          </div>
-          <Link
-            to="/blog"
-            className={`text-lg font-semibold hover:text-teal transition-colors duration-200 ${
-              darkMode ? "text-white" : "text-black"
-            }`}
-            onClick={scrollToTop}
-          >
-            {t("blog")}
-          </Link>
-          <Link
-            to="/contact"
-            className={`text-lg font-semibold hover:text-teal transition-colors duration-200 ${
-              darkMode ? "text-white" : "text-black"
-            }`}
-            onClick={scrollToTop}
-          >
-            {t("contact")}
-          </Link>
-
-          {/* Dark Mode Toggle Button */}
-          <button
-            onClick={toggleDarkMode}
-            className={`p-2 rounded-lg transition-colors duration-200 ${
-              darkMode
-                ? "bg-gray-700 hover:bg-gray-600"
-                : "bg-gray-200 hover:bg-gray-300"
-            }`}
-            title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          >
-            {darkMode ? (
-              <svg
-                className="w-5 h-5 text-yellow-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-5 h-5 text-gray-600"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-              </svg>
-            )}
-          </button>
-
-          {/* Avatar with Dropdown */}
-          <div className="relative avatar-dropdown">
-            <div
-              onClick={() => setIsAvatarDropdownOpen(!isAvatarDropdownOpen)}
-              className="w-10 h-10 bg-[#26A0A2] rounded-full flex items-center justify-center text-white font-bold text-base cursor-pointer hover:bg-[#1f8a8c] transition-colors duration-200"
-            >
-              {initials}
-            </div>
-
-            {/* Avatar Dropdown */}
-            {isAvatarDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-                <div className="py-2">
-                  <div className="px-4 py-2 text-sm text-gray-700 border-b border-gray-100">
-                    <div className="font-medium">User Profile</div>
-                    <div className="text-gray-500 text-xs">Signed in</div>
-                  </div>
-                  <button
-                    onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-100 transition-colors duration-200 flex items-center"
+                  <div
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer border-b ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700 border-gray-600"
+                        : "text-black hover:bg-gray-100 border-gray-200"
+                    }`}
+                    onClick={() => {
+                      setServicesDropdown(false);
+                      navigate("/services");
+                      scrollToTop();
+                    }}
                   >
-                    <svg
-                      className="w-4 h-4 mr-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                      />
-                    </svg>
-                    Logout
-                  </button>
+                    {t("viewAllServices")}
+                  </div>
+                  <div
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700"
+                        : "text-black hover:bg-gray-100"
+                    }`}
+                    onClick={() => {
+                      setServicesDropdown(false);
+                      navigate("/services/family");
+                      scrollToTop();
+                    }}
+                  >
+                    {t("familyLaw")}
+                  </div>
+                  <div
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700"
+                        : "text-black hover:bg-gray-100"
+                    }`}
+                    onClick={() => {
+                      setServicesDropdown(false);
+                      navigate("/services/civil");
+                      scrollToTop();
+                    }}
+                  >
+                    {t("civilLaw")}
+                  </div>
+                  <div
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700"
+                        : "text-black hover:bg-gray-100"
+                    }`}
+                    onClick={() => {
+                      setServicesDropdown(false);
+                      navigate("/services/corporate");
+                      scrollToTop();
+                    }}
+                  >
+                    {t("corporateLaw")}
+                  </div>
+                  <div
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700"
+                        : "text-black hover:bg-gray-100"
+                    }`}
+                    onClick={() => {
+                      setServicesDropdown(false);
+                      navigate("/services/real-estate");
+                      scrollToTop();
+                    }}
+                  >
+                    {t("realEstateLaw")}
+                  </div>
+                  <div
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700"
+                        : "text-black hover:bg-gray-100"
+                    }`}
+                    onClick={() => {
+                      setServicesDropdown(false);
+                      navigate("/services/criminal");
+                      scrollToTop();
+                    }}
+                  >
+                    {t("criminalLaw")}
+                  </div>
+                  <div
+                    className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                      darkMode
+                        ? "text-white hover:bg-gray-700"
+                        : "text-black hover:bg-gray-100"
+                    }`}
+                    onClick={() => {
+                      setServicesDropdown(false);
+                      navigate("/services/immigration");
+                      scrollToTop();
+                    }}
+                  >
+                    {t("immigrationLaw")}
+                  </div>
                 </div>
+              )}
+            </div>
+            <Link
+              to="/blog"
+              className={`text-lg   hover:text-teal transition-colors duration-200 ${
+                darkMode ? "text-white" : "text-black"
+              }`}
+              style={
+                darkMode
+                  ? { color: "#fff", background: "#000" }
+                  : { color: "#000", background: "transparent" }
+              }
+              onClick={scrollToTop}
+            >
+              {t("blog")}
+            </Link>
+            <Link
+              to="/contact"
+              className={`text-lg   hover:text-teal transition-colors duration-200 ${
+                darkMode ? "text-white" : "text-black"
+              }`}
+              onClick={scrollToTop}
+              style={
+                darkMode
+                  ? { color: "#fff", background: "#000" }
+                  : { color: "#000", background: "transparent" }
+              }
+            >
+              {t("contact")}
+            </Link>
+          </div>
+
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Dark Mode Toggle Button */}
+            <button
+              onClick={toggleDarkMode}
+              className={`p-2 rounded-lg transition-colors duration-200 ${
+                darkMode
+                  ? "bg-gray-700 hover:bg-gray-600"
+                  : "bg-gray-200 hover:bg-gray-300"
+              }`}
+              title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            >
+              {darkMode ? (
+                <svg
+                  className="w-5 h-5 text-yellow-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="w-5 h-5 text-gray-600"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                </svg>
+              )}
+            </button>
+
+            {/* Avatar with Dropdown */}
+            <div className="relative avatar-dropdown">
+              <div
+                onClick={() => setIsAvatarDropdownOpen(!isAvatarDropdownOpen)}
+                className="w-10 h-10 bg-[#26A0A2] rounded-full flex items-center justify-center text-white font-bold text-base cursor-pointer hover:bg-[#1f8a8c] transition-colors duration-200"
+              >
+                {initials}
               </div>
-            )}
+
+              {/* Avatar Dropdown */}
+              {isAvatarDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                  <div className="py-2">
+                    <div className="px-4 py-2 text-sm text-gray-700 border-b border-gray-100">
+                      <div className="font-medium">User Profile</div>
+                      <div className="text-gray-500 text-xs">Signed in</div>
+                    </div>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-4 py-2 text-sm   hover:bg-gray-100 transition-colors duration-200 flex items-center"
+                    >
+                      <svg
+                        className="w-4 h-4 mr-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                        />
+                      </svg>
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </nav>
 
@@ -544,27 +556,22 @@ export default function Header() {
             }`}
             title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
-            {darkMode ? (
-              <svg
-                className="w-4 h-4 text-yellow-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
+            <svg
+              className="w-4 h-4"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+            >
+              {darkMode ? (
                 <path
                   fillRule="evenodd"
                   d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
                   clipRule="evenodd"
                 />
-              </svg>
-            ) : (
-              <svg
-                className="w-4 h-4 text-gray-600"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
+              ) : (
                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-              </svg>
-            )}
+              )}
+            </svg>
           </button>
 
           {/* Hamburger Menu Button */}
@@ -578,12 +585,11 @@ export default function Header() {
             aria-label="Toggle mobile menu"
           >
             <svg
-              className={`w-6 h-6 transition-transform duration-200 ${
-                darkMode ? "text-white" : "text-gray-600"
-              } ${isMobileMenuOpen ? "rotate-90" : ""}`}
+              className={`w-6 h-6 transition-transform duration-200`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             >
               {isMobileMenuOpen ? (
                 <path
@@ -757,11 +763,8 @@ export default function Header() {
             <Link
               to="/about"
               onClick={closeMobileMenu}
-              className={`block py-3 px-4 rounded-lg font-semibold transition-colors duration-200 ${
-                darkMode
-                  ? "text-white hover:bg-gray-800"
-                  : "text-black hover:bg-gray-100"
-              }`}
+              className={`w-full text-left flex items-center justify-between py-3 px-4 rounded-lg transition-colors duration-200 text-black `}
+              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             >
               {t("about")}
             </Link>
@@ -909,6 +912,7 @@ export default function Header() {
                   ? "text-white hover:bg-gray-800"
                   : "text-black hover:bg-gray-100"
               }`}
+              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             >
               Blog
             </Link>
@@ -922,6 +926,7 @@ export default function Header() {
                   ? "text-white hover:bg-gray-800"
                   : "text-black hover:bg-gray-100"
               }`}
+              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             >
               Contact Us
             </Link>
@@ -936,7 +941,7 @@ export default function Header() {
                 >
                   {t("userProfile")}
                 </span>
-                <div className="w-8 h-8 bg-[#26A0A2] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                <div className="w-8 h-8 bg-[#26A0A2] rounded-full flex items-center justify-center  font-bold text-sm">
                   {initials}
                 </div>
               </div>
@@ -945,11 +950,7 @@ export default function Header() {
                   handleLogout();
                   closeMobileMenu();
                 }}
-                className={`w-full text-left px-4 py-3 mt-2 text-sm font-semibold rounded-lg transition-colors duration-200 flex items-center ${
-                  darkMode
-                    ? "text-white hover:bg-gray-800"
-                    : "text-white hover:bg-gray-100"
-                }`}
+                className={`w-full text-left px-4 py-3 mt-2 text-sm font-semibold rounded-lg transition-colors duration-200 flex items-center `}
               >
                 <svg
                   className="w-4 h-4 mr-2"

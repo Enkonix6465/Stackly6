@@ -200,26 +200,23 @@ export default function AdminDashboard({}) {
             style={{ background: cardBg }}
           >
             <h2
-              className="text-2xl font-bold mb-4"
+              className="font-bold text-md mb-2 "
               style={{ color: textPrimary }}
             >
               {t("adminDashboard.userLoginActivity")}
             </h2>
             <div className="flex flex-wrap gap-8 items-center mb-2">
-              <div
-                className="text-lg font-semibold"
-                style={{ color: textPrimary }}
-              >
+              <div className=" font-semibold" style={{ color: textPrimary }}>
                 {t("adminDashboard.totalRegisteredUsers")}
-                <span className="font-bold">{registeredUsers.length}</span>
+                <span className="pl-2">{registeredUsers.length}</span>
               </div>
             </div>
             <div className="overflow-x-auto">
               <table
-                className="w-full text-left text-sm"
+                className="w-full table table-auto text-left text-sm"
                 style={{ color: textPrimary }}
               >
-                <thead>
+                <thead className=" ">
                   <tr>
                     <th className="py-2">{t("adminDashboard.table.email")}</th>
                     <th className="py-2">{t("adminDashboard.table.name")}</th>
@@ -252,7 +249,6 @@ export default function AdminDashboard({}) {
                           <td className="py-2">{login.loginTime}</td>
                           <td className="py-2">{login.loginDate}</td>
                           <td className="py-2">
-                            {login.event === "signup" ? "Signup" : "Login"}
                             {login.event === "signup"
                               ? t("adminDashboard.signup")
                               : t("adminDashboard.login")}
@@ -465,7 +461,7 @@ export default function AdminDashboard({}) {
                     style={{ borderColor: "#EEE" }}
                   >
                     <td className="py-2">{row.client}</td>
-                    <td>
+                    <td className="text-sm font-semibold py-2">
                       {row.status === "Paid" && (
                         <span style={{ color: "green" }}>
                           {t("adminDashboard.invoiceTable.paid")}
